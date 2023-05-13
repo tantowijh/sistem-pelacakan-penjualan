@@ -4,6 +4,10 @@
  */
 package sistem;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import koneksi.loginSession;
 
@@ -51,11 +55,30 @@ public final class Home extends javax.swing.JFrame {
         loader.loadPanel(mainContainer, panel);
     }
 
+    private void keluarAplikasi() {
+        int dialogButton = JOptionPane.WARNING_MESSAGE;
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Peringatan", dialogButton);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
+
+    private void exitButton() {
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                keluarAplikasi();
+            }
+        });
+    }
+
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
+        exitButton();
         setResizable(false);
         setTitle("Sistem Pelacakan Penjualan by Group Six");
         loadDateAndTime();
