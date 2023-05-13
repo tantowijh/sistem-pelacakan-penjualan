@@ -442,7 +442,7 @@ public final class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldUsernameFocusLost
 
     private void exitNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitNowActionPerformed
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_exitNowActionPerformed
 
     private void fieldPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldPasswordFocusGained

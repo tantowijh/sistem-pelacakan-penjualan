@@ -7,6 +7,7 @@ package koneksi;
 import customization.cResetter;
 import java.sql.*;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -14,6 +15,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import sistem.Login;
 
 /**
  *
@@ -68,11 +70,6 @@ public class koneksiAdmin {
             JOptionPane.showMessageDialog(null,
                     "Gagal! " + e.getMessage(),
                     "Peringatan", JOptionPane.WARNING_MESSAGE);
-        }
-
-        if (!loginSession.getAccess()) {
-            System.exit(0);
-
         }
     }
 
@@ -220,10 +217,7 @@ public class koneksiAdmin {
     }
 
     // method untuk mengedit database pada tabel user yang hanya dipanggil oleh tableUpdater
-    public void updateTableAndDatabase(TableModel model, JTable table, int row, int column, Object newValue, String... sqlTable) throws SQLException {
-        // restart or not
-        boolean restartYA = false;
-
+    public void updateTableAndDatabase(JFrame thePanel, TableModel model, JTable table, int row, int column, Object newValue, String... sqlTable) throws SQLException {
         // Update the JTable
         table.setValueAt(newValue, row, column);
 
@@ -257,7 +251,13 @@ public class koneksiAdmin {
             }
 
             if (loginSession.getRole().equals("owner")) {
-
+                // Check if the column being updated is the "role" column and if the new value is not "owner"
+                if (model.getColumnName(column).equalsIgnoreCase("role") && !newValue.equals("owner")) {
+                    // If so, prevent the update and show an error message
+                    JOptionPane.showMessageDialog(null, "Anda tidak bisa mengubah diri Anda "
+                            + "menjadi selain 'owner' karena bisa berakibat fatal.");
+                    return;
+                }
             } else {
 
                 if (theRole != null && (theRole.equals("owner"))) {
@@ -278,12 +278,12 @@ public class koneksiAdmin {
                     JOptionPane.showMessageDialog(null, "Anda tidak memiliki hak untuk mengubah role menjadi 'owner'.");
                     return;
                 }
-                
-                if (model.getColumnName(column).equalsIgnoreCase("role") && newValue.equals("admin")){
+
+                if (model.getColumnName(column).equalsIgnoreCase("role") && newValue.equals("admin")) {
                     int ubahYaTidak = JOptionPane.showConfirmDialog(null, "Hati-hati Anda akan mengubah "
                             + "role menjadi 'admin' Anda tidak akan bisa melakukan perubahan atau menghapus role yang sama!",
                             "Peringatan!", JOptionPane.YES_NO_OPTION);
-                    if (ubahYaTidak == JOptionPane.NO_OPTION){
+                    if (ubahYaTidak == JOptionPane.NO_OPTION) {
                         return;
                     }
                 }
@@ -308,8 +308,8 @@ public class koneksiAdmin {
             if (cekId != 0 && cekId == id) {
                 JOptionPane.showMessageDialog(null,
                         "Anda mengubah " + loginSession.getUsername()
-                        + " aplikasi direstart!");
-                restartYA = true;
+                        + " silakan login ulang!");
+                loginSession.setAccess(false);
             }
 
         } catch (SQLException e) {
@@ -323,13 +323,19 @@ public class koneksiAdmin {
             }
         }
 
-        if (restartYA) {
-            System.exit(0);
+        // Relogin jika access false
+        if (!loginSession.getAccess()) {
+            // Hide the current JFrame
+            thePanel.setVisible(false);
+
+            // Show the login again
+            Login login = new Login();
+            login.setVisible(true);
         }
     }
 
     // method yang meminta param tabel untuk mengoper parameter dan value yang dibutuhkan kepada updateTableAndDatabase
-    public void tableUpdater(JTable tbUser) {
+    public void tableUpdater(JTable tbUser, JFrame thePanel) {
         DefaultTableModel model = (DefaultTableModel) tbUser.getModel();
 
         model.addTableModelListener(new TableModelListener() {
@@ -353,7 +359,7 @@ public class koneksiAdmin {
 
                 try {
                     // mengatur posisi yang akan diupdate dan nama tabel di database serta kolom
-                    updateTableAndDatabase(model, tbUser, row, column, newValue, new String[]{"users", model.getColumnName(column)});
+                    updateTableAndDatabase(thePanel, model, tbUser, row, column, newValue, new String[]{"users", model.getColumnName(column)});
                 } catch (SQLException ex) {
                     ex.getMessage();
                 }

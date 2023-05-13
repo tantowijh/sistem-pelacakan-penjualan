@@ -15,8 +15,10 @@ import java.awt.event.MouseMotionAdapter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import koneksi.loginSession;
@@ -42,7 +44,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         if (!loginSession.getRole().equals("owner") && !loginSession.getRole().equals("admin") && !loginSession.getRole().equals("user")) {
             btnUpdate.setEnabled(false);
         }
-        
+
         new cResetter().setUsername(new JTextField[]{adm_username});
 
     }
@@ -77,14 +79,14 @@ public final class appAdministrator extends javax.swing.JPanel {
         // Set the new model to the JTable instance
         tbl.setModel(model);
     }
-    
+
     // Reset table to default state
     public void resetTable() {
         // Remove the listener from the checkbox
         editCheckbox.removeActionListener(editCheckbox.getActionListeners()[0]);
         loadAccess();
         adminSession.loadingUsers(loadUsers);
-        
+
         // Refreshing edit checkBox
         editCheckbox.setSelected(false);
         editCheckbox.setEnabled(true);
@@ -97,9 +99,24 @@ public final class appAdministrator extends javax.swing.JPanel {
         editCheckbox.addActionListener((ActionEvent e) -> {
             boolean enabled = editCheckbox.isSelected();
             loadUsers.setEnabled(enabled);
-            adminSession.tableUpdater(loadUsers);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            adminSession.tableUpdater(loadUsers, frame);
             adm_delete.setEnabled(enabled);
         });
+    }
+
+    public void userRelogin() {
+        if (!loginSession.getAccess()) {
+            // Get the parent JFrame of the JPanel
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+            // Hide the current JFrame
+            frame.setVisible(false);
+
+            // Show the login again
+            Login login = new Login();
+            login.setVisible(true);
+        }
     }
 
     /**
@@ -133,7 +150,8 @@ public final class appAdministrator extends javax.swing.JPanel {
         editCheckbox.addActionListener((ActionEvent e) -> {
             boolean enabled = editCheckbox.isSelected();
             loadUsers.setEnabled(enabled);
-            adminSession.tableUpdater(loadUsers);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(loadUsers);
+            adminSession.tableUpdater(loadUsers, frame);
             adm_delete.setEnabled(enabled);
         });
 
@@ -525,6 +543,9 @@ public final class appAdministrator extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         adminSession.changePass(new JTextField[]{passNow, passNew});
+
+        // Relogin jika password berubah
+        userRelogin();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void passNowFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passNowFocusGained
@@ -567,7 +588,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         // Disable editing dari awal
         loadUsers.setEnabled(false);
         adm_delete.setEnabled(false);
-        
+
         adminSession.tableSearch(loadUsers, new JTextField[]{pencarianUser});
     }//GEN-LAST:event_pencarianUserKeyReleased
 
