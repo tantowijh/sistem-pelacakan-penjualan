@@ -32,6 +32,24 @@ public class SalesDatabase {
                     + " customer_address TEXT NOT NULL, "
                     + " payment_status TEXT NOT NULL)";
             stmt.executeUpdate(sql);
+
+            sql = "CREATE TABLE IF NOT EXISTS stock_penjualan ("
+                    + "produk VARCHAR(255) NOT NULL, "
+                    + "kode VARCHAR(255) NOT NULL, "
+                    + "stock INT NOT NULL, "
+                    + "harga DECIMAL(10, 2) NOT NULL, "
+                    + "PRIMARY KEY (kode) )";
+            stmt.executeUpdate(sql);
+
+            sql = "CREATE TABLE IF NOT EXISTS customers ("
+                    + "customer_id VARCHAR(10) NOT NULL PRIMARY KEY, " 
+                    + "first_name VARCHAR(50) NOT NULL, " 
+                    + "last_name VARCHAR(50) NOT NULL, " 
+                    + "phone VARCHAR(100) NOT NULL, " 
+                    + "email VARCHAR(100) NOT NULL, " 
+                    + "address VARCHAR(200) NOT NULL)";
+            stmt.executeUpdate(sql);
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

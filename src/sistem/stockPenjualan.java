@@ -19,23 +19,32 @@ import koneksi.koneksiStock;
  * @author thowie
  */
 public final class stockPenjualan extends javax.swing.JPanel {
-    
+
     private static HashSet<String> existingKodes;
-    
+
     // retrieve customer id on the database to prevent adding the same id
     private void existingValuesLoader() {
         // Clearing the exixtingValues
-        if (existingKodes != null){
+        if (existingKodes != null) {
             existingKodes.clear();
         }
 
         // Initialize the existingValues set by loading the IDs from the database
         existingKodes = new HashSet<>();
-        
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = (Connection) koneksi.database.dbConfig()) {
                 Statement stmt = conn.createStatement();
+
+                String sql = "CREATE TABLE IF NOT EXISTS stock_penjualan ("
+                        + "produk VARCHAR(255) NOT NULL, "
+                        + "kode VARCHAR(255) NOT NULL, "
+                        + "stock INT NOT NULL, "
+                        + "harga DECIMAL(10, 2) NOT NULL, "
+                        + "PRIMARY KEY (kode) )";
+                stmt.executeUpdate(sql);
+
                 ResultSet rs = stmt.executeQuery("SELECT * FROM stock_penjualan");
                 while (rs.next()) {
                     existingKodes.add(rs.getString("kode"));
@@ -45,7 +54,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-    
+
     // Generate the next customer ID
     public String generateProductKode() {
         String prefix = "PC";
@@ -91,7 +100,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
         setNumber.intNumber(new JTextField[]{jBarang});
         setNumber.doubleNumber(new JTextField[]{hBarang});
         stock.setColumnWidth(loadStock);
-        
+
         // Set the permission settings
         new customization.cResetter().setBlockedButton(new JButton[]{btnInsert, btnUpdate, btnDelete});
     }

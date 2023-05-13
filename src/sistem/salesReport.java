@@ -38,7 +38,25 @@ public final class salesReport extends javax.swing.JPanel {
         try {
             conn = (Connection) koneksi.database.dbConfig();
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM sales";
+            
+            String sql = "CREATE TABLE IF NOT EXISTS sales "
+                    + "(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
+                    + " `date` TEXT NOT NULL, "
+                    + " amount REAL NOT NULL, "
+                    + " price REAL NOT NULL, "
+                    + " product TEXT NOT NULL, "
+                    + " product_id TEXT NOT NULL, "
+                    + " quantity INTEGER NOT NULL, "
+                    + " customer TEXT NOT NULL, "
+                    + " customer_id TEXT NOT NULL, "
+                    + " customer_phone TEXT NOT NULL, "
+                    + " customer_email TEXT NOT NULL, "
+                    + " customer_address TEXT NOT NULL, "
+                    + " payment_status TEXT NOT NULL)";
+            stmt.executeUpdate(sql);
+            
+            
+            sql = "SELECT * FROM sales";
             ResultSet rs = stmt.executeQuery(sql);
 
             // create a table model with column names and data from the result set

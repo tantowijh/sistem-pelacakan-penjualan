@@ -1,62 +1,80 @@
 package koneksi;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
+import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author thowie
- */
 public class database {
-    private static java.sql.Connection sqlConfig;
-    public static java.sql.Connection dbConfig(){
-        try{
-            String url = "jdbc:mysql://localhost/sistem_pelacakan";
-            setDbhost(url);
-            String user = "username";
-            setUsername(user);
-            String pass = "password";
-            setPassword(pass);
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-            sqlConfig = DriverManager.getConnection(url, user, pass);
-        } catch(SQLException e){
-            System.err.println("Koneksi gagal " + e.getMessage());
+
+    private static Connection connection;
+    private static Properties configProps;
+
+    public static Connection dbConfig() {
+        String url = "";
+        String username = "";
+        String password;
+
+        loadConfigProperties();
+
+        // Check if the configuration file has the database connection details
+        if (configProps.containsKey("database.url") && configProps.containsKey("database.username")
+                && configProps.containsKey("database.password")) {
+            url = configProps.getProperty("database.url");
+            username = configProps.getProperty("database.username");
+            password = configProps.getProperty("database.password");
+        } else {
+            // Prompt the user to enter the database connection details
+            while (url == null || url.isBlank()) {
+                url = JOptionPane.showInputDialog(null, "Masukkan URL database "
+                        + "(contoh: localhost/sistem_pelacakan):", "Database Configuration!", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                if (!url.startsWith("jdbc:mysql://")) {
+                    url = "jdbc:mysql://" + url;
+                }
+            }
+            while (username == null || username.isBlank()) {
+                username = JOptionPane.showInputDialog(null, "Masukkan username:", 
+                        "Database Configuration!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            password = JOptionPane.showInputDialog(null, "Masukkan password:", 
+                    "Database Configuration!", JOptionPane.INFORMATION_MESSAGE);
+
+            // Save the details in the configuration file
+            configProps.setProperty("database.url", url);
+            configProps.setProperty("database.username", username);
+            configProps.setProperty("database.password", password);
+            saveConfigProperties();
         }
-        return sqlConfig;
+
+        try {
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghubungkan ke database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return connection;
     }
-    
-    private static String dbhost;
-    private static String username;
-    private static String password;
-    
-    public static String getDbhost(){
-        return dbhost;
+
+    private static void loadConfigProperties() {
+        configProps = new Properties();
+        try (FileInputStream in = new FileInputStream(".config.properties")) {
+            configProps.load(in);
+        } catch (IOException e) {
+        }
     }
-    
-    public static void setDbhost(String dbhost){
-        database.dbhost = dbhost;
+
+    private static void saveConfigProperties() {
+        try (FileOutputStream out = new FileOutputStream(".config.properties")) {
+            configProps.store(out, "Database configuration");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
-    public static String getUsername(){
-        return username;
-    }
-    
-    public static void setUsername(String username){
-        database.username = username;
-    }
-    
-    public static String getPassword(){
-        return password;
-    }
-    
-    public static void setPassword(String password){
-        database.password = password;
-    }
-    
 }
