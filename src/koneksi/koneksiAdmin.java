@@ -218,6 +218,9 @@ public class koneksiAdmin {
 
     // method untuk mengedit database pada tabel user yang hanya dipanggil oleh tableUpdater
     public void updateTableAndDatabase(JFrame thePanel, TableModel model, JTable table, int row, int column, Object newValue, String... sqlTable) throws SQLException {
+        // restart or not
+        boolean restartYA = false;
+
         // Update the JTable
         table.setValueAt(newValue, row, column);
 
@@ -310,6 +313,7 @@ public class koneksiAdmin {
                         "Anda mengubah " + loginSession.getUsername()
                         + " silakan login ulang!");
                 loginSession.setAccess(false);
+                restartYA = true;
             }
 
         } catch (SQLException e) {
@@ -322,16 +326,19 @@ public class koneksiAdmin {
                 myconn.close();
             }
         }
-
+        
         // Relogin jika access false
-        if (!loginSession.getAccess()) {
-            // Hide the current JFrame
-            thePanel.setVisible(false);
+        if (restartYA) {
+            if (!loginSession.getAccess()) {
+                // Hide the current JFrame
+                thePanel.setVisible(false);
 
-            // Show the login again
-            Login login = new Login();
-            login.setVisible(true);
+                // Show the login again
+                Login login = new Login();
+                login.setVisible(true);
+            }
         }
+
     }
 
     // method yang meminta param tabel untuk mengoper parameter dan value yang dibutuhkan kepada updateTableAndDatabase
