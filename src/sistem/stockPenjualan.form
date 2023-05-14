@@ -170,12 +170,12 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnUpdate" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="btnInsert" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="btnDelete" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="btnUpdate" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="btnInsert" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="btnDelete" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="queryProduct" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnClear" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="btnClear" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
