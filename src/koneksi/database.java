@@ -1,5 +1,6 @@
 package koneksi;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class database {
     public static Connection dbConfig() {
         String url = "";
         String username = "";
-        String password;
+        String password = "";
 
         loadConfigProperties();
 
@@ -29,20 +30,40 @@ public class database {
             password = configProps.getProperty("database.password");
         } else {
             // Prompt the user to enter the database connection details
-            while (url == null || url.isBlank()) {
+            while (true) {
                 url = JOptionPane.showInputDialog(null, "Masukkan URL database "
-                        + "(contoh: localhost/sistem_pelacakan):", "Database Configuration!", 
+                        + "(contoh: localhost/sistem_pelacakan):", "Database Configuration!",
                         JOptionPane.INFORMATION_MESSAGE);
-                if (!url.startsWith("jdbc:mysql://")) {
+                if (url == null){
+                    System.exit(0);
+                }
+                if (!url.isBlank() && !url.startsWith("jdbc:mysql://")) {
                     url = "jdbc:mysql://" + url;
+                    break;
                 }
             }
-            while (username == null || username.isBlank()) {
-                username = JOptionPane.showInputDialog(null, "Masukkan username:", 
+            while (username.isBlank()) {
+                username = JOptionPane.showInputDialog(null, "Masukkan username:",
                         "Database Configuration!", JOptionPane.INFORMATION_MESSAGE);
+                if (username == null){
+                    System.exit(0);
+                }
             }
-            password = JOptionPane.showInputDialog(null, "Masukkan password:", 
+            while (password.isBlank()){
+                password = JOptionPane.showInputDialog(null, "Masukkan password:",
                     "Database Configuration!", JOptionPane.INFORMATION_MESSAGE);
+                if (password == null){
+                    System.exit(0);
+                }
+                if (password.isBlank()){
+                    int yesEmpty = JOptionPane.showConfirmDialog(null, 
+                            "Anda yakin password kosong?", 
+                            "Peringatan!", JOptionPane.OK_CANCEL_OPTION);
+                    if (yesEmpty == JOptionPane.OK_OPTION){
+                        break;
+                    }
+                }
+            }
 
             // Save the details in the configuration file
             configProps.setProperty("database.url", url);
@@ -55,8 +76,12 @@ public class database {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghubungkan ke database.", "Error", JOptionPane.ERROR_MESSAGE);
+            File configFile = new File(".env");
+            configFile.delete();
+            JOptionPane.showMessageDialog(null, 
+                    "Terjadi kesalahan saat menghubungkan ke database.", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
 
         return connection;
@@ -64,17 +89,18 @@ public class database {
 
     private static void loadConfigProperties() {
         configProps = new Properties();
-        try (FileInputStream in = new FileInputStream(".config.properties")) {
+        try (FileInputStream in = new FileInputStream(".env")) {
             configProps.load(in);
         } catch (IOException e) {
         }
     }
 
     private static void saveConfigProperties() {
-        try (FileOutputStream out = new FileOutputStream(".config.properties")) {
+        try (FileOutputStream out = new FileOutputStream(".env")) {
             configProps.store(out, "Database configuration");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
+
