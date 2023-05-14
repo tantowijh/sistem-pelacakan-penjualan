@@ -79,7 +79,7 @@ public final class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         exitButton();
-        setResizable(false);
+//        setResizable(false);
         setTitle("Sistem Pelacakan Penjualan by Group Six");
         loadDateAndTime();
         loadUserInfo();
@@ -113,6 +113,7 @@ public final class Home extends javax.swing.JFrame {
         infoRole = new javax.swing.JLabel();
         infoDate = new javax.swing.JLabel();
         infoTime = new javax.swing.JLabel();
+        LoginSession1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -299,7 +300,7 @@ public final class Home extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
@@ -329,6 +330,16 @@ public final class Home extends javax.swing.JFrame {
         infoTime.setForeground(new java.awt.Color(20, 108, 148));
         infoTime.setText("Time:");
 
+        LoginSession1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        LoginSession1.setForeground(new java.awt.Color(204, 0, 0));
+        LoginSession1.setText("Log-Out");
+        LoginSession1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LoginSession1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginSession1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
         footer.setLayout(footerLayout);
         footerLayout.setHorizontalGroup(
@@ -339,11 +350,14 @@ public final class Home extends javax.swing.JFrame {
                     .addComponent(LoginSession)
                     .addGroup(footerLayout.createSequentialGroup()
                         .addComponent(infoName)
-                        .addGap(85, 85, 85)
-                        .addComponent(infoRole)
-                        .addGap(60, 60, 60)
+                        .addGap(18, 18, 18)
+                        .addComponent(infoRole)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LoginSession1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
                         .addComponent(infoDate)
-                        .addGap(120, 120, 120)
+                        .addGap(18, 18, 18)
                         .addComponent(infoTime)))
                 .addContainerGap())
         );
@@ -351,7 +365,9 @@ public final class Home extends javax.swing.JFrame {
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(footerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LoginSession)
+                .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoginSession)
+                    .addComponent(LoginSession1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(infoName)
@@ -379,7 +395,7 @@ public final class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(menuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 374, Short.MAX_VALUE)
+                .addComponent(mainContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 422, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -412,6 +428,20 @@ public final class Home extends javax.swing.JFrame {
     private void menuLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuLaporanMouseClicked
         setMainContainer("laporan");
     }//GEN-LAST:event_menuLaporanMouseClicked
+
+    private void LoginSession1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginSession1MouseClicked
+        int logout = JOptionPane.showConfirmDialog(null,
+                "Anda akan logout dari sesi sekarang! Lanjutkan?",
+                "Peringatan!", JOptionPane.WARNING_MESSAGE);
+        if (logout == JOptionPane.OK_OPTION) {
+            // Hide the current JFrame
+            this.setVisible(false);
+
+            // Show the login again
+            Login login = new Login();
+            login.setVisible(true);
+        }
+    }//GEN-LAST:event_LoginSession1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -450,6 +480,7 @@ public final class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoginSession;
+    private javax.swing.JLabel LoginSession1;
     private javax.swing.JPanel footer;
     private javax.swing.JPanel homePanel;
     private javax.swing.JLabel infoDate;
