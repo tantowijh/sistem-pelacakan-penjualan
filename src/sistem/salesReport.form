@@ -71,7 +71,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="btnPrint" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btnPrint" alignment="2" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="startDate" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="endDate" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="statusFilter" alignment="2" min="-2" max="-2" attributes="0"/>
