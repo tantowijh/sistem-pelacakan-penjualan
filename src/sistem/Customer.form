@@ -116,11 +116,11 @@
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                              <Component id="csEmail" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                              <Component id="csPhone" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                              <Component id="cslName" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                              <Component id="csfName" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="csEmail" alignment="0" max="32767" attributes="0"/>
+                              <Component id="csPhone" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cslName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="csfName" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">

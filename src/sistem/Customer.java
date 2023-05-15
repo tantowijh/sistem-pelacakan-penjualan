@@ -348,14 +348,6 @@ public final class Customer extends javax.swing.JPanel {
 
         // Set the permission settings
         new customization.cResetter().setBlockedButton(new JButton[]{csAdd, csUp, csDel});
-        
-        // Set the fields width to maximum 355
-        JTextField[] fields = new JTextField[]{csfName, cslName, csPhone, csEmail};
-        for (var field : fields){
-            field.setPreferredSize(new Dimension(250,30));
-            field.setMaximumSize(new Dimension(250,30));
-        }
-        csAddress.setMaximumSize(new Dimension(250,100));
     }
 
     /**
@@ -529,11 +521,11 @@ public final class Customer extends javax.swing.JPanel {
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cslName, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csfName, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1)
+                            .addComponent(csEmail)
+                            .addComponent(csPhone)
+                            .addComponent(cslName)
+                            .addComponent(csfName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
