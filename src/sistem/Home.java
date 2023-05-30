@@ -94,7 +94,7 @@ public final class Home extends javax.swing.JFrame {
         setSVG.menuIconSet(menuLaporan, "icon/menu/Reports.svg");
         setSVG.menuIconSet(menuUser, "icon/menu/User.svg");
         
-        String svgFilePath = "icon/bsilogo.png";
+        String svgFilePath = "icon/bsilogo.svg";
         FlatSVGIcon svgIcon = new FlatSVGIcon(svgFilePath);
         this.setIconImage(svgIcon.getImage());
     }
