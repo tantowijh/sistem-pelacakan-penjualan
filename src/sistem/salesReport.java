@@ -271,7 +271,7 @@ public final class salesReport extends javax.swing.JPanel {
         btnReset = new customization.cButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(java.awt.Color.orange);
+        setBackground(new java.awt.Color(255, 153, 51));
 
         header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 

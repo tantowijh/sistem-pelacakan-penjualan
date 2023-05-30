@@ -385,7 +385,7 @@ public final class Customer extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         csEmail = new javax.swing.JTextField();
 
-        setBackground(java.awt.Color.orange);
+        setBackground(new java.awt.Color(255, 153, 51));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 

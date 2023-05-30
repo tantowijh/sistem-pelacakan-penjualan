@@ -197,7 +197,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(java.awt.Color.orange);
+        setBackground(new java.awt.Color(255, 153, 51));
         setMinimumSize(new java.awt.Dimension(756, 435));
 
         userOptions.setBorder(javax.swing.BorderFactory.createEtchedBorder());

@@ -134,7 +134,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         loadStock = new javax.swing.JTable();
 
-        setBackground(java.awt.Color.orange);
+        setBackground(new java.awt.Color(255, 153, 51));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 

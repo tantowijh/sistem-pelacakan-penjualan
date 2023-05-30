@@ -302,7 +302,7 @@ public class Penjualan extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         totalPenjualan1 = new javax.swing.JLabel();
 
-        setBackground(java.awt.Color.orange);
+        setBackground(new java.awt.Color(255, 153, 51));
 
         header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
