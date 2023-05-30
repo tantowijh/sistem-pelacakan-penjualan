@@ -7,6 +7,7 @@ package customization;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
@@ -50,6 +51,11 @@ public class cSVG {
         
         // Set the icon of the JLabel to the SVG icon
         pane.setIconAt(no, new ImageIcon(svgIcon.getImage()));
+    }
+    
+    public void frameIcon(JFrame frame, String svgFilePath){
+        FlatSVGIcon svgIcon = new FlatSVGIcon(svgFilePath);
+        frame.setIconImage(svgIcon.getImage());
     }
     
 }

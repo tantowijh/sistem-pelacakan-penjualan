@@ -204,6 +204,7 @@ public final class Login extends javax.swing.JFrame {
         svg.btnIconSet(exitNow, "icon/login/Cancel.svg");
         svg.btnIconSet(hidePass, "icon/login/Invisible.svg");
         svg.btnIconSet(showPass, "icon/login/Visible.svg");
+        svg.frameIcon(this, "icon/bsilogo.svg");
     }
 
     /**

@@ -4,7 +4,6 @@
  */
 package sistem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -12,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import koneksi.loginSession;
 import customization.cSVG;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -93,10 +91,7 @@ public final class Home extends javax.swing.JFrame {
         setSVG.menuIconSet(menuPenjualan, "icon/menu/Sales.svg");
         setSVG.menuIconSet(menuLaporan, "icon/menu/Reports.svg");
         setSVG.menuIconSet(menuUser, "icon/menu/User.svg");
-        
-        String svgFilePath = "icon/bsilogo.svg";
-        FlatSVGIcon svgIcon = new FlatSVGIcon(svgFilePath);
-        this.setIconImage(svgIcon.getImage());
+        setSVG.frameIcon(this, "icon/bsilogo.svg");
     }
 
     /**
