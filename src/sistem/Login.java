@@ -243,7 +243,7 @@ public final class Login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 
-        exitNow.setBackground(java.awt.Color.orange);
+        exitNow.setBackground(new java.awt.Color(255, 153, 51));
         exitNow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cancel.png"))); // NOI18N
         exitNow.setBorder(null);
         exitNow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -320,7 +320,7 @@ public final class Login extends javax.swing.JFrame {
         eyeContainer.setBackground(java.awt.Color.orange);
         eyeContainer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        hidePass.setBackground(java.awt.Color.orange);
+        hidePass.setBackground(new java.awt.Color(255, 153, 51));
         hidePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hidePass.png"))); // NOI18N
         hidePass.setBorderPainted(false);
         hidePass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -331,7 +331,7 @@ public final class Login extends javax.swing.JFrame {
         });
         eyeContainer.add(hidePass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 25, 25));
 
-        showPass.setBackground(java.awt.Color.orange);
+        showPass.setBackground(new java.awt.Color(255, 153, 51));
         showPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/showPass.png"))); // NOI18N
         showPass.setBorderPainted(false);
         showPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
