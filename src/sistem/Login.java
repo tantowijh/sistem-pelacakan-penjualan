@@ -241,7 +241,7 @@ public final class Login extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(java.awt.Color.orange);
+        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 
         exitNow.setBackground(java.awt.Color.orange);
         exitNow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cancel.png"))); // NOI18N
