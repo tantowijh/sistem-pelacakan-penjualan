@@ -196,6 +196,7 @@ public final class Login extends javax.swing.JFrame {
             createFirstUser();
         }
         new cResetter().setUsername(new JTextField[]{fieldUsername});
+        fieldUsername.requestFocus();
         customization.cSVG svg = new customization.cSVG();
         svg.menuIconSet(usernameIcon, "icon/login/Username.svg");
         svg.menuIconSet(passwordIcon, "icon/login/Password.svg");
@@ -476,7 +477,7 @@ public final class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldPasswordFocusLost
 
     private void fieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPasswordActionPerformed
-        logIn();
+        btn_login.requestFocus();
     }//GEN-LAST:event_fieldPasswordActionPerformed
 
     private void showPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassActionPerformed
@@ -496,7 +497,7 @@ public final class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void fieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldUsernameActionPerformed
-        logIn();
+        fieldPassword.requestFocus();
     }//GEN-LAST:event_fieldUsernameActionPerformed
 
     /**

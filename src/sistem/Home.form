@@ -68,19 +68,19 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="menuHome" linkSize="3" min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="menuHome" pref="116" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="menuCustomer" linkSize="3" min="-2" pref="116" max="-2" attributes="0"/>
+                  <Component id="menuCustomer" pref="116" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="menuStock" linkSize="3" min="-2" pref="116" max="-2" attributes="0"/>
+                  <Component id="menuStock" pref="116" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="menuPenjualan" linkSize="3" min="-2" pref="116" max="-2" attributes="0"/>
+                  <Component id="menuPenjualan" pref="116" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="menuLaporan" linkSize="3" min="-2" pref="116" max="-2" attributes="0"/>
+                  <Component id="menuLaporan" pref="116" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="menuUser" linkSize="3" min="-2" pref="116" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="menuUser" pref="116" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
