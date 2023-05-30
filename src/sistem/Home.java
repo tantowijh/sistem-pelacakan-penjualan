@@ -4,6 +4,7 @@
  */
 package sistem;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import koneksi.loginSession;
 import customization.cSVG;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -80,7 +82,7 @@ public final class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         exitButton();
-//        setResizable(false);
+        
         setTitle("Sistem Pelacakan Penjualan by Group Six");
         loadDateAndTime();
         loadUserInfo();
@@ -91,6 +93,10 @@ public final class Home extends javax.swing.JFrame {
         setSVG.menuIconSet(menuPenjualan, "icon/menu/Sales.svg");
         setSVG.menuIconSet(menuLaporan, "icon/menu/Reports.svg");
         setSVG.menuIconSet(menuUser, "icon/menu/User.svg");
+        
+        String svgFilePath = "icon/bsilogo.png";
+        FlatSVGIcon svgIcon = new FlatSVGIcon(svgFilePath);
+        this.setIconImage(svgIcon.getImage());
     }
 
     /**
@@ -126,7 +132,7 @@ public final class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
 
-        menuBox.setBackground(java.awt.Color.orange);
+        menuBox.setBackground(new java.awt.Color(255, 153, 51));
         menuBox.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         menuHome.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
@@ -261,7 +267,7 @@ public final class Home extends javax.swing.JFrame {
         mainContainer.setPreferredSize(new java.awt.Dimension(756, 435));
         mainContainer.setLayout(new javax.swing.BoxLayout(mainContainer, javax.swing.BoxLayout.LINE_AXIS));
 
-        homePanel.setBackground(java.awt.Color.orange);
+        homePanel.setBackground(new java.awt.Color(255, 153, 51));
         homePanel.setMinimumSize(new java.awt.Dimension(756, 435));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
@@ -270,12 +276,12 @@ public final class Home extends javax.swing.JFrame {
         jLabel1.setText("JAVA");
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 64)); // NOI18N
-        jLabel2.setForeground(java.awt.Color.red);
+        jLabel2.setForeground(new java.awt.Color(51, 153, 0));
         jLabel2.setLabelFor(homePanel);
         jLabel2.setText("SALES TRACKING");
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 64)); // NOI18N
-        jLabel3.setForeground(java.awt.Color.red);
+        jLabel3.setForeground(new java.awt.Color(51, 153, 0));
         jLabel3.setLabelFor(homePanel);
         jLabel3.setText("SYSTEM");
 
@@ -315,7 +321,7 @@ public final class Home extends javax.swing.JFrame {
 
         mainContainer.add(homePanel);
 
-        footer.setBackground(java.awt.Color.orange);
+        footer.setBackground(new java.awt.Color(255, 153, 51));
         footer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         LoginSession.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
@@ -339,7 +345,7 @@ public final class Home extends javax.swing.JFrame {
         infoTime.setText("Time:");
 
         LoginSession1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LoginSession1.setForeground(new java.awt.Color(204, 0, 0));
+        LoginSession1.setForeground(new java.awt.Color(51, 153, 0));
         LoginSession1.setText("Log-Out");
         LoginSession1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LoginSession1.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -55,7 +55,7 @@
     <Container class="javax.swing.JPanel" name="menuBox">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
+          <Color blue="33" green="99" red="ff" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -295,7 +295,7 @@
         <Container class="javax.swing.JPanel" name="homePanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
+              <Color blue="33" green="99" red="ff" type="rgb"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[756, 435]"/>
@@ -358,7 +358,7 @@
                   <Font name="Verdana" size="64" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
+                  <Color blue="0" green="99" red="33" type="rgb"/>
                 </Property>
                 <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="homePanel"/>
@@ -372,7 +372,7 @@
                   <Font name="Verdana" size="64" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
+                  <Color blue="0" green="99" red="33" type="rgb"/>
                 </Property>
                 <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="homePanel"/>
@@ -398,7 +398,7 @@
     <Container class="javax.swing.JPanel" name="footer">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
+          <Color blue="33" green="99" red="ff" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -515,7 +515,7 @@
               <Font name="Verdana" size="12" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="cc" type="rgb"/>
+              <Color blue="0" green="99" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Log-Out"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
