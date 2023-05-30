@@ -83,6 +83,9 @@
             <zipfileset src="dist/lib/commons-logging-1.2.jar" excludes="META-INF/*" />
             <zipfileset src="dist/lib/jasperreports-6.20.5.jar" excludes="META-INF/*" />
             <zipfileset src="dist/lib/jcalendar-1.4.jar" excludes="META-INF/*" />
+            <zipfileset src="dist/lib/flatlaf-3.1.1.jar" excludes="META-INF/*" />
+            <zipfileset src="dist/lib/flatlaf-extras-3.1.1.jar" excludes="META-INF/*" />
+            <zipfileset src="dist/lib/svgSalamander-1.1.4.jar" excludes="META-INF/*" />
             <manifest>
                 <attribute name="Main-Class" value="sistem.Login" /> 
             </manifest>

@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import koneksi.loginSession;
+import customization.cSVG;
 
 /**
  *
@@ -83,6 +84,13 @@ public final class Home extends javax.swing.JFrame {
         setTitle("Sistem Pelacakan Penjualan by Group Six");
         loadDateAndTime();
         loadUserInfo();
+        cSVG setSVG = new cSVG();
+        setSVG.menuIconSet(menuHome, "icon/menu/Home.svg");
+        setSVG.menuIconSet(menuCustomer, "icon/menu/Customer.svg");
+        setSVG.menuIconSet(menuStock, "icon/menu/Stocks.svg");
+        setSVG.menuIconSet(menuPenjualan, "icon/menu/Sales.svg");
+        setSVG.menuIconSet(menuLaporan, "icon/menu/Reports.svg");
+        setSVG.menuIconSet(menuUser, "icon/menu/User.svg");
     }
 
     /**
@@ -95,7 +103,7 @@ public final class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         menuBox = new javax.swing.JPanel();
-        manuHome = new javax.swing.JLabel();
+        menuHome = new javax.swing.JLabel();
         menuCustomer = new javax.swing.JLabel();
         menuStock = new javax.swing.JLabel();
         menuPenjualan = new javax.swing.JLabel();
@@ -121,18 +129,18 @@ public final class Home extends javax.swing.JFrame {
         menuBox.setBackground(java.awt.Color.orange);
         menuBox.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        manuHome.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        manuHome.setForeground(new java.awt.Color(20, 108, 148));
-        manuHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        manuHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/home.png"))); // NOI18N
-        manuHome.setText("BERANDA");
-        manuHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        manuHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        manuHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        manuHome.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        manuHome.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuHome.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        menuHome.setForeground(new java.awt.Color(20, 108, 148));
+        menuHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/home.png"))); // NOI18N
+        menuHome.setText("HOME");
+        menuHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuHome.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        menuHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manuHomeMouseClicked(evt);
+                menuHomeMouseClicked(evt);
             }
         });
 
@@ -170,7 +178,7 @@ public final class Home extends javax.swing.JFrame {
         menuPenjualan.setForeground(new java.awt.Color(20, 108, 148));
         menuPenjualan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/penjualan.png"))); // NOI18N
-        menuPenjualan.setText("PENJUALAN");
+        menuPenjualan.setText("SALES");
         menuPenjualan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         menuPenjualan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuPenjualan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -185,7 +193,7 @@ public final class Home extends javax.swing.JFrame {
         menuLaporan.setForeground(new java.awt.Color(20, 108, 148));
         menuLaporan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/laporan.png"))); // NOI18N
-        menuLaporan.setText("LAPORAN");
+        menuLaporan.setText("REPORTS");
         menuLaporan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         menuLaporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuLaporan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -217,7 +225,7 @@ public final class Home extends javax.swing.JFrame {
             menuBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuBoxLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(manuHome, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuHome, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -231,14 +239,14 @@ public final class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        menuBoxLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {manuHome, menuCustomer, menuLaporan, menuPenjualan, menuStock, menuUser});
+        menuBoxLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {menuCustomer, menuHome, menuLaporan, menuPenjualan, menuStock, menuUser});
 
         menuBoxLayout.setVerticalGroup(
             menuBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuBoxLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menuBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manuHome, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuHome, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuStock, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -417,9 +425,9 @@ public final class Home extends javax.swing.JFrame {
         setMainContainer("customer");
     }//GEN-LAST:event_menuCustomerMouseClicked
 
-    private void manuHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manuHomeMouseClicked
+    private void menuHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuHomeMouseClicked
         setMainContainer("home");
-    }//GEN-LAST:event_manuHomeMouseClicked
+    }//GEN-LAST:event_menuHomeMouseClicked
 
     private void menuPenjualanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuPenjualanMouseClicked
         setMainContainer("penjualan");
@@ -492,9 +500,9 @@ public final class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel mainContainer;
-    private javax.swing.JLabel manuHome;
     private javax.swing.JPanel menuBox;
     private javax.swing.JLabel menuCustomer;
+    private javax.swing.JLabel menuHome;
     private javax.swing.JLabel menuLaporan;
     private javax.swing.JLabel menuPenjualan;
     private javax.swing.JLabel menuStock;

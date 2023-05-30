@@ -154,6 +154,10 @@ public final class appAdministrator extends javax.swing.JPanel {
             adminSession.tableUpdater(loadUsers, frame);
             adm_delete.setEnabled(enabled);
         });
+        
+        customization.cSVG svg = new customization.cSVG();
+        svg.tabPanelIcon(userOptions, 0, "icon/user/User.svg");
+        svg.tabPanelIcon(userOptions, 1, "icon/user/AddUser.svg");
 
     }
 

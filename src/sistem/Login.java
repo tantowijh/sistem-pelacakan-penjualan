@@ -196,6 +196,14 @@ public final class Login extends javax.swing.JFrame {
             createFirstUser();
         }
         new cResetter().setUsername(new JTextField[]{fieldUsername});
+        customization.cSVG svg = new customization.cSVG();
+        svg.menuIconSet(usernameIcon, "icon/login/Username.svg");
+        svg.menuIconSet(passwordIcon, "icon/login/Password.svg");
+        svg.menuIconSet(profileIcon, "icon/login/Profile.svg");
+        svg.btnIconSet(btn_login, "icon/login/Login.svg");
+        svg.btnIconSet(exitNow, "icon/login/Cancel.svg");
+        svg.btnIconSet(hidePass, "icon/login/Invisible.svg");
+        svg.btnIconSet(showPass, "icon/login/Visible.svg");
     }
 
     /**
@@ -209,11 +217,11 @@ public final class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         exitNow = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        profileIcon = new javax.swing.JLabel();
         fieldUsername = new javax.swing.JTextField();
         btn_login = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        usernameIcon = new javax.swing.JLabel();
+        passwordIcon = new javax.swing.JLabel();
         fieldPassword = new javax.swing.JPasswordField();
         eyeContainer = new javax.swing.JPanel();
         hidePass = new javax.swing.JButton();
@@ -245,13 +253,13 @@ public final class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/profile.png"))); // NOI18N
+        profileIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        profileIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/profile.png"))); // NOI18N
 
         fieldUsername.setForeground(java.awt.Color.lightGray);
         fieldUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldUsername.setText("username");
-        fieldUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 0)));
+        fieldUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(8, 95, 172)));
         fieldUsername.setOpaque(true);
         fieldUsername.setSelectionColor(java.awt.Color.orange);
         fieldUsername.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -268,7 +276,7 @@ public final class Login extends javax.swing.JFrame {
             }
         });
 
-        btn_login.setBackground(new java.awt.Color(255, 51, 0));
+        btn_login.setBackground(new java.awt.Color(8, 95, 172));
         btn_login.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/login.png"))); // NOI18N
@@ -283,16 +291,16 @@ public final class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/username.png"))); // NOI18N
+        usernameIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usernameIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/username.png"))); // NOI18N
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/password.png"))); // NOI18N
+        passwordIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        passwordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/password.png"))); // NOI18N
 
         fieldPassword.setForeground(java.awt.Color.lightGray);
         fieldPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldPassword.setText("password");
-        fieldPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 0)));
+        fieldPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(8, 95, 172)));
         fieldPassword.setOpaque(true);
         fieldPassword.setSelectionColor(java.awt.Color.orange);
         fieldPassword.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -335,7 +343,7 @@ public final class Login extends javax.swing.JFrame {
         eyeContainer.add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 25, 25));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(25, 135, 84));
+        jLabel2.setForeground(new java.awt.Color(8, 95, 172));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selamat Datang Orang Sukses!");
 
@@ -346,12 +354,12 @@ public final class Login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel1)
+                    .addComponent(profileIcon)
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                            .addComponent(passwordIcon)
+                            .addComponent(usernameIcon))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -378,18 +386,18 @@ public final class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(33, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(profileIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addGap(12, 12, 12)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel3)
+                    .addComponent(usernameIcon)
                     .addComponent(fieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(eyeContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(passwordIcon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
@@ -547,11 +555,11 @@ public final class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField fieldPassword;
     private javax.swing.JTextField fieldUsername;
     private javax.swing.JButton hidePass;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel passwordIcon;
+    private javax.swing.JLabel profileIcon;
     private javax.swing.JButton showPass;
+    private javax.swing.JLabel usernameIcon;
     // End of variables declaration//GEN-END:variables
 }
