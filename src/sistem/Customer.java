@@ -4,7 +4,6 @@
  */
 package sistem;
 
-import java.awt.Dimension;
 import java.util.HashSet;
 import java.sql.*;
 import javax.swing.JButton;
@@ -62,6 +61,8 @@ public final class Customer extends javax.swing.JPanel {
             try (Connection conn = (Connection) koneksi.database.dbConfig()) {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM customers");
+
+                // Membaca hasil dari ResultSet dan menyimpan hasilnya ke dalam ArrayList
                 while (rs.next()) {
                     existingIDs.add(rs.getString("customer_id"));
                     existingFirstNames.add(rs.getString("first_name"));
@@ -94,15 +95,12 @@ public final class Customer extends javax.swing.JPanel {
     public void startCounting(JTable customerTable) {
         populateCustomerTable(customerTable);
 
-        Connection conn = (Connection) koneksi.database.dbConfig();
-        PreparedStatement stmt;
-        try {
-            stmt = conn.prepareStatement("SELECT COUNT(*) AS customerCount FROM customers");
-            ResultSet rs = stmt.executeQuery();
+        try (Connection conn = (Connection) koneksi.database.dbConfig(); 
+                PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS customerCount FROM customers"); 
+                ResultSet rs = stmt.executeQuery()) {
+
             while (rs.next()) {
                 int count = rs.getInt("customerCount");
-                //  int count = rs.getInt(1);
-
                 custCountDisplay.setText(String.valueOf(count));
             }
         } catch (SQLException ex) {

@@ -22,6 +22,7 @@ public final class Login extends javax.swing.JFrame {
 
     private Connection myconn;
     private Statement mystmt;
+    private PreparedStatement pstmt;
 
     public void loadDBUsers() {
         try {
@@ -37,6 +38,17 @@ public final class Login extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (mystmt != null) {
+                    mystmt.close();
+                }
+                if (myconn != null) {
+                    myconn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -55,6 +67,17 @@ public final class Login extends javax.swing.JFrame {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (mystmt != null) {
+                    mystmt.close();
+                }
+                if (myconn != null) {
+                    myconn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return hasRows;
     }
@@ -97,7 +120,7 @@ public final class Login extends javax.swing.JFrame {
         try {
             myconn = (Connection) koneksi.database.dbConfig();
             String sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
-            PreparedStatement pstmt = myconn.prepareStatement(sql);
+            pstmt = myconn.prepareStatement(sql);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             pstmt.setString(3, "owner");
@@ -107,6 +130,17 @@ public final class Login extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat membuat user.", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (myconn != null) {
+                    myconn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
