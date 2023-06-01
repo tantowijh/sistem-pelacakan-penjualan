@@ -383,12 +383,14 @@ public final class Customer extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         csEmail = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 153, 51));
+        setBackground(new java.awt.Color(241, 255, 255));
 
+        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel1.setBackground(new java.awt.Color(241, 255, 255));
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(20, 108, 148));
+        jLabel1.setForeground(new java.awt.Color(243, 114, 33));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CUSTOMER");
 
@@ -406,6 +408,7 @@ public final class Customer extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
 
+        jPanel2.setBackground(new java.awt.Color(241, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -481,6 +484,7 @@ public final class Customer extends javax.swing.JPanel {
         });
 
         labelCountDisplay.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        labelCountDisplay.setForeground(new java.awt.Color(243, 114, 33));
         labelCountDisplay.setText("Customer Count : ");
 
         csSearch.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -493,6 +497,7 @@ public final class Customer extends javax.swing.JPanel {
         custSearch.setText("Search for customer data");
 
         custCountDisplay.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        custCountDisplay.setForeground(new java.awt.Color(0, 75, 173));
         custCountDisplay.setText("0");
 
         jLabel8.setText("Email");

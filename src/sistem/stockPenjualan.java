@@ -134,12 +134,13 @@ public final class stockPenjualan extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         loadStock = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 153, 51));
+        setBackground(new java.awt.Color(241, 255, 255));
 
+        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(20, 108, 148));
+        jLabel1.setForeground(new java.awt.Color(243, 114, 33));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("STOCK PENJUALAN");
 
@@ -157,6 +158,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
 
+        jPanel3.setBackground(new java.awt.Color(241, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         nBarang.setForeground(java.awt.Color.lightGray);
@@ -246,23 +248,18 @@ public final class stockPenjualan extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(20, 108, 148));
         jLabel2.setText("Nama Produk");
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(20, 108, 148));
         jLabel3.setText("Kode Produk");
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(20, 108, 148));
         jLabel4.setText("Stock Produk");
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(20, 108, 148));
         jLabel5.setText("Harga Produk");
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(20, 108, 148));
         jLabel6.setText("Cari");
 
         queryProduct.setForeground(java.awt.Color.lightGray);

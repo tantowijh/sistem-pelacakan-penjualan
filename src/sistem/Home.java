@@ -127,15 +127,15 @@ public final class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
 
-        menuBox.setBackground(new java.awt.Color(255, 153, 51));
+        menuBox.setBackground(new java.awt.Color(241, 255, 255));
         menuBox.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         menuHome.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        menuHome.setForeground(new java.awt.Color(20, 108, 148));
+        menuHome.setForeground(new java.awt.Color(0, 75, 173));
         menuHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/home.png"))); // NOI18N
         menuHome.setText("HOME");
-        menuHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuHome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
         menuHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuHome.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -146,11 +146,11 @@ public final class Home extends javax.swing.JFrame {
         });
 
         menuCustomer.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        menuCustomer.setForeground(new java.awt.Color(20, 108, 148));
+        menuCustomer.setForeground(new java.awt.Color(0, 75, 173));
         menuCustomer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/customer.png"))); // NOI18N
         menuCustomer.setText("CUSTOMER");
-        menuCustomer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuCustomer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
         menuCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuCustomer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuCustomer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -161,11 +161,11 @@ public final class Home extends javax.swing.JFrame {
         });
 
         menuStock.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        menuStock.setForeground(new java.awt.Color(20, 108, 148));
+        menuStock.setForeground(new java.awt.Color(0, 75, 173));
         menuStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/stock.png"))); // NOI18N
         menuStock.setText("STOCK");
-        menuStock.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuStock.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
         menuStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuStock.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuStock.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -176,11 +176,11 @@ public final class Home extends javax.swing.JFrame {
         });
 
         menuPenjualan.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        menuPenjualan.setForeground(new java.awt.Color(20, 108, 148));
+        menuPenjualan.setForeground(new java.awt.Color(0, 75, 173));
         menuPenjualan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/penjualan.png"))); // NOI18N
         menuPenjualan.setText("SALES");
-        menuPenjualan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuPenjualan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
         menuPenjualan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuPenjualan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuPenjualan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -191,11 +191,11 @@ public final class Home extends javax.swing.JFrame {
         });
 
         menuLaporan.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        menuLaporan.setForeground(new java.awt.Color(20, 108, 148));
+        menuLaporan.setForeground(new java.awt.Color(0, 75, 173));
         menuLaporan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/laporan.png"))); // NOI18N
         menuLaporan.setText("REPORTS");
-        menuLaporan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuLaporan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
         menuLaporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuLaporan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuLaporan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -206,11 +206,11 @@ public final class Home extends javax.swing.JFrame {
         });
 
         menuUser.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        menuUser.setForeground(new java.awt.Color(20, 108, 148));
+        menuUser.setForeground(new java.awt.Color(0, 75, 173));
         menuUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/users.png"))); // NOI18N
         menuUser.setText("USER");
-        menuUser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menuUser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(255, 255, 255)));
         menuUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuUser.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -259,7 +259,7 @@ public final class Home extends javax.swing.JFrame {
         mainContainer.setPreferredSize(new java.awt.Dimension(756, 435));
         mainContainer.setLayout(new javax.swing.BoxLayout(mainContainer, javax.swing.BoxLayout.LINE_AXIS));
 
-        homePanel.setBackground(new java.awt.Color(255, 153, 51));
+        homePanel.setBackground(new java.awt.Color(241, 255, 255));
         homePanel.setMinimumSize(new java.awt.Dimension(756, 435));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
@@ -268,12 +268,12 @@ public final class Home extends javax.swing.JFrame {
         jLabel1.setText("JAVA");
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 64)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel2.setForeground(new java.awt.Color(243, 114, 33));
         jLabel2.setLabelFor(homePanel);
         jLabel2.setText("SALES TRACKING");
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 64)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel3.setForeground(new java.awt.Color(243, 114, 33));
         jLabel3.setLabelFor(homePanel);
         jLabel3.setText("SYSTEM");
 
@@ -306,38 +306,38 @@ public final class Home extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
 
         mainContainer.add(homePanel);
 
-        footer.setBackground(new java.awt.Color(255, 153, 51));
+        footer.setBackground(new java.awt.Color(241, 255, 255));
         footer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         LoginSession.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
-        LoginSession.setForeground(new java.awt.Color(20, 108, 148));
+        LoginSession.setForeground(new java.awt.Color(0, 24, 56));
         LoginSession.setText("Login Session");
 
         infoName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        infoName.setForeground(new java.awt.Color(20, 108, 148));
+        infoName.setForeground(new java.awt.Color(0, 75, 173));
         infoName.setText("Username:");
 
         infoRole.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        infoRole.setForeground(new java.awt.Color(20, 108, 148));
+        infoRole.setForeground(new java.awt.Color(0, 75, 173));
         infoRole.setText("Role:");
 
         infoDate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        infoDate.setForeground(new java.awt.Color(20, 108, 148));
+        infoDate.setForeground(new java.awt.Color(0, 75, 173));
         infoDate.setText("Date:");
 
         infoTime.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        infoTime.setForeground(new java.awt.Color(20, 108, 148));
+        infoTime.setForeground(new java.awt.Color(0, 75, 173));
         infoTime.setText("Time:");
 
         LoginSession1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LoginSession1.setForeground(new java.awt.Color(51, 153, 0));
+        LoginSession1.setForeground(new java.awt.Color(230, 57, 70));
         LoginSession1.setText("Log-Out");
         LoginSession1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LoginSession1.addMouseListener(new java.awt.event.MouseAdapter() {

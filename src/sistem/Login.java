@@ -1,10 +1,12 @@
 package sistem;
 
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import customization.cResetter;
 import koneksi.database;
 import koneksi.loginSession;
 import java.awt.Color;
 import java.sql.*;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -237,8 +239,8 @@ public final class Login extends javax.swing.JFrame {
         svg.menuIconSet(profileIcon, "icon/login/Profile.svg");
         svg.btnIconSet(btn_login, "icon/login/Login.svg");
         svg.btnIconSet(exitNow, "icon/login/Cancel.svg");
-        svg.btnIconSet(hidePass, "icon/login/Invisible.svg");
-        svg.btnIconSet(showPass, "icon/login/Visible.svg");
+        svg.btnIconColorSet(hidePass, "icon/login/Invisible.svg", btn_login.getBackground());
+        svg.btnIconColorSet(showPass, "icon/login/Visible.svg", btn_login.getBackground());
         svg.frameIcon(this, "icon/bsilogo.svg");
     }
 
@@ -277,9 +279,9 @@ public final class Login extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
 
-        exitNow.setBackground(new java.awt.Color(255, 153, 51));
+        exitNow.setBackground(new java.awt.Color(241, 255, 255));
         exitNow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cancel.png"))); // NOI18N
         exitNow.setBorder(null);
         exitNow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -312,7 +314,7 @@ public final class Login extends javax.swing.JFrame {
             }
         });
 
-        btn_login.setBackground(new java.awt.Color(8, 95, 172));
+        btn_login.setBackground(new java.awt.Color(0, 75, 173));
         btn_login.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/login.png"))); // NOI18N
@@ -356,7 +358,7 @@ public final class Login extends javax.swing.JFrame {
         eyeContainer.setBackground(java.awt.Color.orange);
         eyeContainer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        hidePass.setBackground(new java.awt.Color(255, 153, 51));
+        hidePass.setBackground(new java.awt.Color(241, 255, 255));
         hidePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hidePass.png"))); // NOI18N
         hidePass.setBorderPainted(false);
         hidePass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -367,7 +369,7 @@ public final class Login extends javax.swing.JFrame {
         });
         eyeContainer.add(hidePass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 25, 25));
 
-        showPass.setBackground(new java.awt.Color(255, 153, 51));
+        showPass.setBackground(new java.awt.Color(241, 255, 255));
         showPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/showPass.png"))); // NOI18N
         showPass.setBorderPainted(false);
         showPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -379,7 +381,7 @@ public final class Login extends javax.swing.JFrame {
         eyeContainer.add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 25, 25));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(8, 95, 172));
+        jLabel2.setForeground(new java.awt.Color(0, 75, 173));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selamat Datang Orang Sukses!");
 

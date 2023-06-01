@@ -197,14 +197,16 @@ public final class appAdministrator extends javax.swing.JPanel {
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 51));
+        setBackground(new java.awt.Color(241, 255, 255));
         setMinimumSize(new java.awt.Dimension(756, 435));
 
+        userOptions.setBackground(new java.awt.Color(241, 255, 255));
         userOptions.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         userOptions.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
 
+        appUser.setBackground(new java.awt.Color(241, 255, 255));
+
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(20, 108, 148));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CURRENT PASSWORD");
 
@@ -221,7 +223,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         });
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(20, 108, 148));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("NEW PASSWORD");
 
@@ -249,7 +250,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         });
 
         showUsername.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        showUsername.setForeground(new java.awt.Color(20, 108, 148));
+        showUsername.setForeground(new java.awt.Color(0, 75, 173));
         showUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         showUsername.setText("USERNAME");
 
@@ -292,6 +293,8 @@ public final class appAdministrator extends javax.swing.JPanel {
         appUserLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {passNew, passNow});
 
         userOptions.addTab("User", new javax.swing.ImageIcon(getClass().getResource("/menuicon/userInfo.png")), appUser); // NOI18N
+
+        appUserManagement.setBackground(new java.awt.Color(241, 255, 255));
 
         loadUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -349,7 +352,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         });
 
         userDetail.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        userDetail.setForeground(new java.awt.Color(20, 108, 148));
+        userDetail.setForeground(new java.awt.Color(0, 75, 173));
         userDetail.setText("User Details");
 
         adm_username.setForeground(java.awt.Color.lightGray);
@@ -367,15 +370,12 @@ public final class appAdministrator extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
 
         infoName1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        infoName1.setForeground(new java.awt.Color(20, 108, 148));
         infoName1.setText("Role");
 
         infoName2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        infoName2.setForeground(new java.awt.Color(20, 108, 148));
         infoName2.setText("Username");
 
         infoName3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        infoName3.setForeground(new java.awt.Color(20, 108, 148));
         infoName3.setText("Password");
 
         adm_password.setForeground(java.awt.Color.lightGray);
@@ -406,7 +406,7 @@ public final class appAdministrator extends javax.swing.JPanel {
             }
         });
 
-        editCheckbox.setForeground(new java.awt.Color(0, 51, 153));
+        editCheckbox.setForeground(new java.awt.Color(243, 114, 33));
         editCheckbox.setText("Enter editing mode");
         editCheckbox.setToolTipText("Nyalakan fitur editing untuk mengubah data user pada tabel");
 
@@ -500,10 +500,11 @@ public final class appAdministrator extends javax.swing.JPanel {
 
         userOptions.addTab("Manage User", new javax.swing.ImageIcon(getClass().getResource("/menuicon/addUser.png")), appUserManagement); // NOI18N
 
+        header.setBackground(new java.awt.Color(241, 255, 255));
         header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(20, 108, 148));
+        jLabel1.setForeground(new java.awt.Color(243, 114, 33));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ADMINISTRATOR");
 

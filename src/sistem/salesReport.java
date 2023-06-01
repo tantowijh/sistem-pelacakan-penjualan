@@ -271,12 +271,13 @@ public final class salesReport extends javax.swing.JPanel {
         btnReset = new customization.cButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 51));
+        setBackground(new java.awt.Color(241, 255, 255));
 
+        header.setBackground(new java.awt.Color(241, 255, 255));
         header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(20, 108, 148));
+        jLabel1.setForeground(new java.awt.Color(243, 114, 33));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LAPORAN");
 
@@ -294,6 +295,7 @@ public final class salesReport extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         loadSalesReport.setModel(new javax.swing.table.DefaultTableModel(
@@ -337,11 +339,9 @@ public final class salesReport extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(20, 108, 148));
         jLabel2.setText("From Date");
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(20, 108, 148));
         jLabel3.setText("To Date");
 
         statusFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Paid", "Pending" }));
@@ -367,7 +367,6 @@ public final class salesReport extends javax.swing.JPanel {
         });
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(20, 108, 148));
         jLabel4.setText("Status");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

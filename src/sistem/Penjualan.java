@@ -302,12 +302,13 @@ public class Penjualan extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         totalPenjualan1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 51));
+        setBackground(new java.awt.Color(241, 255, 255));
 
+        header.setBackground(new java.awt.Color(241, 255, 255));
         header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(20, 108, 148));
+        jLabel1.setForeground(new java.awt.Color(243, 114, 33));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PENJUALAN");
 
@@ -325,10 +326,10 @@ public class Penjualan extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(20, 108, 148));
         jLabel2.setText("Nama Customer");
 
         loadSales.setModel(new javax.swing.table.DefaultTableModel(
@@ -371,23 +372,20 @@ public class Penjualan extends javax.swing.JPanel {
         statusPembayaran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paid", "Pending" }));
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(20, 108, 148));
         jLabel3.setText("Nama Produk");
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(20, 108, 148));
         jLabel4.setText("Quantity");
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(20, 108, 148));
         jLabel5.setText("Status");
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(20, 108, 148));
+        jLabel6.setForeground(new java.awt.Color(243, 114, 33));
         jLabel6.setText("Total Penjualan: ");
 
         jLabel7.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(20, 108, 148));
+        jLabel7.setForeground(new java.awt.Color(243, 114, 33));
         jLabel7.setText("Total Harga Penjualan: ");
 
         jumlahPenjualan.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
@@ -455,23 +453,20 @@ public class Penjualan extends javax.swing.JPanel {
         });
 
         jLabel10.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(20, 108, 148));
         jLabel10.setText("Cari data");
 
         jLabel11.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(20, 108, 148));
         jLabel11.setText("Harga Produk");
 
         hargaSatuan.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        hargaSatuan.setForeground(new java.awt.Color(20, 108, 148));
+        hargaSatuan.setForeground(new java.awt.Color(0, 75, 173));
         hargaSatuan.setText("0");
 
         jLabel12.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(20, 108, 148));
         jLabel12.setText("Harga Total");
 
         hargaTotal.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        hargaTotal.setForeground(new java.awt.Color(20, 108, 148));
+        hargaTotal.setForeground(new java.awt.Color(0, 75, 173));
         hargaTotal.setText("0");
 
         totalPenjualan1.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
