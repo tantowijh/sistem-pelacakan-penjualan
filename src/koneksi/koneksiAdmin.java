@@ -23,8 +23,8 @@ import sistem.Login;
  */
 public class koneksiAdmin {
 
-    Connection conn = (Connection) database.dbConfig();
-    PreparedStatement stmt;
+    Connection conn = null;
+    PreparedStatement stmt = null;
     String sql;
     cResetter resetter = new cResetter();
     public boolean haveAData = false;
@@ -45,8 +45,17 @@ public class koneksiAdmin {
                     "Kesalahan", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        if (loginSession.getPassword().equals(textFields[1].getText())){
+            resetter.resetFill(textFields);
+            JOptionPane.showMessageDialog(null,
+                    "Password tidak tidak berubah!",
+                    "Info", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
 
         try {
+            conn = (Connection) database.dbConfig();
             sql = "UPDATE users SET password = ? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, textFields[1].getText());
@@ -62,7 +71,7 @@ public class koneksiAdmin {
                         "Silakan untuk melakukan login ulang.",
                         "Update berhasil!", 1);
 
-                resetter.resetFill(new JTextField[]{textFields[0], textFields[1]});
+                resetter.resetFill(textFields);
 
                 loginSession.setAccess(false);
             }
@@ -70,6 +79,22 @@ public class koneksiAdmin {
             JOptionPane.showMessageDialog(null,
                     "Gagal! " + e.getMessage(),
                     "Peringatan", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            // Close the connection when done
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // Handle connection close error
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+
+                }
+            }
         }
     }
 
@@ -78,6 +103,7 @@ public class koneksiAdmin {
         DefaultTableModel model = new DefaultTableModel();
 
         try {
+            conn = (Connection) database.dbConfig();
             // Create a PreparedStatement to select all rows from the specified table
             stmt = conn.prepareStatement("SELECT * FROM users");
 
@@ -129,6 +155,22 @@ public class koneksiAdmin {
             table.setModel(model);
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            // Close the connection when done
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // Handle connection close error
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+
+                }
+            }
         }
     }
 
@@ -153,6 +195,7 @@ public class koneksiAdmin {
             }
 
             // Check if the kode value already exists
+            conn = (Connection) database.dbConfig();
             String selectQuery = "SELECT * FROM users "
                     + "WHERE id LIKE ? OR username LIKE ? OR password LIKE ? OR role LIKE ?";
             PreparedStatement selectStmt = conn.prepareStatement(selectQuery);
@@ -213,6 +256,22 @@ public class koneksiAdmin {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(loadingTable,
                     "Gagal memuat user. Silakan coba lagi atau hubungi administrator.");
+        } finally {
+            // Close the connection when done
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // Handle connection close error
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+
+                }
+            }
         }
     }
 
@@ -232,65 +291,93 @@ public class koneksiAdmin {
         PreparedStatement mystmt = null;
 
         try {
-            // mengecek user login
-            Connection cekKon = (Connection) database.dbConfig();
-            String cekSesi = "SELECT * FROM users WHERE username = ?";
-            PreparedStatement cekStmt = cekKon.prepareStatement(cekSesi);
-            cekStmt.setString(1, loginSession.getUsername());
-            ResultSet rs = cekStmt.executeQuery();
+            PreparedStatement cekStmt;
+            int cekId;
+            PreparedStatement kkk;
+            try ( // mengecek user login
+                    Connection cekKon = (Connection) database.dbConfig()) {
+                String cekSesi = "SELECT * FROM users WHERE username = ?";
+                cekStmt = cekKon.prepareStatement(cekSesi);
+                cekStmt.setString(1, loginSession.getUsername());
+                ResultSet rs = cekStmt.executeQuery();
+                cekId = 0;
+                if (rs.next()) {
+                    cekId = rs.getInt("id");
+                }
+                kkk = cekKon.prepareStatement("SELECT * FROM users WHERE id =" + id);
+                ResultSet how = kkk.executeQuery();
+                String theRole = null;
+                String theUser = null;
+                String thePass = null;
+                if (how.next()) {
+                    theRole = how.getString("role");
+                    theUser = how.getString("username");
+                    thePass = how.getString("password");
+                }
 
-            int cekId = 0;
-            if (rs.next()) {
-                cekId = rs.getInt("id");
-            }
-
-            PreparedStatement kkk = cekKon.prepareStatement("SELECT * FROM users WHERE id =" + id);
-            ResultSet how = kkk.executeQuery();
-            String theRole = null;
-            String theUser = null;
-            if (how.next()) {
-                theRole = how.getString("role");
-                theUser = how.getString("username");
-            }
-
-            if (loginSession.getRole().equals("owner")) {
-                // Check if the column being updated is the "role" column and if the new value is not "owner"
-                if (model.getColumnName(column).equalsIgnoreCase("role") && !newValue.equals("owner")) {
-                    // If so, prevent the update and show an error message
-                    JOptionPane.showMessageDialog(null, "Anda tidak bisa mengubah diri Anda "
-                            + "menjadi selain 'owner' karena bisa berakibat fatal.");
+                // Mencegah update dengan value yang sama
+                if (column == 1 && newValue.equals(theUser)) {
+                    System.out.println("The user not updated!");
                     return;
                 }
-            } else {
-
-                if (theRole != null && (theRole.equals("owner"))) {
-                    JOptionPane.showMessageDialog(null,
-                            "Anda tidak bisa mengubah role yang lebih tinggi dari " + loginSession.getRole() + "!");
+                if (column == 2 && newValue.equals(thePass)) {
+                    System.out.println("The password not updated!");
                     return;
-                } else if (theUser != null && (!theUser.equals(loginSession.getUsername()))) {
-                    if (theRole != null && (theRole.equals(loginSession.getRole()))) {
+                }
+                if (column == 3 && newValue.equals(theRole)) {
+                    System.out.println("The role not updated!");
+                    return;
+                }
+
+                if (loginSession.getRole().equals("owner")) {
+                    if (model.getValueAt(row, 1).equals(loginSession.getUsername())) {
+                        // Check if the column being updated is the "role" column and if the new value is not "owner"
+                        if (model.getColumnName(column).equalsIgnoreCase("role") && !newValue.equals("owner")) {
+                            // If so, prevent the update and show an error message
+                            JOptionPane.showMessageDialog(null, "Anda tidak bisa mengubah diri Anda "
+                                    + "menjadi selain 'owner' karena bisa berakibat fatal.");
+                            return;
+                        }
+                    }
+                    if (model.getColumnName(column).equalsIgnoreCase("role") && newValue.equals("owner")) {
+                        // If so, prevent the update and show an error message
+                        JOptionPane.showMessageDialog(null, "Anda tidak bisa mengubah user lain "
+                                + "menjadi 'owner' karena bisa berakibat fatal.");
+                        return;
+                    }
+                } else {
+
+                    if (theRole != null && (theRole.equals("owner"))) {
                         JOptionPane.showMessageDialog(null,
-                                "Anda tidak bisa mengubah role yang sama dengan " + loginSession.getRole() + "!");
+                                "Anda tidak bisa mengubah role yang lebih tinggi dari " + loginSession.getRole() + "!");
+                        return;
+                    } else if (theUser != null && (!theUser.equals(loginSession.getUsername()))) {
+                        if (theRole != null && (theRole.equals(loginSession.getRole()))) {
+                            JOptionPane.showMessageDialog(null,
+                                    "Anda tidak bisa mengubah role yang sama dengan " + loginSession.getRole() + "!");
+                            return;
+                        }
+                    }
+
+                    // Check if the column being updated is the "role" column and if the new value is "owner"
+                    if (model.getColumnName(column).equalsIgnoreCase("role") && newValue.equals("owner")) {
+                        // If so, prevent the update and show an error message
+                        JOptionPane.showMessageDialog(null, "Anda tidak memiliki hak untuk mengubah role menjadi 'owner'.");
                         return;
                     }
-                }
 
-                // Check if the column being updated is the "role" column and if the new value is "owner"
-                if (model.getColumnName(column).equalsIgnoreCase("role") && newValue.equals("owner")) {
-                    // If so, prevent the update and show an error message
-                    JOptionPane.showMessageDialog(null, "Anda tidak memiliki hak untuk mengubah role menjadi 'owner'.");
-                    return;
-                }
-
-                if (model.getColumnName(column).equalsIgnoreCase("role") && newValue.equals("admin")) {
-                    int ubahYaTidak = JOptionPane.showConfirmDialog(null, "Hati-hati Anda akan mengubah "
-                            + "role menjadi 'admin' Anda tidak akan bisa melakukan perubahan atau menghapus role yang sama!",
-                            "Peringatan!", JOptionPane.YES_NO_OPTION);
-                    if (ubahYaTidak == JOptionPane.NO_OPTION) {
-                        return;
+                    if (model.getColumnName(column).equalsIgnoreCase("role") && newValue.equals("admin")) {
+                        int ubahYaTidak = JOptionPane.showConfirmDialog(null, "Hati-hati Anda akan mengubah "
+                                + "role menjadi 'admin' Anda tidak akan bisa melakukan perubahan atau menghapus role yang sama!",
+                                "Peringatan!", JOptionPane.YES_NO_OPTION);
+                        if (ubahYaTidak == JOptionPane.NO_OPTION) {
+                            return;
+                        }
                     }
                 }
             }
+            cekStmt.close();
+            kkk.close();
 
             // Establish a connection to the database
             myconn = (Connection) database.dbConfig();
@@ -326,7 +413,7 @@ public class koneksiAdmin {
                 myconn.close();
             }
         }
-        
+
         // Relogin jika access false
         if (restartYA) {
             if (!loginSession.getAccess()) {
@@ -402,25 +489,28 @@ public class koneksiAdmin {
     // method untuk menambahkan user ke dalam database
     public static void insertDataToDatabase(String username, String password, String role) throws SQLException {
         String sql = "SELECT COUNT(*) FROM users WHERE username = ?";
-        Connection conn = (Connection) database.dbConfig();
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, username);
-        ResultSet result = statement.executeQuery();
-        result.next();
-        int count = result.getInt(1);
-        if (count > 0) {
-            JOptionPane.showMessageDialog(null, "User dengan username " + username + " sudah tersedia!");
-        } else {
-            sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+        PreparedStatement statement;
+        try (Connection conn = (Connection) database.dbConfig()) {
             statement = conn.prepareStatement(sql);
             statement.setString(1, username);
-            statement.setString(2, password);
-            statement.setString(3, role);
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                JOptionPane.showMessageDialog(null, "User telah berhasil ditambahkan!");
+            ResultSet result = statement.executeQuery();
+            result.next();
+            int count = result.getInt(1);
+            if (count > 0) {
+                JOptionPane.showMessageDialog(null, "User dengan username " + username + " sudah tersedia!");
+            } else {
+                sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+                statement = conn.prepareStatement(sql);
+                statement.setString(1, username);
+                statement.setString(2, password);
+                statement.setString(3, role);
+                int rowsInserted = statement.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "User telah berhasil ditambahkan!");
+                }
             }
         }
+        statement.close();
     }
 
     // method untuk menghapus user dari database
@@ -442,52 +532,54 @@ public class koneksiAdmin {
             username = rs.getString("username");
         }
 
-        Connection cekKon = (Connection) koneksi.database.dbConfig();
-        PreparedStatement kkk = cekKon.prepareStatement("SELECT * FROM users WHERE id =" + userID);
-        ResultSet how = kkk.executeQuery();
-        String theRole = null;
-        String theUser = null;
-        if (how.next()) {
-            theRole = how.getString("role");
-            theUser = how.getString("username");
-        }
+        PreparedStatement kkk;
+        try (Connection cekKon = (Connection) koneksi.database.dbConfig()) {
+            kkk = cekKon.prepareStatement("SELECT * FROM users WHERE id =" + userID);
+            ResultSet how = kkk.executeQuery();
+            String theRole = null;
+            String theUser = null;
+            if (how.next()) {
+                theRole = how.getString("role");
+                theUser = how.getString("username");
+            }
+            if (loginSession.getRole().equals("owner")) {
 
-        if (loginSession.getRole().equals("owner")) {
-
-        } else {
-            if (theRole != null && (theRole.equals("owner"))) {
-                JOptionPane.showMessageDialog(null,
-                        "Anda tidak bisa menghapus role yang lebih tinggi dari " + loginSession.getUsername() + "!");
-                return;
-            } else if (theUser != null && (!theUser.equals(loginSession.getUsername()))) {
-                if (theRole != null && (theRole.equals(loginSession.getRole()))) {
+            } else {
+                if (theRole != null && (theRole.equals("owner"))) {
                     JOptionPane.showMessageDialog(null,
-                            "Anda tidak bisa menghapus role yang sama dengan " + loginSession.getRole() + "!");
+                            "Anda tidak bisa menghapus role yang lebih tinggi dari " + loginSession.getUsername() + "!");
                     return;
+                } else if (theUser != null && (!theUser.equals(loginSession.getUsername()))) {
+                    if (theRole != null && (theRole.equals(loginSession.getRole()))) {
+                        JOptionPane.showMessageDialog(null,
+                                "Anda tidak bisa menghapus role yang sama dengan " + loginSession.getRole() + "!");
+                        return;
+                    }
                 }
             }
+            if (username != null && username.equals(loginSession.getUsername())) {
+                JOptionPane.showMessageDialog(null,
+                        "Tidak bisa menghapus diri Anda sendiri! ("
+                        + loginSession.getUsername() + ")");
+                return;
+            }
         }
-
-        if (username != null && username.equals(loginSession.getUsername())) {
-            JOptionPane.showMessageDialog(null,
-                    "Tidak bisa menghapus diri Anda sendiri! ("
-                    + loginSession.getUsername() + ")");
-            return;
-        }
+        kkk.close();
 
         String sql = "DELETE FROM users WHERE id = ?";
 
-        Connection conn = (Connection) database.dbConfig();
-        PreparedStatement statement = conn.prepareStatement(sql);
-
-        statement.setInt(1, userID);
-
-        int rowsDeleted = statement.executeUpdate();
-        if (rowsDeleted > 0) {
-            JOptionPane.showMessageDialog(null, "User dengan ID " + userID + " sukses dihapus!");
-        } else {
-            JOptionPane.showMessageDialog(null, "User dengan ID " + userID + " tidak ditemukan!");
+        PreparedStatement statement;
+        try (Connection conn = (Connection) database.dbConfig()) {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, userID);
+            int rowsDeleted = statement.executeUpdate();
+            if (rowsDeleted > 0) {
+                JOptionPane.showMessageDialog(null, "User dengan ID " + userID + " sukses dihapus!");
+            } else {
+                JOptionPane.showMessageDialog(null, "User dengan ID " + userID + " tidak ditemukan!");
+            }
         }
+        statement.close();
     }
 
 }

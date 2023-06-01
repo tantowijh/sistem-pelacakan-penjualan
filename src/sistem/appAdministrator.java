@@ -631,6 +631,9 @@ public final class appAdministrator extends javax.swing.JPanel {
 
     private void loadUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadUsersMouseClicked
         boolean ya = adminSession.haveAData;
+        if(!editCheckbox.isSelected()){
+            return;
+        }
         if (ya) {
             int baris = loadUsers.rowAtPoint(evt.getPoint());
             String idToDelete = loadUsers.getValueAt(baris, 0).toString();
