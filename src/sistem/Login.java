@@ -1,12 +1,10 @@
 package sistem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
 import customization.cResetter;
 import koneksi.database;
 import koneksi.loginSession;
 import java.awt.Color;
 import java.sql.*;
-import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
