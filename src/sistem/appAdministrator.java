@@ -158,6 +158,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         customization.cSVG svg = new customization.cSVG();
         svg.tabPanelIcon(userOptions, 0, "icon/user/User.svg");
         svg.tabPanelIcon(userOptions, 1, "icon/user/AddUser.svg");
+        svg.labelIconColorSet(searchIcon, "icon/user/Search.svg", new Color(243,114,33));
 
     }
 
@@ -185,7 +186,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         userDetail = new javax.swing.JLabel();
         adm_username = new javax.swing.JTextField();
         userRoleOptions = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        searchIcon = new javax.swing.JLabel();
         infoName1 = new javax.swing.JLabel();
         infoName2 = new javax.swing.JLabel();
         infoName3 = new javax.swing.JLabel();
@@ -367,7 +368,13 @@ public final class appAdministrator extends javax.swing.JPanel {
 
         userRoleOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user"}));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
+        searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
+        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchIconMouseClicked(evt);
+            }
+        });
 
         infoName1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         infoName1.setText("Role");
@@ -409,6 +416,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         editCheckbox.setForeground(new java.awt.Color(243, 114, 33));
         editCheckbox.setText("Enter editing mode");
         editCheckbox.setToolTipText("Nyalakan fitur editing untuk mengubah data user pada tabel");
+        editCheckbox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         adm_delete.setText("Delete");
         adm_delete.setToolTipText("Delete user");
@@ -455,7 +463,7 @@ public final class appAdministrator extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(pencarianUser)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(searchIcon)
                         .addGap(11, 11, 11)))
                 .addContainerGap())
         );
@@ -468,7 +476,7 @@ public final class appAdministrator extends javax.swing.JPanel {
                         .addComponent(pencarianUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(userDetail)
                         .addComponent(editCheckbox))
-                    .addComponent(jLabel4))
+                    .addComponent(searchIcon))
                 .addGroup(appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(appUserManagementLayout.createSequentialGroup()
                         .addGroup(appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -647,6 +655,10 @@ public final class appAdministrator extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_loadUsersMouseClicked
 
+    private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
+        pencarianUser.requestFocus();
+    }//GEN-LAST:event_searchIconMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customization.cButton adm_delete;
@@ -665,12 +677,12 @@ public final class appAdministrator extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable loadUsers;
     private javax.swing.JTextField passNew;
     private javax.swing.JTextField passNow;
     private javax.swing.JTextField pencarianUser;
+    private javax.swing.JLabel searchIcon;
     private javax.swing.JLabel showUsername;
     private javax.swing.JLabel userDetail;
     private javax.swing.JTabbedPane userOptions;
