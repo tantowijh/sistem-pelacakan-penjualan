@@ -4,11 +4,13 @@
  */
 package sistem;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -252,11 +254,29 @@ public class Penjualan extends javax.swing.JPanel {
 
         db.loadSalesTable((DefaultTableModel) loadSales.getModel());
 
-        jumlahPenjualan.setText(String.valueOf(db.countRows()));
-        totalPenjualan.setText(String.valueOf(db.calculateTotalAmount()));
+        jumlahPenjualan.setText("Total Penjualan: " + String.valueOf(db.countRows()));
+        totalPenjualan.setText("Total Harga Penjualan: " + String.valueOf(db.calculateTotalAmount()));
 
         // Set the permission settings
         new customization.cResetter().setBlockedButton(new JButton[]{insertToDB, updateToDB, removeInDB});
+        
+        title.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$SalesTracking;"
+                + "font: 70% bold $h00.font");
+        JLabel[] labels = new JLabel[]{jLabel2,jLabel3,jLabel4,jLabel5,jLabel10,jLabel11,jLabel12};
+        for (var label : labels){
+            label.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font: $semibold.font;");
+        }
+        JLabel[] infos = new JLabel[]{jumlahPenjualan, totalPenjualan, hargaSatuan, hargaTotal};
+        for (var info : infos){
+            info.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$SalesTracking;"
+                + "font: $h4.font;");
+        }
+        
+        resetBtn.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font: $h4.font;");
     }
 
     /**
@@ -269,7 +289,7 @@ public class Penjualan extends javax.swing.JPanel {
     private void initComponents() {
 
         header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -280,8 +300,6 @@ public class Penjualan extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jumlahPenjualan = new javax.swing.JLabel();
         totalPenjualan = new javax.swing.JLabel();
         insertToDB = new customization.cButton();
@@ -300,33 +318,28 @@ public class Penjualan extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         hargaTotal = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        totalPenjualan1 = new javax.swing.JLabel();
+        resetBtn = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 255, 255));
-
-        header.setBackground(new java.awt.Color(241, 255, 255));
         header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(243, 114, 33));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("PENJUALAN");
+        title.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("PENJUALAN");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(244, 244, 244)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(243, 243, 243))
+                .addGap(243, 243, 243)
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(244, 244, 244))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(title, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
@@ -380,21 +393,13 @@ public class Penjualan extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         jLabel5.setText("Status");
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(243, 114, 33));
-        jLabel6.setText("Total Penjualan: ");
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(243, 114, 33));
-        jLabel7.setText("Total Harga Penjualan: ");
-
         jumlahPenjualan.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         jumlahPenjualan.setForeground(new java.awt.Color(20, 108, 148));
-        jumlahPenjualan.setText("0");
+        jumlahPenjualan.setText("Total Penjualan: 0");
 
         totalPenjualan.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         totalPenjualan.setForeground(new java.awt.Color(20, 108, 148));
-        totalPenjualan.setText("0");
+        totalPenjualan.setText("Total Harga Penjualan: 0");
 
         insertToDB.setText("Insert");
         insertToDB.setCustomStrokeWidth(1);
@@ -469,13 +474,13 @@ public class Penjualan extends javax.swing.JPanel {
         hargaTotal.setForeground(new java.awt.Color(0, 75, 173));
         hargaTotal.setText("0");
 
-        totalPenjualan1.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        totalPenjualan1.setForeground(new java.awt.Color(153, 0, 153));
-        totalPenjualan1.setText("Reset Selection");
-        totalPenjualan1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        totalPenjualan1.addMouseListener(new java.awt.event.MouseAdapter() {
+        resetBtn.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        resetBtn.setForeground(new java.awt.Color(153, 0, 153));
+        resetBtn.setText("Reset Selection");
+        resetBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        resetBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                totalPenjualan1MouseClicked(evt);
+                resetBtnMouseClicked(evt);
             }
         });
 
@@ -510,15 +515,11 @@ public class Penjualan extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jumlahPenjualan)
-                                .addGap(76, 76, 76)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(totalPenjualan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(totalPenjualan1))
+                                .addComponent(resetBtn))
                             .addComponent(jScrollPane1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -582,14 +583,12 @@ public class Penjualan extends javax.swing.JPanel {
                         .addComponent(updateToDB, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(removeInDB, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
                     .addComponent(jumlahPenjualan)
                     .addComponent(totalPenjualan)
-                    .addComponent(totalPenjualan1))
+                    .addComponent(resetBtn))
                 .addGap(12, 12, 12))
         );
 
@@ -673,8 +672,8 @@ public class Penjualan extends javax.swing.JPanel {
         // mengurangi jumlah stock pada database
         db.decreaseStock(product_id, quantity);
 
-        jumlahPenjualan.setText(String.valueOf(db.countRows()));
-        totalPenjualan.setText(String.valueOf(db.calculateTotalAmount()));
+        jumlahPenjualan.setText("Total Penjualan: " + String.valueOf(db.countRows()));
+        totalPenjualan.setText("Total Harga Penjualan: " + String.valueOf(db.calculateTotalAmount()));
     }//GEN-LAST:event_insertToDBActionPerformed
 
     private void updateToDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateToDBActionPerformed
@@ -718,8 +717,8 @@ public class Penjualan extends javax.swing.JPanel {
         }
         selectedQuantity = 0;
 
-        jumlahPenjualan.setText(String.valueOf(db.countRows()));
-        totalPenjualan.setText(String.valueOf(db.calculateTotalAmount()));
+        jumlahPenjualan.setText("Total Penjualan: " + String.valueOf(db.countRows()));
+        totalPenjualan.setText("Total Harga Penjualan: " + String.valueOf(db.calculateTotalAmount()));
     }//GEN-LAST:event_updateToDBActionPerformed
 
     private void loadSalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadSalesMouseClicked
@@ -761,8 +760,8 @@ public class Penjualan extends javax.swing.JPanel {
         db.addStock(product_id, selectedQuantity);
         selectedQuantity = 0;
 
-        jumlahPenjualan.setText(String.valueOf(db.countRows()));
-        totalPenjualan.setText(String.valueOf(db.calculateTotalAmount()));
+        jumlahPenjualan.setText("Total Penjualan: " + String.valueOf(db.countRows()));
+        totalPenjualan.setText("Total Harga Penjualan: " + String.valueOf(db.calculateTotalAmount()));
     }//GEN-LAST:event_removeInDBActionPerformed
 
     private void searchValKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchValKeyReleased
@@ -770,14 +769,14 @@ public class Penjualan extends javax.swing.JPanel {
         db.searchSalesTable(srch, (DefaultTableModel) loadSales.getModel());
     }//GEN-LAST:event_searchValKeyReleased
 
-    private void totalPenjualan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_totalPenjualan1MouseClicked
+    private void resetBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetBtnMouseClicked
         selectedID = 0;
         selectedQuantity = 0;
         searchVal.setText(null);
         DefaultTableModel model = (DefaultTableModel) loadSales.getModel();
         model.setRowCount(0);
         db.loadSalesTable(model);
-    }//GEN-LAST:event_totalPenjualan1MouseClicked
+    }//GEN-LAST:event_resetBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -787,7 +786,6 @@ public class Penjualan extends javax.swing.JPanel {
     private javax.swing.JLabel hargaTotal;
     private javax.swing.JPanel header;
     private customization.cButton insertToDB;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -795,8 +793,6 @@ public class Penjualan extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
@@ -809,10 +805,11 @@ public class Penjualan extends javax.swing.JPanel {
     private javax.swing.JTextField productQuantity;
     private javax.swing.JTextField productname;
     private customization.cButton removeInDB;
+    private javax.swing.JLabel resetBtn;
     private javax.swing.JTextField searchVal;
     private javax.swing.JComboBox<String> statusPembayaran;
+    private javax.swing.JLabel title;
     private javax.swing.JLabel totalPenjualan;
-    private javax.swing.JLabel totalPenjualan1;
     private customization.cButton updateToDB;
     // End of variables declaration//GEN-END:variables
 }

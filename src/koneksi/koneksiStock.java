@@ -5,6 +5,7 @@
 package koneksi;
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -62,8 +63,10 @@ public class koneksiStock {
             int no = 1;
             while (res.next()) {
                 haveAData = true;
+                double priceValue = res.getDouble(4);
+                String formattedPrice = new DecimalFormat("#,##0").format(priceValue);
                 model.addRow(new Object[]{no++, res.getString(1), res.getString(2),
-                    res.getString(3), res.getString(4)});
+                    res.getString(3), formattedPrice});
             }
             loadingTable.setModel(model);
 
@@ -382,8 +385,10 @@ public class koneksiStock {
             int no = 1;
             while (res.next()) {
                 haveAData = true;
+                double priceValue = res.getDouble(4);
+                String formattedPrice = new DecimalFormat("#,##0").format(priceValue);
                 model.addRow(new Object[]{no++, res.getString(1), res.getString(2),
-                    res.getString(3), res.getString(4)});
+                    res.getString(3), formattedPrice});
             }
 
             loadingTable.setModel(model);

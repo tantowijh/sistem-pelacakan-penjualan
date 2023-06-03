@@ -1,12 +1,23 @@
 package sistem;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.util.UIScale;
 import customization.cResetter;
 import koneksi.database;
 import koneksi.loginSession;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.sql.*;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -219,11 +230,36 @@ public final class Login extends javax.swing.JFrame {
         this.hidePass.setBackground(new Color(0, 0, 0, 0));
     }
 
+    public void init() {
+        loginPanel.putClientProperty(FlatClientProperties.STYLE, ""
+                + "background:$Login.background");
+        fieldUsername.putClientProperty(FlatClientProperties.STYLE, ""
+                + "border:2,14,2,14;");
+        fieldPassword.putClientProperty(FlatClientProperties.STYLE, ""
+                + "showCapsLock:true;"
+                + "border:2,14,2,14;");
+        btn_login.putClientProperty(FlatClientProperties.STYLE, ""
+                + "background:$Login.loginButton.background;"
+                + "foreground:$Login.loginButton.foreground;"
+                + "hoverBackground:$Login.loginButton.hover;"
+                + "pressedBackground:$Login.loginButton.pressed;"
+                + "arc:10");
+        exitNow.putClientProperty(FlatClientProperties.STYLE, ""
+                + "background:$Button.default.background;"
+                + "foreground:$Button.default.foreground;"
+                + "hoverBackground:$Button.default.hover;"
+                + "pressedBackground:$Button.default.pressed;"
+                + "borderWidth:0");
+        fieldUsername.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Username...");
+        fieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Password...");
+    }
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        init();
         glassyLoad();
         loadDBUsers();
         if (!hasUsers()) {
@@ -251,7 +287,7 @@ public final class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        loginPanel = new javax.swing.JPanel();
         exitNow = new javax.swing.JButton();
         profileIcon = new javax.swing.JLabel();
         fieldUsername = new javax.swing.JTextField();
@@ -277,8 +313,6 @@ public final class Login extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
-
         exitNow.setBackground(new java.awt.Color(241, 255, 255));
         exitNow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cancel.png"))); // NOI18N
         exitNow.setBorder(null);
@@ -292,20 +326,7 @@ public final class Login extends javax.swing.JFrame {
         profileIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         profileIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/profile.png"))); // NOI18N
 
-        fieldUsername.setForeground(java.awt.Color.lightGray);
-        fieldUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldUsername.setText("username");
-        fieldUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(8, 95, 172)));
         fieldUsername.setOpaque(true);
-        fieldUsername.setSelectionColor(java.awt.Color.orange);
-        fieldUsername.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldUsernameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldUsernameFocusLost(evt);
-            }
-        });
         fieldUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldUsernameActionPerformed(evt);
@@ -317,7 +338,6 @@ public final class Login extends javax.swing.JFrame {
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/login.png"))); // NOI18N
         btn_login.setText("LOGIN");
-        btn_login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 0)));
         btn_login.setBorderPainted(false);
         btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_login.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -333,20 +353,7 @@ public final class Login extends javax.swing.JFrame {
         passwordIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         passwordIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/password.png"))); // NOI18N
 
-        fieldPassword.setForeground(java.awt.Color.lightGray);
-        fieldPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fieldPassword.setText("password");
-        fieldPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(8, 95, 172)));
         fieldPassword.setOpaque(true);
-        fieldPassword.setSelectionColor(java.awt.Color.orange);
-        fieldPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                fieldPasswordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                fieldPasswordFocusLost(evt);
-            }
-        });
         fieldPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldPasswordActionPerformed(evt);
@@ -379,58 +386,57 @@ public final class Login extends javax.swing.JFrame {
         eyeContainer.add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 25, 25));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 75, 173));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selamat Datang Orang Sukses!");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(profileIcon)
                     .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordIcon)
                             .addComponent(usernameIcon))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(eyeContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(60, 60, 60))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(exitNow)
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fieldPassword, fieldUsername});
+        loginPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fieldPassword, fieldUsername});
 
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(exitNow)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                         .addContainerGap(33, Short.MAX_VALUE)
                         .addComponent(profileIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addGap(12, 12, 12)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(usernameIcon)
                     .addComponent(fieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(eyeContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordIcon))
@@ -439,17 +445,17 @@ public final class Login extends javax.swing.JFrame {
                 .addGap(51, 51, 51))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {fieldPassword, fieldUsername});
+        loginPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {fieldPassword, fieldUsername});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -467,48 +473,9 @@ public final class Login extends javax.swing.JFrame {
         yy = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
-    private void fieldUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldUsernameFocusGained
-        fieldUsername.setForeground(Color.blue);
-        String username = fieldUsername.getText();
-        if (username.equals("username")) {
-            fieldUsername.setText(null);
-        }
-    }//GEN-LAST:event_fieldUsernameFocusGained
-
-    private void fieldUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldUsernameFocusLost
-        fieldUsername.setForeground(Color.lightGray);
-        String username = fieldUsername.getText();
-        if (username.isEmpty()) {
-            fieldUsername.setText("username");
-        } else {
-            fieldUsername.setForeground(Color.blue);
-        }
-    }//GEN-LAST:event_fieldUsernameFocusLost
-
     private void exitNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitNowActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitNowActionPerformed
-
-    private void fieldPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldPasswordFocusGained
-        fieldPassword.setForeground(Color.blue);
-        char[] passChar = fieldPassword.getPassword();
-        String pass = new String(passChar);
-        if (pass.equals("password")) {
-            fieldPassword.setText(null);
-            fieldPassword.requestFocusInWindow(); // set focus back to the password field
-        }
-    }//GEN-LAST:event_fieldPasswordFocusGained
-
-    private void fieldPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldPasswordFocusLost
-        fieldPassword.setForeground(Color.lightGray);
-        char[] passChar = fieldPassword.getPassword();
-        String pass = new String(passChar);
-        if (pass.isEmpty()) {
-            fieldPassword.setText("password");
-        } else {
-            fieldPassword.setForeground(Color.blue);
-        }
-    }//GEN-LAST:event_fieldPasswordFocusLost
 
     private void fieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPasswordActionPerformed
         btn_login.requestFocus();
@@ -538,45 +505,8 @@ public final class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+        FlatLightLaf.registerCustomDefaultsSource( "customization" );
+        FlatLightLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
@@ -592,7 +522,7 @@ public final class Login extends javax.swing.JFrame {
     private javax.swing.JTextField fieldUsername;
     private javax.swing.JButton hidePass;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel passwordIcon;
     private javax.swing.JLabel profileIcon;
     private javax.swing.JButton showPass;

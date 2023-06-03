@@ -4,6 +4,7 @@
  */
 package sistem;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.toedter.calendar.JDateChooser;
 import java.io.InputStream;
 import java.sql.*;
@@ -12,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
@@ -245,6 +247,14 @@ public final class salesReport extends javax.swing.JPanel {
         initComponents();
         loadSalesData(loadSalesReport);
         initialDate();
+        title2.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$SalesTracking;"
+                + "font: 70% bold $h00.font");
+        JLabel[] labels = new JLabel[]{jLabel2,jLabel3,jLabel4};
+        for (var label : labels){
+            label.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font: $semibold.font;");
+        }
     }
 
     /**
@@ -256,8 +266,8 @@ public final class salesReport extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        header2 = new javax.swing.JPanel();
+        title2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         loadSalesReport = new javax.swing.JTable();
@@ -271,31 +281,27 @@ public final class salesReport extends javax.swing.JPanel {
         btnReset = new customization.cButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 255, 255));
+        header2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        header2.setPreferredSize(new java.awt.Dimension(630, 36));
 
-        header.setBackground(new java.awt.Color(241, 255, 255));
-        header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        title2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title2.setText("LAPORAN");
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(243, 114, 33));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LAPORAN");
-
-        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
-        header.setLayout(headerLayout);
-        headerLayout.setHorizontalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
+        javax.swing.GroupLayout header2Layout = new javax.swing.GroupLayout(header2);
+        header2.setLayout(header2Layout);
+        header2Layout.setHorizontalGroup(
+            header2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(header2Layout.createSequentialGroup()
                 .addGap(244, 244, 244)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                 .addGap(243, 243, 243))
         );
-        headerLayout.setVerticalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+        header2Layout.setVerticalGroup(
+            header2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(241, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         loadSalesReport.setModel(new javax.swing.table.DefaultTableModel(
@@ -324,7 +330,7 @@ public final class salesReport extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -377,7 +383,7 @@ public final class salesReport extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(header2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -405,7 +411,7 @@ public final class salesReport extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -503,7 +509,8 @@ public final class salesReport extends javax.swing.JPanel {
     private customization.cButton btnReset;
     private com.toedter.calendar.JDateChooser endDate;
     private javax.swing.JPanel header;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel header1;
+    private javax.swing.JPanel header2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -512,5 +519,8 @@ public final class salesReport extends javax.swing.JPanel {
     private javax.swing.JTable loadSalesReport;
     private com.toedter.calendar.JDateChooser startDate;
     private javax.swing.JComboBox<String> statusFilter;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel title1;
+    private javax.swing.JLabel title2;
     // End of variables declaration//GEN-END:variables
 }

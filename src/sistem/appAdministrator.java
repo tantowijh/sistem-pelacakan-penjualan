@@ -4,6 +4,7 @@
  */
 package sistem;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import customization.cResetter;
 import java.awt.Color;
 import koneksi.koneksiAdmin;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -159,6 +161,26 @@ public final class appAdministrator extends javax.swing.JPanel {
         svg.tabPanelIcon(userOptions, 0, "icon/user/User.svg");
         svg.tabPanelIcon(userOptions, 1, "icon/user/AddUser.svg");
         svg.labelIconColorSet(searchIcon, "icon/user/Search.svg", new Color(243,114,33));
+        
+        title.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$SalesTracking;"
+                + "font: 70% bold $h00.font");
+        editCheckbox.putClientProperty(FlatClientProperties.STYLE, ""
+                + "foreground:$SalesTracking;");
+        JLabel[] infos = new JLabel[]{showUsername,userDetail};
+        for (var info : infos){
+            info.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font: bold $h2.font");
+        }
+        JLabel[] labels = new JLabel[]{jLabel2,jLabel3,infoName1,infoName2,infoName3};
+        for (var label : labels){
+            label.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font: $semibold.font");
+        }
+        
+        passNow.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Masukkan password sekarang...");
+        passNew.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Masukkan password baru...");
+        pencarianUser.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Pencarian user...");
 
     }
 
@@ -196,48 +218,20 @@ public final class appAdministrator extends javax.swing.JPanel {
         editCheckbox = new javax.swing.JCheckBox();
         adm_delete = new customization.cButton();
         header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 255, 255));
         setMinimumSize(new java.awt.Dimension(756, 435));
 
-        userOptions.setBackground(new java.awt.Color(241, 255, 255));
         userOptions.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         userOptions.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
 
-        appUser.setBackground(new java.awt.Color(241, 255, 255));
-
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CURRENT PASSWORD");
-
-        passNow.setForeground(java.awt.Color.lightGray);
-        passNow.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        passNow.setText("Masukkan password sekarang");
-        passNow.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passNowFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                passNowFocusLost(evt);
-            }
-        });
+        jLabel2.setText("Current Password");
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("NEW PASSWORD");
-
-        passNew.setForeground(java.awt.Color.lightGray);
-        passNew.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        passNew.setText("Masukkan password baru");
-        passNew.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passNewFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                passNewFocusLost(evt);
-            }
-        });
+        jLabel3.setText("New Password");
 
         btnUpdate.setText("Update");
         btnUpdate.setCustomCurrentFill(new java.awt.Color(0, 51, 255));
@@ -251,7 +245,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         });
 
         showUsername.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        showUsername.setForeground(new java.awt.Color(0, 75, 173));
         showUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         showUsername.setText("USERNAME");
 
@@ -295,8 +288,6 @@ public final class appAdministrator extends javax.swing.JPanel {
 
         userOptions.addTab("User", new javax.swing.ImageIcon(getClass().getResource("/menuicon/userInfo.png")), appUser); // NOI18N
 
-        appUserManagement.setBackground(new java.awt.Color(241, 255, 255));
-
         loadUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -336,16 +327,6 @@ public final class appAdministrator extends javax.swing.JPanel {
             loadUsers.getColumnModel().getColumn(3).setPreferredWidth(80);
         }
 
-        pencarianUser.setForeground(java.awt.Color.lightGray);
-        pencarianUser.setText("Pencarian user...");
-        pencarianUser.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pencarianUserFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pencarianUserFocusLost(evt);
-            }
-        });
         pencarianUser.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 pencarianUserKeyReleased(evt);
@@ -353,18 +334,7 @@ public final class appAdministrator extends javax.swing.JPanel {
         });
 
         userDetail.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        userDetail.setForeground(new java.awt.Color(0, 75, 173));
         userDetail.setText("User Details");
-
-        adm_username.setForeground(java.awt.Color.lightGray);
-        adm_username.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                adm_usernameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                adm_usernameFocusLost(evt);
-            }
-        });
 
         userRoleOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user"}));
 
@@ -385,16 +355,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         infoName3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         infoName3.setText("Password");
 
-        adm_password.setForeground(java.awt.Color.lightGray);
-        adm_password.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                adm_passwordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                adm_passwordFocusLost(evt);
-            }
-        });
-
         adm_tambah.setText("Add");
         adm_tambah.setToolTipText("Tambah user");
         adm_tambah.addActionListener(new java.awt.event.ActionListener() {
@@ -413,7 +373,6 @@ public final class appAdministrator extends javax.swing.JPanel {
             }
         });
 
-        editCheckbox.setForeground(new java.awt.Color(243, 114, 33));
         editCheckbox.setText("Enter editing mode");
         editCheckbox.setToolTipText("Nyalakan fitur editing untuk mengubah data user pada tabel");
         editCheckbox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -508,13 +467,11 @@ public final class appAdministrator extends javax.swing.JPanel {
 
         userOptions.addTab("Manage User", new javax.swing.ImageIcon(getClass().getResource("/menuicon/addUser.png")), appUserManagement); // NOI18N
 
-        header.setBackground(new java.awt.Color(241, 255, 255));
         header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(243, 114, 33));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ADMINISTRATOR");
+        title.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("ADMINISTRATOR");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
@@ -522,12 +479,12 @@ public final class appAdministrator extends javax.swing.JPanel {
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(244, 244, 244)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(243, 243, 243))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -561,38 +518,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         userRelogin();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void passNowFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passNowFocusGained
-        setNull(passNow, "Masukkan password sekarang");
-    }//GEN-LAST:event_passNowFocusGained
-
-    private void passNowFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passNowFocusLost
-        setFill(passNow, "Masukkan password sekarang");
-    }//GEN-LAST:event_passNowFocusLost
-
-    private void passNewFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passNewFocusGained
-        setNull(passNew, "Masukkan password baru");
-    }//GEN-LAST:event_passNewFocusGained
-
-    private void passNewFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passNewFocusLost
-        setFill(passNew, "Masukkan password baru");
-    }//GEN-LAST:event_passNewFocusLost
-
-    private void adm_passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_adm_passwordFocusGained
-        adm_password.setForeground(Color.BLACK);
-    }//GEN-LAST:event_adm_passwordFocusGained
-
-    private void adm_passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_adm_passwordFocusLost
-        adm_password.setForeground(Color.lightGray);
-    }//GEN-LAST:event_adm_passwordFocusLost
-
-    private void pencarianUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pencarianUserFocusGained
-        setNull(pencarianUser, "Pencarian user...");
-    }//GEN-LAST:event_pencarianUserFocusGained
-
-    private void pencarianUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pencarianUserFocusLost
-        setFill(pencarianUser, "Pencarian user...");
-    }//GEN-LAST:event_pencarianUserFocusLost
-
     private void pencarianUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pencarianUserKeyReleased
         // Refreshing edit checkBox
         editCheckbox.setSelected(false);
@@ -603,15 +528,11 @@ public final class appAdministrator extends javax.swing.JPanel {
         adm_delete.setEnabled(false);
 
         adminSession.tableSearch(loadUsers, new JTextField[]{pencarianUser});
+
+        if (pencarianUser.getText().isEmpty()) {
+            resetTable();
+        }
     }//GEN-LAST:event_pencarianUserKeyReleased
-
-    private void adm_usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_adm_usernameFocusGained
-        adm_username.setForeground(Color.BLACK);
-    }//GEN-LAST:event_adm_usernameFocusGained
-
-    private void adm_usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_adm_usernameFocusLost
-        adm_username.setForeground(Color.lightGray);
-    }//GEN-LAST:event_adm_usernameFocusLost
 
     private void adm_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adm_tambahActionPerformed
         try {
@@ -674,7 +595,6 @@ public final class appAdministrator extends javax.swing.JPanel {
     private javax.swing.JLabel infoName1;
     private javax.swing.JLabel infoName2;
     private javax.swing.JLabel infoName3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
@@ -684,6 +604,7 @@ public final class appAdministrator extends javax.swing.JPanel {
     private javax.swing.JTextField pencarianUser;
     private javax.swing.JLabel searchIcon;
     private javax.swing.JLabel showUsername;
+    private javax.swing.JLabel title;
     private javax.swing.JLabel userDetail;
     private javax.swing.JTabbedPane userOptions;
     private javax.swing.JComboBox<String> userRoleOptions;
