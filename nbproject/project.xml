@@ -14,10 +14,13 @@
             </test-roots>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>accentColor</word>
             <word>cancelButton</word>
+            <word>FB</word>
             <word>loginButton</word>
             <word>Penjualan</word>
             <word>rgb</word>
+            <word>SalesTracking</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

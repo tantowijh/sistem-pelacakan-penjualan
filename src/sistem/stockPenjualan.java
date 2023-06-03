@@ -105,6 +105,10 @@ public final class stockPenjualan extends javax.swing.JPanel {
 
         // Set the permission settings
         new customization.cResetter().setBlockedButton(new JButton[]{btnInsert, btnUpdate, btnDelete});
+        
+        nBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Nama produk");
+        jBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"0");
+        hBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"0.0");
         title.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$SalesTracking;"
                 + "font: 70% bold $h00.font");
@@ -167,7 +171,6 @@ public final class stockPenjualan extends javax.swing.JPanel {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         nBarang.setForeground(java.awt.Color.lightGray);
-        nBarang.setText("Nama produk");
         nBarang.setToolTipText("Masukkan nama produk");
         nBarang.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -451,6 +454,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
             String stok = loadStock.getValueAt(baris, 3).toString();
             jBarang.setText(stok);
             String harga = loadStock.getValueAt(baris, 4).toString();
+            harga = harga.replace(",", "");
             hBarang.setText(harga);
             stock.setColumnWidth(loadStock);
         }

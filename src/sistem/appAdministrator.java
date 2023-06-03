@@ -37,7 +37,7 @@ public final class appAdministrator extends javax.swing.JPanel {
 
     public void loadAccess() {
 
-        showUsername.setText(loginSession.getUsername());
+        showUsername.setText(loginSession.getUsername().toUpperCase());
         if (!loginSession.getRole().equals("owner") && !loginSession.getRole().equals("admin")) {
             int add = userOptions.indexOfComponent(appUserManagement);
             userOptions.setEnabledAt(add, false);
@@ -68,7 +68,7 @@ public final class appAdministrator extends javax.swing.JPanel {
     }
 
     public void exceptEditing(JTable tbl, int columnIndex) {
-        TableModel model = tbl.getModel();
+        TableModel model;
         // Override the isCellEditable method to make the first column uneditable
         model = new DefaultTableModel() {
             @Override
@@ -254,26 +254,27 @@ public final class appAdministrator extends javax.swing.JPanel {
             appUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appUserLayout.createSequentialGroup()
                 .addGap(169, 169, 169)
-                .addGroup(appUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel2)
-                    .addComponent(passNow, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                .addGroup(appUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(passNew)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(showUsername))
+                    .addComponent(passNow)
+                    .addComponent(jLabel2))
                 .addGap(188, 188, 188))
+            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, appUserLayout.createSequentialGroup()
+                .addGap(274, 274, 274)
+                .addGroup(appUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(showUsername, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(293, 293, 293))
         );
-
-        appUserLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3});
-
         appUserLayout.setVerticalGroup(
             appUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appUserLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(showUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(passNow, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)

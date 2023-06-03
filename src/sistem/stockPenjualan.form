@@ -172,7 +172,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nama produk"/>
             <Property name="toolTipText" type="java.lang.String" value="Masukkan nama produk"/>
           </Properties>
           <Events>

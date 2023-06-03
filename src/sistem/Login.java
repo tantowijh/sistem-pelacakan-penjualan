@@ -232,7 +232,7 @@ public final class Login extends javax.swing.JFrame {
 
     public void init() {
         loginPanel.putClientProperty(FlatClientProperties.STYLE, ""
-                + "background:$Login.background");
+                + "background:$Login.background;");
         fieldUsername.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:2,14,2,14;");
         fieldPassword.putClientProperty(FlatClientProperties.STYLE, ""
@@ -360,10 +360,8 @@ public final class Login extends javax.swing.JFrame {
             }
         });
 
-        eyeContainer.setBackground(java.awt.Color.orange);
         eyeContainer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        hidePass.setBackground(new java.awt.Color(241, 255, 255));
         hidePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hidePass.png"))); // NOI18N
         hidePass.setBorderPainted(false);
         hidePass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -374,7 +372,6 @@ public final class Login extends javax.swing.JFrame {
         });
         eyeContainer.add(hidePass, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 25, 25));
 
-        showPass.setBackground(new java.awt.Color(241, 255, 255));
         showPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/showPass.png"))); // NOI18N
         showPass.setBorderPainted(false);
         showPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -478,7 +475,7 @@ public final class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_exitNowActionPerformed
 
     private void fieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPasswordActionPerformed
-        btn_login.requestFocus();
+        logIn();
     }//GEN-LAST:event_fieldPasswordActionPerformed
 
     private void showPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassActionPerformed
