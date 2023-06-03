@@ -40,7 +40,7 @@ public final class salesReport extends javax.swing.JPanel {
         try {
             conn = (Connection) koneksi.database.dbConfig();
             stmt = conn.createStatement();
-            
+
             String sql = "CREATE TABLE IF NOT EXISTS sales "
                     + "(id INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     + " `date` TEXT NOT NULL, "
@@ -56,8 +56,7 @@ public final class salesReport extends javax.swing.JPanel {
                     + " customer_address TEXT NOT NULL, "
                     + " payment_status TEXT NOT NULL)";
             stmt.executeUpdate(sql);
-            
-            
+
             sql = "SELECT * FROM sales";
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -239,7 +238,7 @@ public final class salesReport extends javax.swing.JPanel {
             endDate.setCalendar(calendar);
         }
     }
-    
+
     /**
      * Creates new form salesReport
      */
@@ -250,10 +249,10 @@ public final class salesReport extends javax.swing.JPanel {
         title2.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$SalesTracking;"
                 + "font: 70% bold $h00.font");
-        JLabel[] labels = new JLabel[]{jLabel2,jLabel3,jLabel4};
-        for (var label : labels){
+        JLabel[] labels = new JLabel[]{jLabel2, jLabel3, jLabel4};
+        for (var label : labels) {
             label.putClientProperty(FlatClientProperties.STYLE, ""
-                + "font: $semibold.font;");
+                    + "font: $semibold.font;");
         }
     }
 
@@ -508,8 +507,6 @@ public final class salesReport extends javax.swing.JPanel {
     private customization.cButton btnPrint;
     private customization.cButton btnReset;
     private com.toedter.calendar.JDateChooser endDate;
-    private javax.swing.JPanel header;
-    private javax.swing.JPanel header1;
     private javax.swing.JPanel header2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -519,8 +516,6 @@ public final class salesReport extends javax.swing.JPanel {
     private javax.swing.JTable loadSalesReport;
     private com.toedter.calendar.JDateChooser startDate;
     private javax.swing.JComboBox<String> statusFilter;
-    private javax.swing.JLabel title;
-    private javax.swing.JLabel title1;
     private javax.swing.JLabel title2;
     // End of variables declaration//GEN-END:variables
 }

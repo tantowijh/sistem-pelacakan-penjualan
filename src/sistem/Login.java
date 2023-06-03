@@ -1,23 +1,15 @@
 package sistem;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.util.UIScale;
 import customization.cResetter;
 import koneksi.database;
 import koneksi.loginSession;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.awt.LayoutManager;
 import java.sql.*;
-import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -244,12 +236,15 @@ public final class Login extends javax.swing.JFrame {
                 + "hoverBackground:$Login.loginButton.hover;"
                 + "pressedBackground:$Login.loginButton.pressed;"
                 + "arc:10");
-        exitNow.putClientProperty(FlatClientProperties.STYLE, ""
-                + "background:$Button.default.background;"
-                + "foreground:$Button.default.foreground;"
-                + "hoverBackground:$Button.default.hover;"
-                + "pressedBackground:$Button.default.pressed;"
-                + "borderWidth:0");
+        JButton[] btns = new JButton[]{exitNow, hidePass, showPass};
+        for (var btn : btns) {
+            btn.putClientProperty(FlatClientProperties.STYLE, ""
+                    + "background:$Button.default.background;"
+                    + "foreground:$Button.default.foreground;"
+                    + "hoverBackground:$Button.default.hover;"
+                    + "pressedBackground:$Button.default.pressed;"
+                    + "borderWidth:0");
+        }
         fieldUsername.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Username...");
         fieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Password...");
     }
@@ -502,7 +497,7 @@ public final class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        FlatLightLaf.registerCustomDefaultsSource( "customization" );
+        FlatLightLaf.registerCustomDefaultsSource("customization");
         FlatLightLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

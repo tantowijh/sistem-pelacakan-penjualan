@@ -23,11 +23,9 @@ public class dateAndTime {
                 while (isRunning) {
                     LocalDateTime currentDateTime = LocalDateTime.now();
                     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("EEEE, MMM dd, yyyy");
-                    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
                     String formattedDate = currentDateTime.format(dateFormatter);
-                    String formattedTime = currentDateTime.format(timeFormatter);
                     
-                    labelType.setText("Date: " + formattedDate);
+                    labelType.setText(formattedDate);
                     
                     try {
                         Thread.sleep(1000);
@@ -41,12 +39,10 @@ public class dateAndTime {
             Thread thread = new Thread(() -> {
                 while (isRunning) {
                     LocalDateTime currentDateTime = LocalDateTime.now();
-                    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("EEEE, MMM dd, yyyy");
                     DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-                    String formattedDate = currentDateTime.format(dateFormatter);
                     String formattedTime = currentDateTime.format(timeFormatter);
                     
-                    labelType.setText("Time: " + formattedTime);
+                    labelType.setText(formattedTime);
                     
                     try {
                         Thread.sleep(1000);
