@@ -220,8 +220,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         header = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(756, 435));
-
         userOptions.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         userOptions.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
 

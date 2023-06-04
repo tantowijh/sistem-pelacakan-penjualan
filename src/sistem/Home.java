@@ -162,9 +162,10 @@ public final class Home extends javax.swing.JFrame {
         logOut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 650));
-        setPreferredSize(new java.awt.Dimension(800, 650));
-        setSize(new java.awt.Dimension(800, 650));
+        setBounds(new java.awt.Rectangle(0, 0, 920, 650));
+        setMinimumSize(new java.awt.Dimension(920, 650));
+        setPreferredSize(new java.awt.Dimension(920, 650));
+        setSize(new java.awt.Dimension(920, 650));
 
         mainForm.setPreferredSize(new java.awt.Dimension(800, 620));
 
@@ -265,8 +266,8 @@ public final class Home extends javax.swing.JFrame {
         menuBox.setLayout(menuBoxLayout);
         menuBoxLayout.setHorizontalGroup(
             menuBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuBoxLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBoxLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(menuHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -278,7 +279,7 @@ public final class Home extends javax.swing.JFrame {
                 .addComponent(menuLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+                .addContainerGap())
         );
         menuBoxLayout.setVerticalGroup(
             menuBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,9 +297,7 @@ public final class Home extends javax.swing.JFrame {
 
         mainContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         mainContainer.setOpaque(false);
-        mainContainer.setLayout(new javax.swing.BoxLayout(mainContainer, javax.swing.BoxLayout.LINE_AXIS));
 
-        homePanel.setMinimumSize(new java.awt.Dimension(756, 435));
         homePanel.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 48)); // NOI18N
@@ -330,7 +329,7 @@ public final class Home extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(368, Short.MAX_VALUE))
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,12 +340,21 @@ public final class Home extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
 
-        mainContainer.add(homePanel);
+        javax.swing.GroupLayout mainContainerLayout = new javax.swing.GroupLayout(mainContainer);
+        mainContainer.setLayout(mainContainerLayout);
+        mainContainerLayout.setHorizontalGroup(
+            mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(homePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        mainContainerLayout.setVerticalGroup(
+            mainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(homePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         footer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         footer.setOpaque(false);
@@ -437,7 +445,7 @@ public final class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(menuBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addComponent(mainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -447,7 +455,7 @@ public final class Home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, 1039, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
