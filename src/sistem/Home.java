@@ -162,9 +162,11 @@ public final class Home extends javax.swing.JFrame {
         logOut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 620));
-        setPreferredSize(new java.awt.Dimension(800, 620));
-        setSize(new java.awt.Dimension(800, 620));
+        setMinimumSize(new java.awt.Dimension(800, 650));
+        setPreferredSize(new java.awt.Dimension(800, 650));
+        setSize(new java.awt.Dimension(800, 650));
+
+        mainForm.setPreferredSize(new java.awt.Dimension(800, 620));
 
         menuBox.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         menuBox.setOpaque(false);
@@ -449,7 +451,7 @@ public final class Home extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainForm, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
         );
 
         pack();
