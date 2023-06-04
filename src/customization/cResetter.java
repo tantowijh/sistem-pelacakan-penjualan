@@ -4,6 +4,7 @@
  */
 package customization;
 
+import java.text.NumberFormat;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -76,6 +77,9 @@ public class cResetter {
                 return;
             }
 
+            // Hilangkan spasi dan tanda hubung dari string masukan, namun tetap memperbolehkan tanda tambah (+)
+            str = str.replaceAll("[\\s-]+", "").replaceFirst("^\\+", "");
+
             try {
                 Double.valueOf(str);
             } catch (NumberFormatException e) {
@@ -121,6 +125,25 @@ public class cResetter {
 
     public static void makeTableNonEditable(JTable table) {
         table.setDefaultEditor(Object.class, null);
+    }
+
+    public static String formatPhoneNumber(String phoneNumber) {
+        // Remove all non-digit characters from the input phone number
+        phoneNumber = phoneNumber.replaceAll("\\D+", "");
+
+        // If the phone number is less than 10 digits, return the input string as is
+        if (phoneNumber.length() < 10) {
+            return phoneNumber;
+        }
+
+        // Format the phone number input as (XXX) XXX-XXXX
+        NumberFormat phoneFormat = NumberFormat.getInstance();
+        phoneFormat.setMaximumFractionDigits(0);
+        phoneFormat.setGroupingUsed(false);
+        String formattedPhoneNumber = phoneFormat.format(Long.parseLong(phoneNumber));
+        formattedPhoneNumber = "(" + formattedPhoneNumber.substring(0, 3) + ") " + formattedPhoneNumber.substring(3, 6) + "-" + formattedPhoneNumber.substring(6);
+
+        return formattedPhoneNumber;
     }
 
 }

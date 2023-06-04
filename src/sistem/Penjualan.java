@@ -841,11 +841,15 @@ public class Penjualan extends javax.swing.JPanel {
             String productId = result.get("product_id");
             String quantity = result.get("quantity");
             String date = result.get("date");
+            
             selectedQuantity = Integer.parseInt(quantity);
             selectedDate = date;
+            
+            String payment_status = loadSales.getValueAt(baris, 6).toString();
 
             customerAndID.setSelectedItem(customerId);
             kodeAndProduct.setSelectedItem(productId);
+            statusPembayaran.setSelectedItem(payment_status);
             productQuantity.setText(quantity);
         }
     }//GEN-LAST:event_loadSalesMouseClicked

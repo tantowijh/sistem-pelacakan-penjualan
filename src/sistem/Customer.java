@@ -97,9 +97,7 @@ public final class Customer extends javax.swing.JPanel {
     public void startCounting(JTable customerTable) {
         populateCustomerTable(customerTable);
 
-        try (Connection conn = (Connection) koneksi.database.dbConfig(); 
-                PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS customerCount FROM customers"); 
-                ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = (Connection) koneksi.database.dbConfig(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS customerCount FROM customers"); ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 int count = rs.getInt("customerCount");
@@ -349,7 +347,7 @@ public final class Customer extends javax.swing.JPanel {
 
         // Set the permission settings
         new customization.cResetter().setBlockedButton(new JButton[]{csAdd, csUp, csDel});
-        
+
         title.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$SalesTracking;"
                 + "font: 70% bold $h00.font");
@@ -726,10 +724,12 @@ public final class Customer extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Customer dengan email " + csEmail.getText() + " sudah ada!");
         } else {
             // Add the new customer to the database
-            if (csfName.getText().isEmpty() || csPhone.getText().isEmpty() || csEmail.getText().isEmpty() || csAddress.getText().isEmpty()) {
+            if (csfName.getText().trim().isEmpty() || csPhone.getText().isEmpty() || csEmail.getText().isEmpty() || csAddress.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Isi semua data informasi terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                insertCustomerData(generateCustomerID(), csfName.getText(), cslName.getText(), csEmail.getText(), csPhone.getText(), csAddress.getText(), customerTable);
+                String phoneNumber = cResetter.formatPhoneNumber(csPhone.getText());
+                String lastName = cslName.getText().trim();
+                insertCustomerData(generateCustomerID(), csfName.getText().trim(), lastName, csEmail.getText().toLowerCase(), phoneNumber, csAddress.getText(), customerTable);
             }
         }
         startCounting(customerTable);
@@ -738,10 +738,12 @@ public final class Customer extends javax.swing.JPanel {
 
     private void csUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csUpActionPerformed
         if (selectedID != null) {
-            if (csfName.getText().isEmpty() || csPhone.getText().isEmpty() || csEmail.getText().isEmpty() || csAddress.getText().isEmpty()) {
+            if (csfName.getText().trim().isEmpty() || csPhone.getText().isEmpty() || csEmail.getText().isEmpty() || csAddress.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Isi semua data informasi terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                updateCustomerData(selectedID, csfName.getText(), cslName.getText(), csPhone.getText(), csEmail.getText(), csAddress.getText(), customerTable);
+                String phoneNumber = cResetter.formatPhoneNumber(csPhone.getText());
+                String lastName = cslName.getText().trim();
+                updateCustomerData(selectedID, csfName.getText().trim(), lastName, phoneNumber, csEmail.getText().toLowerCase(), csAddress.getText(), customerTable);
             }
             selectedID = null;
         } else {
@@ -782,6 +784,7 @@ public final class Customer extends javax.swing.JPanel {
             String lname = customerTable.getValueAt(baris, 2).toString();
             cslName.setText(lname);
             String phone = customerTable.getValueAt(baris, 3).toString();
+            phone = phone.replaceAll("\\D+", "");
             csPhone.setText(phone);
             String email = customerTable.getValueAt(baris, 4).toString();
             csEmail.setText(email);
