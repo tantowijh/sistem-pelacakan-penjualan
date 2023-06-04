@@ -225,17 +225,14 @@ public final class Login extends javax.swing.JFrame {
     public void init() {
         loginPanel.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.background;");
-        fieldUsername.putClientProperty(FlatClientProperties.STYLE, ""
-                + "border:2,14,2,14;");
         fieldPassword.putClientProperty(FlatClientProperties.STYLE, ""
-                + "showCapsLock:true;"
-                + "border:2,14,2,14;");
+                + "showCapsLock:true;");
         btn_login.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Login.loginButton.background;"
                 + "foreground:$Login.loginButton.foreground;"
                 + "hoverBackground:$Login.loginButton.hover;"
                 + "pressedBackground:$Login.loginButton.pressed;"
-                + "arc:10");
+                + "arc:10;");
         JButton[] btns = new JButton[]{exitNow, hidePass, showPass};
         for (var btn : btns) {
             btn.putClientProperty(FlatClientProperties.STYLE, ""
@@ -243,7 +240,7 @@ public final class Login extends javax.swing.JFrame {
                     + "foreground:$Button.default.foreground;"
                     + "hoverBackground:$Button.default.hover;"
                     + "pressedBackground:$Button.default.pressed;"
-                    + "borderWidth:0");
+                    + "borderWidth:0;");
         }
         fieldUsername.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Username...");
         fieldPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Password...");
@@ -269,6 +266,11 @@ public final class Login extends javax.swing.JFrame {
         svg.btnIconSet(btn_login, "icon/login/Login.svg");
         svg.btnIconSet(exitNow, "icon/login/Cancel.svg");
         svg.btnIconColorSet(hidePass, "icon/login/Invisible.svg", btn_login.getBackground());
+        hidePass.putClientProperty(FlatClientProperties.STYLE, ""
+                + "background:$Login.hidePassActive;"
+                + "hoverBackground:$Login.hidePassActive;"
+                + "pressedBackground:$Login.hidePassActive;"
+                + "arc:5;");
         svg.btnIconColorSet(showPass, "icon/login/Visible.svg", btn_login.getBackground());
         svg.frameIcon(this, "icon/bsilogo.svg");
     }

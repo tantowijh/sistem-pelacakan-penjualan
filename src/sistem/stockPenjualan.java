@@ -107,6 +107,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
         new customization.cResetter().setBlockedButton(new JButton[]{btnInsert, btnUpdate, btnDelete});
         
         nBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Nama produk");
+        queryProduct.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Masukkan produk, kode, stock...");
         jBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"0");
         hBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"0.0");
         title.putClientProperty(FlatClientProperties.STYLE, ""
@@ -160,7 +161,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(244, 244, 244)
-                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addGap(243, 243, 243))
         );
         jPanel1Layout.setVerticalGroup(
@@ -170,54 +171,18 @@ public final class stockPenjualan extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        nBarang.setForeground(java.awt.Color.lightGray);
         nBarang.setToolTipText("Masukkan nama produk");
-        nBarang.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                nBarangFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                nBarangFocusLost(evt);
-            }
-        });
 
         kBarang.setEditable(false);
-        kBarang.setForeground(java.awt.Color.lightGray);
         kBarang.setText("Otomatis");
         kBarang.setToolTipText("Automatically generated");
         kBarang.setFocusable(false);
-        kBarang.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                kBarangFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                kBarangFocusLost(evt);
-            }
-        });
 
-        jBarang.setForeground(java.awt.Color.lightGray);
         jBarang.setText("0");
         jBarang.setToolTipText("Masukkan stock produk");
-        jBarang.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jBarangFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jBarangFocusLost(evt);
-            }
-        });
 
-        hBarang.setForeground(java.awt.Color.lightGray);
         hBarang.setText("0.0");
         hBarang.setToolTipText("Masukkan harga produk");
-        hBarang.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                hBarangFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                hBarangFocusLost(evt);
-            }
-        });
 
         btnInsert.setBackground(new java.awt.Color(153, 153, 0));
         btnInsert.setText("Insert");
@@ -270,17 +235,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         jLabel6.setText("Cari");
 
-        queryProduct.setForeground(java.awt.Color.lightGray);
-        queryProduct.setText("Pencarian produk...");
-        queryProduct.setToolTipText("Masukkan produk, kode, stock atau harga");
-        queryProduct.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                queryProductFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                queryProductFocusLost(evt);
-            }
-        });
+        queryProduct.setToolTipText("");
         queryProduct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 queryProductKeyReleased(evt);
@@ -321,20 +276,19 @@ public final class stockPenjualan extends javax.swing.JPanel {
                             .addComponent(jLabel4))
                         .addGap(24, 24, 24))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnInsert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(hBarang)
-                        .addComponent(queryProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(queryProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(hBarang)
                     .addComponent(jLabel5))
                 .addContainerGap())
         );
@@ -355,23 +309,139 @@ public final class stockPenjualan extends javax.swing.JPanel {
                     .addComponent(hBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(queryProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
+        loadStock.setAutoCreateRowSorter(true);
         loadStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "No", "Nama Produk", "Kode Produk", "Stock Produk", "Harga Produk"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        loadStock.getTableHeader().setReorderingAllowed(false);
         loadStock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loadStockMouseClicked(evt);
@@ -403,38 +473,6 @@ public final class stockPenjualan extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void hBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hBarangFocusLost
-        setFill(hBarang, "0.0");
-    }//GEN-LAST:event_hBarangFocusLost
-
-    private void hBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hBarangFocusGained
-        setNull(hBarang, "0.0");
-    }//GEN-LAST:event_hBarangFocusGained
-
-    private void jBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBarangFocusLost
-        setFill(jBarang, "0");
-    }//GEN-LAST:event_jBarangFocusLost
-
-    private void jBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBarangFocusGained
-        setNull(jBarang, "0");
-    }//GEN-LAST:event_jBarangFocusGained
-
-    private void kBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kBarangFocusLost
-        setFill(kBarang, "Kode produk");
-    }//GEN-LAST:event_kBarangFocusLost
-
-    private void kBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kBarangFocusGained
-        setNull(kBarang, "Kode produk");
-    }//GEN-LAST:event_kBarangFocusGained
-
-    private void nBarangFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nBarangFocusLost
-        setFill(nBarang, "Nama produk");
-    }//GEN-LAST:event_nBarangFocusLost
-
-    private void nBarangFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nBarangFocusGained
-        setNull(nBarang, "Nama produk");
-    }//GEN-LAST:event_nBarangFocusGained
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         String kode = generateProductKode();
@@ -475,14 +513,6 @@ public final class stockPenjualan extends javax.swing.JPanel {
         JTextField[] fields = new JTextField[]{queryProduct};
         stock.tableSearch(loadStock, fields);
     }//GEN-LAST:event_queryProductKeyReleased
-
-    private void queryProductFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_queryProductFocusGained
-        setNull(queryProduct, "Pencarian produk...");
-    }//GEN-LAST:event_queryProductFocusGained
-
-    private void queryProductFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_queryProductFocusLost
-        setFill(queryProduct, "Pencarian produk...");
-    }//GEN-LAST:event_queryProductFocusLost
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         JTextField[] fields = new JTextField[]{nBarang, jBarang, hBarang};
