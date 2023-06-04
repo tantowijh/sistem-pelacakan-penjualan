@@ -5,6 +5,7 @@
 package customization;
 
 import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -116,6 +117,10 @@ public class cResetter {
                 button.setToolTipText("Anda tidak mempunyai akses untuk " + button.getText() + "!");
             }
         }
+    }
+
+    public static void makeTableNonEditable(JTable table) {
+        table.setDefaultEditor(Object.class, null);
     }
 
 }

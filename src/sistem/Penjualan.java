@@ -5,6 +5,7 @@
 package sistem;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import customization.cResetter;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Map;
@@ -242,6 +243,7 @@ public class Penjualan extends javax.swing.JPanel {
      */
     public Penjualan() {
         initComponents();
+        cResetter.makeTableNonEditable(loadSales);
         loadCustomerIDs(customerAndID);
         loadProductKodes(kodeAndProduct);
 

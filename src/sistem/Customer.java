@@ -5,6 +5,7 @@
 package sistem;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import customization.cResetter;
 import java.util.HashSet;
 import java.sql.*;
 import javax.swing.JButton;
@@ -341,6 +342,7 @@ public final class Customer extends javax.swing.JPanel {
      */
     public Customer() {
         initComponents();
+        cResetter.makeTableNonEditable(customerTable);
         startCounting(customerTable);
         existingValuesLoader();
         new customization.cResetter().setPhoneAddress(new JTextField[]{csPhone});

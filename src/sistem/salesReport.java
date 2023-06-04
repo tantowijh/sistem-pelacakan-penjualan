@@ -26,6 +26,7 @@ import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import customization.cResetter;
 
 /**
  *
@@ -244,6 +245,7 @@ public final class salesReport extends javax.swing.JPanel {
      */
     public salesReport() {
         initComponents();
+        cResetter.makeTableNonEditable(loadSalesReport);
         loadSalesData(loadSalesReport);
         initialDate();
         title2.putClientProperty(FlatClientProperties.STYLE, ""

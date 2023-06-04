@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import koneksi.koneksiStock;
+import customization.cResetter;
 
 /**
  *
@@ -97,6 +98,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
      */
     public stockPenjualan() {
         initComponents();
+        cResetter.makeTableNonEditable(loadStock);
         existingValuesLoader();
         stock.loadStockPenjualan(loadStock);
         setNumber.intNumber(new JTextField[]{jBarang});
