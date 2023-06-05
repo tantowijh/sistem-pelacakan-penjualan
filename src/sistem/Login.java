@@ -272,7 +272,7 @@ public final class Login extends javax.swing.JFrame {
                 + "pressedBackground:$Login.hidePassActive;"
                 + "arc:5;");
         svg.btnIconColorSet(showPass, "icon/login/Visible.svg", btn_login.getBackground());
-        svg.frameIcon(this, "icon/bsilogo.svg");
+        svg.frameIcon(this, "icon/Towdio.svg");
     }
 
     /**

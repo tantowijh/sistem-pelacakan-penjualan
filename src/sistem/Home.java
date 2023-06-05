@@ -103,7 +103,7 @@ public final class Home extends javax.swing.JFrame {
         setSVG.labelIconColorSet(logOut, "icon/menu/Logout.svg", logout);
         Color logname = UIManager.getColor("Main.form.nameColor");
         setSVG.labelIconColorSet(LoginSession, "icon/menu/Name.svg", logname);
-        setSVG.frameIcon(this, "icon/bsilogo.svg");
+        setSVG.frameIcon(this, "icon/Towdio.svg");
     }
     
     public void init(){
