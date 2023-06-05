@@ -27,6 +27,8 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import customization.cResetter;
+import javax.swing.BorderFactory;
+import javax.swing.UIManager;
 
 /**
  *
@@ -248,7 +250,7 @@ public final class salesReport extends javax.swing.JPanel {
         cResetter.makeTableNonEditable(loadSalesReport);
         loadSalesData(loadSalesReport);
         initialDate();
-        title2.putClientProperty(FlatClientProperties.STYLE, ""
+        title.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$SalesTracking;"
                 + "font: 70% bold $h00.font");
         JLabel[] labels = new JLabel[]{jLabel2, jLabel3, jLabel4};
@@ -256,6 +258,8 @@ public final class salesReport extends javax.swing.JPanel {
             label.putClientProperty(FlatClientProperties.STYLE, ""
                     + "font: $semibold.font;");
         }
+        
+        header.setBorder(BorderFactory.createLineBorder(UIManager.getColor("Title.borderColor")));
     }
 
     /**
@@ -267,8 +271,6 @@ public final class salesReport extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        header2 = new javax.swing.JPanel();
-        title2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         loadSalesReport = new javax.swing.JTable();
@@ -281,29 +283,8 @@ public final class salesReport extends javax.swing.JPanel {
         btnFilter = new customization.cButton();
         btnReset = new customization.cButton();
         jLabel4 = new javax.swing.JLabel();
-
-        header2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        header2.setPreferredSize(new java.awt.Dimension(630, 36));
-
-        title2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title2.setText("LAPORAN");
-
-        javax.swing.GroupLayout header2Layout = new javax.swing.GroupLayout(header2);
-        header2.setLayout(header2Layout);
-        header2Layout.setHorizontalGroup(
-            header2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(header2Layout.createSequentialGroup()
-                .addGap(244, 244, 244)
-                .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                .addGap(243, 243, 243))
-        );
-        header2Layout.setVerticalGroup(
-            header2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-        );
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        header = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
 
         loadSalesReport.setAutoCreateRowSorter(true);
         loadSalesReport.setModel(new javax.swing.table.DefaultTableModel(
@@ -323,17 +304,13 @@ public final class salesReport extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
         );
 
         btnPrint.setText("Print Reports");
@@ -377,6 +354,26 @@ public final class salesReport extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         jLabel4.setText("Status");
 
+        header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        title.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("LAPORAN");
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(244, 244, 244)
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(243, 243, 243))
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -385,7 +382,6 @@ public final class salesReport extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(header2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -402,18 +398,19 @@ public final class salesReport extends javax.swing.JPanel {
                                 .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -510,7 +507,7 @@ public final class salesReport extends javax.swing.JPanel {
     private customization.cButton btnPrint;
     private customization.cButton btnReset;
     private com.toedter.calendar.JDateChooser endDate;
-    private javax.swing.JPanel header2;
+    private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -519,6 +516,6 @@ public final class salesReport extends javax.swing.JPanel {
     private javax.swing.JTable loadSalesReport;
     private com.toedter.calendar.JDateChooser startDate;
     private javax.swing.JComboBox<String> statusFilter;
-    private javax.swing.JLabel title2;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

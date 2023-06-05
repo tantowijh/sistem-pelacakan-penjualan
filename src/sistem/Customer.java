@@ -8,10 +8,12 @@ import com.formdev.flatlaf.FlatClientProperties;
 import customization.cResetter;
 import java.util.HashSet;
 import java.sql.*;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -367,6 +369,8 @@ public final class Customer extends javax.swing.JPanel {
                 + "font: 70% bold $h00.font");
         custCountDisplay.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$SalesTracking;");
+        
+        jPanel1.setBorder(BorderFactory.createLineBorder(UIManager.getColor("Title.borderColor")));
     }
 
     /**
@@ -403,7 +407,7 @@ public final class Customer extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         csEmail = new javax.swing.JTextField();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         title.setBackground(new java.awt.Color(241, 255, 255));
         title.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -423,8 +427,6 @@ public final class Customer extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel3.setText("Customer Information");
@@ -645,7 +647,7 @@ public final class Customer extends javax.swing.JPanel {
                                     .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                     .addComponent(csEmail)
                                     .addComponent(csPhone)
                                     .addComponent(cslName)
@@ -660,7 +662,7 @@ public final class Customer extends javax.swing.JPanel {
                                         .addComponent(csDel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(csClear, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE))))
                         .addGap(10, 10, 10))))
         );
         jPanel2Layout.setVerticalGroup(

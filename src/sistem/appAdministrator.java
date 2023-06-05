@@ -17,6 +17,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -185,6 +186,8 @@ public final class appAdministrator extends javax.swing.JPanel {
         pencarianUser.putClientProperty(FlatClientProperties.TEXT_FIELD_TRAILING_ICON, 
                 cSVG.getIconWithColor("icon/user/Search.svg", 
                         25, 25, UIManager.getColor("SalesTracking")));
+        
+        header.setBorder(BorderFactory.createLineBorder(UIManager.getColor("Title.borderColor")));
 
     }
 
@@ -223,7 +226,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         header = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
 
-        userOptions.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         userOptions.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
@@ -261,7 +263,7 @@ public final class appAdministrator extends javax.swing.JPanel {
                 .addGap(169, 169, 169)
                 .addGroup(appUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passNew, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                    .addComponent(passNew, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                     .addComponent(passNow, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, appUserLayout.createSequentialGroup()
                         .addGroup(appUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -406,13 +408,13 @@ public final class appAdministrator extends javax.swing.JPanel {
                             .addGroup(appUserManagementLayout.createSequentialGroup()
                                 .addComponent(adm_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(adm_reset, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                                .addComponent(adm_reset, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(adm_delete, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
                             .addComponent(userRoleOptions, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(40, 40, 40)))
                 .addGroup(appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                     .addGroup(appUserManagementLayout.createSequentialGroup()
                         .addComponent(editCheckbox)
                         .addGap(18, 18, 18)
@@ -449,7 +451,7 @@ public final class appAdministrator extends javax.swing.JPanel {
                                     .addComponent(adm_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(adm_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(adm_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 75, Short.MAX_VALUE))
+                        .addGap(0, 79, Short.MAX_VALUE))
                     .addGroup(appUserManagementLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))

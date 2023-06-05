@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import koneksi.koneksiStock;
 import customization.cResetter;
+import javax.swing.BorderFactory;
+import javax.swing.UIManager;
 
 /**
  *
@@ -120,6 +122,8 @@ public final class stockPenjualan extends javax.swing.JPanel {
             label.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font: $semibold.font");
         }
+        
+        jPanel1.setBorder(BorderFactory.createLineBorder(UIManager.getColor("Title.borderColor")));
     }
 
     /**
@@ -170,8 +174,6 @@ public final class stockPenjualan extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         nBarang.setToolTipText("Masukkan nama produk");
 
@@ -471,7 +473,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

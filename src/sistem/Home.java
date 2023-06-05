@@ -63,8 +63,10 @@ public final class Home extends javax.swing.JFrame {
     }
 
     private void keluarAplikasi() {
-        int dialogButton = JOptionPane.WARNING_MESSAGE;
-        int dialogResult = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", "Peringatan", dialogButton);
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogType = JOptionPane.WARNING_MESSAGE;
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar?", 
+                "Peringatan", dialogButton, dialogType);
         if (dialogResult == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
@@ -172,7 +174,7 @@ public final class Home extends javax.swing.JFrame {
 
         mainForm.setPreferredSize(new java.awt.Dimension(800, 620));
 
-        menuBox.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        menuBox.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         menuBox.setOpaque(false);
 
         menuHome.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
@@ -304,7 +306,7 @@ public final class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        mainContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         mainContainer.setOpaque(false);
 
         homePanel.setOpaque(false);
@@ -365,7 +367,7 @@ public final class Home extends javax.swing.JFrame {
             .addComponent(homePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        footer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        footer.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         footer.setOpaque(false);
 
         LoginSession.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
@@ -502,7 +504,7 @@ public final class Home extends javax.swing.JFrame {
     private void logOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logOutMouseClicked
         int logout = JOptionPane.showConfirmDialog(null,
             "Anda akan logout dari sesi sekarang! Lanjutkan?",
-            "Peringatan!", JOptionPane.WARNING_MESSAGE);
+            "Peringatan!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
         if (logout == JOptionPane.OK_OPTION) {
             // Hide the current JFrame
             this.setVisible(false);

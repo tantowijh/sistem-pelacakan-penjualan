@@ -85,7 +85,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
+                <EtchetBorder bevelType="0"/>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -309,7 +309,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
+                <EtchetBorder bevelType="0"/>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -418,7 +418,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
+                <EtchetBorder bevelType="0"/>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>

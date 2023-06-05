@@ -77,13 +77,6 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel1">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-            <EtchetBorder/>
-          </Border>
-        </Property>
-      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -97,7 +90,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="customerAndID" min="-2" pref="78" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="csfullname" pref="163" max="32767" attributes="0"/>
+                                  <Component id="csfullname" pref="165" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -106,7 +99,7 @@
                               <Component id="kodeAndProduct" min="-2" pref="76" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="productname" pref="170" max="32767" attributes="0"/>
+                          <Component id="productname" pref="172" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="productQuantity" min="-2" pref="91" max="-2" attributes="0"/>
@@ -199,15 +192,15 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="removeInDB" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" pref="270" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="274" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jumlahPenjualan" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="totalPenjualan" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="resetBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

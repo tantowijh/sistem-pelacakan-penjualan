@@ -15,6 +15,7 @@
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
             <word>accentColor</word>
+            <word>borderColor</word>
             <word>cancelButton</word>
             <word>FB</word>
             <word>hoverBackground</word>

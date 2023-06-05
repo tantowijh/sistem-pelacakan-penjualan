@@ -41,11 +41,6 @@
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="userOptions">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-            <EtchetBorder/>
-          </Border>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="13" style="1"/>
         </Property>
@@ -80,7 +75,7 @@
                       <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="btnUpdate" max="32767" attributes="0"/>
-                          <Component id="passNew" alignment="0" pref="383" max="32767" attributes="0"/>
+                          <Component id="passNew" alignment="0" pref="387" max="32767" attributes="0"/>
                           <Component id="passNow" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -205,7 +200,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="adm_tambah" pref="75" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                      <Component id="adm_reset" pref="75" max="32767" attributes="0"/>
+                                      <Component id="adm_reset" pref="77" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                       <Component id="adm_delete" pref="77" max="32767" attributes="0"/>
                                   </Group>
@@ -215,7 +210,7 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" pref="437" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="439" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="editCheckbox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -261,7 +256,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="75" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
