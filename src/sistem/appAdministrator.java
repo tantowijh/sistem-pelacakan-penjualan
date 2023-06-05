@@ -6,6 +6,7 @@ package sistem;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import customization.cResetter;
+import customization.cSVG;
 import java.awt.Color;
 import koneksi.koneksiAdmin;
 import java.awt.Cursor;
@@ -21,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import koneksi.loginSession;
@@ -160,7 +162,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         customization.cSVG svg = new customization.cSVG();
         svg.tabPanelIcon(userOptions, 0, "icon/user/User.svg");
         svg.tabPanelIcon(userOptions, 1, "icon/user/AddUser.svg");
-        svg.labelIconColorSet(searchIcon, "icon/user/Search.svg", new Color(243,114,33));
         
         title.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$SalesTracking;"
@@ -181,6 +182,9 @@ public final class appAdministrator extends javax.swing.JPanel {
         passNow.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Masukkan password sekarang...");
         passNew.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Masukkan password baru...");
         pencarianUser.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Pencarian user...");
+        pencarianUser.putClientProperty(FlatClientProperties.TEXT_FIELD_TRAILING_ICON, 
+                cSVG.getIconWithColor("icon/user/Search.svg", 
+                        25, 25, UIManager.getColor("SalesTracking")));
 
     }
 
@@ -208,7 +212,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         userDetail = new javax.swing.JLabel();
         adm_username = new javax.swing.JTextField();
         userRoleOptions = new javax.swing.JComboBox<>();
-        searchIcon = new javax.swing.JLabel();
         infoName1 = new javax.swing.JLabel();
         infoName2 = new javax.swing.JLabel();
         infoName3 = new javax.swing.JLabel();
@@ -339,14 +342,6 @@ public final class appAdministrator extends javax.swing.JPanel {
 
         userRoleOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user"}));
 
-        searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
-        searchIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        searchIcon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searchIconMouseClicked(evt);
-            }
-        });
-
         infoName1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         infoName1.setText("Role");
 
@@ -421,22 +416,17 @@ public final class appAdministrator extends javax.swing.JPanel {
                     .addGroup(appUserManagementLayout.createSequentialGroup()
                         .addComponent(editCheckbox)
                         .addGap(18, 18, 18)
-                        .addComponent(pencarianUser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchIcon)
-                        .addGap(11, 11, 11)))
+                        .addComponent(pencarianUser)))
                 .addContainerGap())
         );
         appUserManagementLayout.setVerticalGroup(
             appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appUserManagementLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(pencarianUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(userDetail)
-                        .addComponent(editCheckbox))
-                    .addComponent(searchIcon))
+                .addGroup(appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(pencarianUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userDetail)
+                    .addComponent(editCheckbox))
                 .addGroup(appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(appUserManagementLayout.createSequentialGroup()
                         .addGroup(appUserManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -577,10 +567,6 @@ public final class appAdministrator extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_loadUsersMouseClicked
 
-    private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
-        pencarianUser.requestFocus();
-    }//GEN-LAST:event_searchIconMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customization.cButton adm_delete;
@@ -603,7 +589,6 @@ public final class appAdministrator extends javax.swing.JPanel {
     private javax.swing.JTextField passNew;
     private javax.swing.JTextField passNow;
     private javax.swing.JTextField pencarianUser;
-    private javax.swing.JLabel searchIcon;
     private javax.swing.JLabel showUsername;
     private javax.swing.JLabel title;
     private javax.swing.JLabel userDetail;

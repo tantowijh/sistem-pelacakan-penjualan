@@ -240,39 +240,53 @@ public final class Customer extends javax.swing.JPanel {
     }
 
     public static void deleteCustomerData(String customerID, JTable customerTable) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            try (Connection conn = (Connection) koneksi.database.dbConfig()) {
-                // Delete the customer data from the "customers" table
-                String sql = "DELETE FROM customers WHERE customer_id = ?";
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.setString(1, customerID);
-                pstmt.executeUpdate();
-                // Load the customer data from the "customers" table
-                sql = "SELECT * FROM customers";
-                ResultSet rs = pstmt.executeQuery(sql);
-                ResultSetMetaData meta = rs.getMetaData();
-                // Create a table model with the customer data
-                DefaultTableModel model = new DefaultTableModel();
-                String[] columnNames = {"Customer ID", "First Name", "Last Name", "Phone", "Email", "Address"};
-                for (int i = 0; i <= meta.getColumnCount() - 1; i++) {
-                    model.addColumn(columnNames[i]);
-                }
-                while (rs.next()) {
-                    Object[] rowData = new Object[meta.getColumnCount()];
-                    for (int i = 1; i <= meta.getColumnCount(); i++) {
-                        rowData[i - 1] = rs.getObject(i);
-                    }
-                    model.addRow(rowData);
-                }
-                // Set the model of the customerTable
-                customerTable.setModel(model);
-                // Show message dialog to indicate that a customer has been deleted
-                JOptionPane.showMessageDialog(null, "Customer berhasil dihapus!");
-                // Close the connection
+        try (Connection conn = (Connection) koneksi.database.dbConfig()) {
+            String sql = "SELECT first_name, last_name FROM customers WHERE customer_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, customerID);
+            ResultSet res = pstmt.executeQuery();
+            String customer = null;
+            if (res.next()) {
+                customer = res.getString("first_name") + " " + res.getString("last_name");
             }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.getMessage();
+            int yesDelete = JOptionPane.showConfirmDialog(null,
+                    "Anda yakin ingin menghapus " + customer
+                    + " dengan customer id " + customerID + " ?",
+                    "Peringatan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (yesDelete == JOptionPane.NO_OPTION) {
+                return;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        try (Connection conn = (Connection) koneksi.database.dbConfig()) {
+            String sql = "DELETE FROM customers WHERE customer_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, customerID);
+            pstmt.executeUpdate();
+
+            sql = "SELECT * FROM customers";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            DefaultTableModel model = new DefaultTableModel();
+            String[] columnNames = {"Customer ID", "First Name", "Last Name", "Phone", "Email", "Address"};
+            for (int i = 0; i < columnNames.length; i++) {
+                model.addColumn(columnNames[i]);
+            }
+            while (rs.next()) {
+                Object[] rowData = new Object[columnNames.length];
+                for (int i = 1; i <= columnNames.length; i++) {
+                    rowData[i - 1] = rs.getObject(i);
+                }
+                model.addRow(rowData);
+            }
+            customerTable.setModel(model);
+            JOptionPane.showMessageDialog(null, "Customer berhasil dihapus!");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

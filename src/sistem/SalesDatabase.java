@@ -146,6 +146,23 @@ public class SalesDatabase {
     }
 
     public void deleteSale(int id) {
+        try(PreparedStatement stt = conn.prepareStatement("SELECT * FROM sales WHERE id = ?")){
+            stt.setInt(1, id);
+            ResultSet rs = stt.executeQuery();
+            while (rs.next()){
+                int delete = JOptionPane.showConfirmDialog(null, 
+                        "Anda yakin ingin menghapus penjualan dengan produk "
+                                + rs.getString("product") 
+                                + " atas nama "
+                                + rs.getString("customer"),
+                        "Peringatan!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if (delete == JOptionPane.NO_OPTION){
+                    return;
+                }
+            }
+        } catch (SQLException e){
+            e.getMessage();
+        }
         try {
             String sql = "DELETE FROM sales WHERE id=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);

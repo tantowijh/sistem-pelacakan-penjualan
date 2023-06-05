@@ -32,21 +32,21 @@ public class koneksiAdmin {
     // method untuk mengubah password dengan param textField
     public void changePass(JTextField[] textFields) {
         loginSession.setAccess(true);
-        if (!loginSession.getPassword().equals(textFields[0].getText())) {
+        if (!loginSession.getPassword().equals(textFields[0].getText().trim())) {
             JOptionPane.showMessageDialog(null,
                     "Password sekarang tidak sesuai!",
                     "Kesalahan", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        if (textFields[1].getText().isEmpty() || textFields[1].getText().equals("Masukkan password baru")) {
+        if (textFields[1].getText().trim().isEmpty() || textFields[1].getText().equals("Masukkan password baru")) {
             JOptionPane.showMessageDialog(null,
                     "Password tidak boleh kosong!",
                     "Kesalahan", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        if (loginSession.getPassword().equals(textFields[1].getText())){
+        if (loginSession.getPassword().equals(textFields[1].getText().trim())){
             resetter.resetFill(textFields);
             JOptionPane.showMessageDialog(null,
                     "Password tidak tidak berubah!",
@@ -58,7 +58,7 @@ public class koneksiAdmin {
             conn = (Connection) database.dbConfig();
             sql = "UPDATE users SET password = ? WHERE username = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, textFields[1].getText());
+            stmt.setString(1, textFields[1].getText().trim());
             stmt.setString(2, loginSession.getUsername());
             int rowsUpdated = stmt.executeUpdate();
 
@@ -518,7 +518,7 @@ public class koneksiAdmin {
 
         if (userID == 0) {
             JOptionPane.showMessageDialog(null,
-                    "Mohon pilih user untuk dihapus!");
+                    "Mohon pilih user untuk dihapus!", "Peringatan!", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -561,6 +561,14 @@ public class koneksiAdmin {
                 JOptionPane.showMessageDialog(null,
                         "Tidak bisa menghapus diri Anda sendiri! ("
                         + loginSession.getUsername() + ")");
+                return;
+            }
+            
+            int delete = JOptionPane.showConfirmDialog(null, "Anda yakin ingin menghapus user "
+                + theUser + " dengan role " + theRole, 
+                "Peringatan!", JOptionPane.YES_NO_OPTION, 
+                JOptionPane.WARNING_MESSAGE);
+            if (delete == JOptionPane.NO_OPTION){
                 return;
             }
         }

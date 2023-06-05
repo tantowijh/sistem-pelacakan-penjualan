@@ -105,5 +105,24 @@ public class cSVG {
         // Set the icon of the JButton to the modified SVG icon
         label.setIcon(new ImageIcon(svgIcon.getImage()));
     }
+    
+    public static FlatSVGIcon getIconWithColor(String svgFilePath, int iconWidth, int iconHeight, Color customColor) {
+        // Create a new FlatSVGIcon with the same size
+        FlatSVGIcon svgIcon = new FlatSVGIcon(svgFilePath, iconWidth, iconHeight);
+
+        // Set the color filter of the icon with the custom color (if it's not null)
+        if (customColor != null) {
+            svgIcon.setColorFilter(new ColorFilter() {
+                @Override
+                public Color filter(Color color) {
+                    // Change the color to the custom color
+                    return customColor;
+                }
+            });
+        }
+
+        // Set the icon to the modified SVG icon
+        return svgIcon;
+    }
 
 }

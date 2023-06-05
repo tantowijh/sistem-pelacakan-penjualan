@@ -218,11 +218,8 @@
                           <Component id="jScrollPane2" pref="437" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="editCheckbox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="pencarianUser" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="searchIcon" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -233,13 +230,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="pencarianUser" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="userDetail" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="editCheckbox" alignment="2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="searchIcon" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="pencarianUser" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="userDetail" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="editCheckbox" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -356,19 +350,6 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="searchIcon">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icon/Search.png"/>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchIconMouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="infoName1">
               <Properties>

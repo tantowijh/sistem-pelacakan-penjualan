@@ -856,7 +856,8 @@ public class Penjualan extends javax.swing.JPanel {
 
     private void removeInDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeInDBActionPerformed
         if (selectedID == 0) {
-            JOptionPane.showMessageDialog(null, "Anda belum memilih penjualan!");
+            JOptionPane.showMessageDialog(null, "Anda belum memilih penjualan!", 
+                    "Peringatan!", JOptionPane.ERROR_MESSAGE);
             return;
         }
 

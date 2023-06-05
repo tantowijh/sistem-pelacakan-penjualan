@@ -266,7 +266,7 @@ public class koneksiStock {
                 if (count == 0) {
                     JOptionPane.showMessageDialog(loadingTable,
                             "Belum memilih produk.", "Peringatan",
-                            JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
@@ -280,7 +280,7 @@ public class koneksiStock {
                         int yesDelete = JOptionPane.showConfirmDialog(loadingTable,
                                 "Anda yakin ingin menghapus " + productName
                                 + " dengan kode penjualan " + productCode + " ?",
-                                "Peringatan", JOptionPane.YES_NO_OPTION);
+                                "Peringatan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                         if (yesDelete == JOptionPane.YES_OPTION) {
                             stmts.executeUpdate();
                             JOptionPane.showMessageDialog(loadingTable, "Hapus Stock Berhasil");
