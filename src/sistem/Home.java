@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import koneksi.loginSession;
 import customization.cSVG;
 import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 
@@ -120,6 +121,8 @@ public final class Home extends javax.swing.JFrame {
             menu.putClientProperty(FlatClientProperties.STYLE, ""
                     + "background:$Menu.background;"
                     + "foreground:$Menu.foreground;");
+            // Seting border menu color
+            menu.setBorder(BorderFactory.createLineBorder(UIManager.getColor("Menu.borderColor")));
         }
         
         LoginSession.putClientProperty(FlatClientProperties.STYLE, ""
