@@ -177,6 +177,7 @@ public final class Home extends javax.swing.JFrame {
         menuHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/home.png"))); // NOI18N
         menuHome.setText("HOME");
+        menuHome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menuHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuHome.setOpaque(true);
@@ -192,6 +193,7 @@ public final class Home extends javax.swing.JFrame {
         menuCustomer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/customer.png"))); // NOI18N
         menuCustomer.setText("CUSTOMER");
+        menuCustomer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menuCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuCustomer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuCustomer.setOpaque(true);
@@ -207,6 +209,7 @@ public final class Home extends javax.swing.JFrame {
         menuStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuStock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/stock.png"))); // NOI18N
         menuStock.setText("STOCK");
+        menuStock.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menuStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuStock.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuStock.setOpaque(true);
@@ -222,6 +225,7 @@ public final class Home extends javax.swing.JFrame {
         menuPenjualan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/penjualan.png"))); // NOI18N
         menuPenjualan.setText("SALES");
+        menuPenjualan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menuPenjualan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuPenjualan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuPenjualan.setOpaque(true);
@@ -237,6 +241,7 @@ public final class Home extends javax.swing.JFrame {
         menuLaporan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/laporan.png"))); // NOI18N
         menuLaporan.setText("REPORTS");
+        menuLaporan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menuLaporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuLaporan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuLaporan.setOpaque(true);
@@ -252,6 +257,7 @@ public final class Home extends javax.swing.JFrame {
         menuUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         menuUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menuicon/users.png"))); // NOI18N
         menuUser.setText("USER");
+        menuUser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         menuUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuUser.setOpaque(true);
