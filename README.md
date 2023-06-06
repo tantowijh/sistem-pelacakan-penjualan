@@ -22,17 +22,6 @@ Untuk menjalankan aplikasi ini, ikuti langkah-langkah berikut:
 5. Gunakan menu "REPORTS" untuk melihat status pesanan atau mencetak laporan penjualan.
 6. Kelola user dengan menu "USER".
 
-1. Pastikan Anda memiliki akun dan akses untuk menjalankan aplikasi. Jika belum, hubungi administrator sistem atau pihak yang bertanggung jawab untuk meminta akses.
-2. Buka aplikasi dengan mengeklik ikon aplikasi pada desktop atau menu start.
-3. Masukkan nama pengguna (username) dan kata sandi (password) yang telah didaftarkan pada kolom yang tersedia dan klik tombol "Masuk".
-4. Setelah berhasil login, Anda akan diarahkan ke halaman utama aplikasi. Di sini, Anda akan melihat beberapa menu utama, seperti "CUSTOMER", "STOCK", "SALES", "REPORTS", dan "USER".
-5. Untuk memasukkan data customer baru, klik menu "CUSTOMER" dan isi formulir data customer yang dibutuhkan.
-6. Untuk memasukkan data stock product baru, klik menu "STOCK" dan isi formulir data stock product yang dibutuhkan.
-7. Untuk memasukkan data penjualan baru, klik menu "SALES" dan isi formulir data penjualan yang dibutuhkan.
-8. Untuk melihat status pesanan atau mencetak laporan penjualan, klik menu "REPORTS" dan pilih opsi yang sesuai.
-9. Untuk mengelola user, klik menu "USER" dan pilih opsi yang sesuai.
-10. Setelah selesai menggunakan aplikasi, pastikan untuk keluar dari akun Anda dengan mengklik tombol "Keluar" atau "Logout" pada halaman utama aplikasi.
-
 ## Teknologi dan Framework
 
 Aplikasi ini dibangun menggunakan bahasa pemrograman Java dan menggunakan framework JavaFX untuk antarmuka pengguna. Data penjualan disimpan pada database MySQL.
