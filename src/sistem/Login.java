@@ -8,8 +8,10 @@ import koneksi.loginSession;
 import java.awt.Color;
 import java.sql.*;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -272,7 +274,8 @@ public final class Login extends javax.swing.JFrame {
                 + "pressedBackground:$Login.hidePassActive;"
                 + "arc:5;");
         svg.btnIconColorSet(showPass, "icon/login/Visible.svg", btn_login.getBackground());
-        svg.frameIcon(this, "icon/Towdio.svg");
+        JFrame window = (JFrame) SwingUtilities.getWindowAncestor(rootPane);
+        svg.frameIcon(window, "icon/Towdio.svg");
     }
 
     /**

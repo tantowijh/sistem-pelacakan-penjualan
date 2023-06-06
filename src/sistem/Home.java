@@ -16,6 +16,7 @@ import customization.cSVG;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 /**
@@ -81,10 +82,7 @@ public final class Home extends javax.swing.JFrame {
             }
         });
     }
-
-    /**
-     * Creates new form Home
-     */
+    
     public Home() {
         initComponents();
         init();
@@ -103,7 +101,8 @@ public final class Home extends javax.swing.JFrame {
         setSVG.labelIconColorSet(logOut, "icon/menu/Logout.svg", logout);
         Color logname = UIManager.getColor("Main.form.nameColor");
         setSVG.labelIconColorSet(LoginSession, "icon/menu/Name.svg", logname);
-        setSVG.frameIcon(this, "icon/Towdio.svg");
+        JFrame window = (JFrame) SwingUtilities.getWindowAncestor(rootPane);
+        setSVG.frameIcon(window, "icon/Towdio.svg");
     }
     
     public void init(){
@@ -137,6 +136,8 @@ public final class Home extends javax.swing.JFrame {
             info.putClientProperty(FlatClientProperties.STYLE, ""
                     + "foreground:$Main.form.session;");
         }
+        
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         
     }
     
