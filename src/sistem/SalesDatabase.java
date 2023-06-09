@@ -127,7 +127,7 @@ public class SalesDatabase {
     public Map<String, String> retrieveProductAndCustomerId(int id) {
         Map<String, String> result = new HashMap<>();
         try {
-            String sql = "SELECT date, product_id, customer_id, quantity FROM sales WHERE id = ?";
+            String sql = "SELECT * FROM sales WHERE id = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
@@ -136,6 +136,8 @@ public class SalesDatabase {
                 result.put("customer_id", rs.getString("customer_id"));
                 result.put("quantity", rs.getString("quantity"));
                 result.put("date", rs.getString("date"));
+                result.put("price", rs.getString("price"));
+                result.put("amount", rs.getString("amount"));
             } else {
                 System.out.println("No row found with ID " + id);
             }

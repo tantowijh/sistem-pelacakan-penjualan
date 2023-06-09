@@ -7,6 +7,7 @@ package sistem;
 import com.formdev.flatlaf.FlatClientProperties;
 import customization.cResetter;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Map;
 import javax.swing.BorderFactory;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -27,6 +29,7 @@ public class Penjualan extends javax.swing.JPanel {
     private int selectedID = 0;
     private int selectedQuantity = 0;
     private String selectedDate = null;
+    private int currentQTY = 0;
 
     private void loadCustomerIDs(JComboBox<String> customerAndID) {
         customerAndID.removeAllItems();
@@ -263,26 +266,27 @@ public class Penjualan extends javax.swing.JPanel {
 
         // Set the permission settings
         new customization.cResetter().setBlockedButton(new JButton[]{insertToDB, updateToDB, removeInDB});
-        
+
         title.putClientProperty(FlatClientProperties.STYLE, ""
                 + "foreground:$SalesTracking;"
                 + "font: 70% bold $h00.font");
-        JLabel[] labels = new JLabel[]{jLabel2,jLabel3,jLabel4,jLabel5,jLabel10,jLabel11,jLabel12};
-        for (var label : labels){
+        JLabel[] labels = new JLabel[]{jLabel2, jLabel3, jLabel4, jLabel5, jLabel10, jLabel11, jLabel12};
+        for (var label : labels) {
             label.putClientProperty(FlatClientProperties.STYLE, ""
-                + "font: $semibold.font;");
+                    + "font: $semibold.font;");
         }
         JLabel[] infos = new JLabel[]{jumlahPenjualan, totalPenjualan, hargaSatuan, hargaTotal};
-        for (var info : infos){
+        for (var info : infos) {
             info.putClientProperty(FlatClientProperties.STYLE, ""
-                + "foreground:$SalesTracking;"
-                + "font: $h4.font;");
+                    + "foreground:$SalesTracking;"
+                    + "font: $h4.font;");
         }
         
+        productQuantity.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "1");
         resetBtn.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font: $h4.font;"
                 + "foreground:$Main.form.session;");
-        
+
         header.setBorder(BorderFactory.createLineBorder(UIManager.getColor("Title.borderColor")));
     }
 
@@ -738,10 +742,20 @@ public class Penjualan extends javax.swing.JPanel {
 
     private void productQuantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productQuantityKeyReleased
         int stock = loadStocks();
-        if (!productQuantity.getText().isEmpty() && Integer.parseInt(productQuantity.getText()) > stock) {
-            JOptionPane.showMessageDialog(null,
-                    "Anda memasukkan jumlah stock yang melebihi " + stock + " stock tersedia!", "Peringatan", 1);
-            productQuantity.setText("1");
+        if (currentQTY != 0) {
+            stock = stock + currentQTY;
+            productQuantity.setToolTipText("Maksimal stock adalah " + stock);
+            if (!productQuantity.getText().isEmpty() && Integer.parseInt(productQuantity.getText()) > stock) {
+                JOptionPane.showMessageDialog(null,
+                        "Anda memasukkan jumlah stock yang melebihi " + stock + " stock tersedia!", "Peringatan", 1);
+                productQuantity.setText(String.valueOf(currentQTY));
+            }
+        } else {
+            if (!productQuantity.getText().isEmpty() && Integer.parseInt(productQuantity.getText()) > stock) {
+                JOptionPane.showMessageDialog(null,
+                        "Anda memasukkan jumlah stock yang melebihi " + stock + " stock tersedia!", "Peringatan", 1);
+                productQuantity.setText("1");
+            }
         }
         if (!productQuantity.getText().isEmpty()) {
             hargaTotal.setText(String.format("%,.2f", loadHarga() * Integer.parseInt(productQuantity.getText())));
@@ -753,10 +767,6 @@ public class Penjualan extends javax.swing.JPanel {
             productQuantity.setText("1");
         }
     }//GEN-LAST:event_productQuantityFocusLost
-
-    private void productQuantityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productQuantityFocusGained
-        new customization.cResetter().setQuantity(productQuantity);
-    }//GEN-LAST:event_productQuantityFocusGained
 
     private void insertToDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertToDBActionPerformed
         if (productQuantity.getText().isEmpty()) {
@@ -771,10 +781,10 @@ public class Penjualan extends javax.swing.JPanel {
         String customer_id = customerAndID.getSelectedItem().toString();
         String status = statusPembayaran.getSelectedItem().toString();
         String currentDate = String.valueOf(LocalDate.now());
-        
-        db.insertSale(currentDate, amount, loadHarga(), product, product_id, 
-                quantity, customer, customer_id, loadPhone(), 
-                loadEmail(), loadAddress(), status);        
+
+        db.insertSale(currentDate, amount, loadHarga(), product, product_id,
+                quantity, customer, customer_id, loadPhone(),
+                loadEmail(), loadAddress(), status);
 
         DefaultTableModel model = (DefaultTableModel) loadSales.getModel();
         model.setRowCount(0);
@@ -806,8 +816,8 @@ public class Penjualan extends javax.swing.JPanel {
         String status = statusPembayaran.getSelectedItem().toString();
         // String currentDate = String.valueOf(LocalDate.now());
 
-        db.updateSale(selectedID, selectedDate, amount, loadHarga(), product, 
-                product_id, quantity, customer, customer_id, loadPhone(), 
+        db.updateSale(selectedID, selectedDate, amount, loadHarga(), product,
+                product_id, quantity, customer, customer_id, loadPhone(),
                 loadEmail(), loadAddress(), status);
 
         DefaultTableModel model = (DefaultTableModel) loadSales.getModel();
@@ -843,22 +853,29 @@ public class Penjualan extends javax.swing.JPanel {
             String productId = result.get("product_id");
             String quantity = result.get("quantity");
             String date = result.get("date");
-            
+            String price = result.get("price");
+            String amount = result.get("amount");
+
             selectedQuantity = Integer.parseInt(quantity);
             selectedDate = date;
-            
+
             String payment_status = loadSales.getValueAt(baris, 6).toString();
 
             customerAndID.setSelectedItem(customerId);
             kodeAndProduct.setSelectedItem(productId);
             statusPembayaran.setSelectedItem(payment_status);
             productQuantity.setText(quantity);
+
+            currentQTY = Integer.parseInt(quantity);
+            
+            hargaSatuan.setText(String.format("%,.2f", 1 * Double.parseDouble(price)));
+            hargaTotal.setText(String.format("%,.2f", 1 * Double.parseDouble(amount)));
         }
     }//GEN-LAST:event_loadSalesMouseClicked
 
     private void removeInDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeInDBActionPerformed
         if (selectedID == 0) {
-            JOptionPane.showMessageDialog(null, "Anda belum memilih penjualan!", 
+            JOptionPane.showMessageDialog(null, "Anda belum memilih penjualan!",
                     "Peringatan!", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -892,7 +909,12 @@ public class Penjualan extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) loadSales.getModel();
         model.setRowCount(0);
         db.loadSalesTable(model);
+        productQuantity.setText("1");
     }//GEN-LAST:event_resetBtnMouseClicked
+
+    private void productQuantityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productQuantityFocusGained
+        new numberField().intNumber(new JTextField[]{productQuantity});
+    }//GEN-LAST:event_productQuantityFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
