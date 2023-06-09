@@ -38,6 +38,7 @@ public final class salesReport extends javax.swing.JPanel {
 
     private Connection conn;
     private Statement stmt;
+    private boolean filtered = false;
 
     public void loadSalesData(JTable table) {
         try {
@@ -258,7 +259,7 @@ public final class salesReport extends javax.swing.JPanel {
             label.putClientProperty(FlatClientProperties.STYLE, ""
                     + "font: $semibold.font;");
         }
-        
+
         header.setBorder(BorderFactory.createLineBorder(UIManager.getColor("Title.borderColor")));
     }
 
@@ -445,20 +446,22 @@ public final class salesReport extends javax.swing.JPanel {
             status = statusFilter.getSelectedItem().toString();
         }
 
-        filterSalesData(loadSalesReport, startDate, endDate, status);
-
         String query = "SELECT * FROM sales";
 
-        if (startDateString != null && endDateString != null) {
-            query += " WHERE date BETWEEN '" + startDateString + "' AND '" + endDateString + "'";
-        }
-
-        if (status != null && !status.isEmpty()) {
+        if (filtered) {
             if (startDateString != null && endDateString != null) {
-                query += " AND payment_status='" + status + "'";
-            } else {
-                query += " WHERE payment_status='" + status + "'";
+                query += " WHERE date BETWEEN '" + startDateString + "' AND '" + endDateString + "'";
             }
+
+            if (status != null && !status.isEmpty()) {
+                if (startDateString != null && endDateString != null) {
+                    query += " AND payment_status='" + status + "'";
+                } else {
+                    query += " WHERE payment_status='" + status + "'";
+                }
+            }
+            
+            filterSalesData(loadSalesReport, startDate, endDate, status);
         }
 
         String path = "reports/salesreport.jrxml";
@@ -493,12 +496,14 @@ public final class salesReport extends javax.swing.JPanel {
         }
 
         filterSalesData(loadSalesReport, startDate, endDate, status);
+        filtered = true;
     }//GEN-LAST:event_btnFilterActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         statusFilter.setSelectedItem("None");
         initialDate();
         loadSalesData(loadSalesReport);
+        filtered = false;
     }//GEN-LAST:event_btnResetActionPerformed
 
 
