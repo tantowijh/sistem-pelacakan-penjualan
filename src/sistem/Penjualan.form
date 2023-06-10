@@ -406,7 +406,7 @@
         </Component>
         <Component class="customization.cButton" name="removeInDB">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Remove"/>
+            <Property name="text" type="java.lang.String" value="Delete"/>
             <Property name="customCurrentFill" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
             </Property>

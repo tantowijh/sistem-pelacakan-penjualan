@@ -537,7 +537,7 @@ public class Penjualan extends javax.swing.JPanel {
             }
         });
 
-        removeInDB.setText("Remove");
+        removeInDB.setText("Delete");
         removeInDB.setCustomCurrentFill(new java.awt.Color(255, 0, 51));
         removeInDB.setCustomHovering(new java.awt.Color(153, 0, 0));
         removeInDB.setCustomStrokeWidth(1);
