@@ -919,7 +919,9 @@ public class Penjualan extends javax.swing.JPanel {
     }//GEN-LAST:event_searchValKeyReleased
 
     private void productQuantityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productQuantityFocusGained
+        String qty = productQuantity.getText();
         new numberField().intNumber(new JTextField[]{productQuantity});
+        productQuantity.setText(qty);
     }//GEN-LAST:event_productQuantityFocusGained
 
     private void resetSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetSelectionActionPerformed
@@ -931,8 +933,8 @@ public class Penjualan extends javax.swing.JPanel {
         db.loadSalesTable(model);
         
         productQuantity.setText("1");
-        hargaSatuan.setText("0");
-        hargaTotal.setText("0");
+        hargaSatuan.setText(String.format("%,.2f", loadHarga()));
+        hargaTotal.setText(String.format("%,.2f", loadHarga() * Integer.parseInt(productQuantity.getText())));
     }//GEN-LAST:event_resetSelectionActionPerformed
 
 
