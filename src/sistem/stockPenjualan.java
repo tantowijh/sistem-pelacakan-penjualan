@@ -482,6 +482,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
         String kode = generateProductKode();
         JTextField[] fields = new JTextField[]{nBarang, jBarang, hBarang};
         stock.tableInsert(loadStock, kode, fields);
+        existingValuesLoader();
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void loadStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadStockMouseClicked
@@ -505,12 +506,14 @@ public final class stockPenjualan extends javax.swing.JPanel {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         JTextField[] fields = new JTextField[]{nBarang, kBarang, jBarang, hBarang};
         stock.tableUpdate(loadStock, fields);
+        existingValuesLoader();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String kode = generateProductKode();
         JTextField[] fields = new JTextField[]{nBarang, kBarang};
         stock.tableDelete(loadStock, kode, fields);
+        existingValuesLoader();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void queryProductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_queryProductKeyReleased

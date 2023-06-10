@@ -256,7 +256,6 @@ public class koneksiStock {
                 loadStockPenjualan(loadingTable);
                 setColumnWidth(loadingTable);
                 String productName = fields[0].getText();
-                String productCode = kode;
 
                 // Check if the kode value already exists
                 selectStmt.setString(1, selectedKode);
@@ -279,7 +278,7 @@ public class koneksiStock {
                         stmts.setString(1, selectedKode);
                         int yesDelete = JOptionPane.showConfirmDialog(loadingTable,
                                 "Anda yakin ingin menghapus " + productName
-                                + " dengan kode penjualan " + productCode + " ?",
+                                + " dengan kode penjualan " + selectedKode + " ?",
                                 "Peringatan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                         if (yesDelete == JOptionPane.YES_OPTION) {
                             stmts.executeUpdate();
@@ -291,7 +290,7 @@ public class koneksiStock {
                         }
                     } catch (SQLException e) {
                         JOptionPane.showMessageDialog(loadingTable,
-                                "Gagal menyimpan data. Silakan coba lagi atau hubungi administrator.");
+                                "Gagal menghapus data. Silakan coba lagi atau hubungi administrator.");
                     } finally {
                         if (stmts != null) {
                             try {

@@ -24,9 +24,8 @@ public class numberField {
                 return;
             }
 
-            try {
-                Double.valueOf(str);
-            } catch (NumberFormatException e) {
+            // check if the string contains only digits
+            if (!str.matches("\\d+")) {
                 return;
             }
 
@@ -42,7 +41,7 @@ public class numberField {
             if (str == null) {
                 return;
             }
-            
+
             if (str.equals(".")) {
                 super.insertString(offset, ".", attr);
                 return;

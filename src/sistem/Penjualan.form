@@ -81,8 +81,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -111,24 +111,27 @@
                               <Component id="statusPembayaran" min="-2" pref="108" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jumlahPenjualan" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="totalPenjualan" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="resetBtn" min="-2" max="-2" attributes="0"/>
+                                  <Component id="insertToDB" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="updateToDB" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="removeInDB" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="resetSelection" min="-2" pref="94" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="insertToDB" alignment="0" pref="94" max="32767" attributes="0"/>
-                              <Component id="updateToDB" alignment="0" pref="94" max="32767" attributes="0"/>
-                              <Component id="removeInDB" alignment="0" pref="94" max="32767" attributes="0"/>
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <Component id="searchVal" alignment="0" max="32767" attributes="0"/>
+                              <Component id="searchVal" alignment="0" pref="94" max="32767" attributes="0"/>
                               <Component id="jSeparator2" max="32767" attributes="0"/>
                               <Component id="jSeparator3" max="32767" attributes="0"/>
                               <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -140,7 +143,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -185,20 +188,18 @@
                           <Component id="searchVal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator3" min="-2" pref="3" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="insertToDB" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="updateToDB" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="removeInDB" min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace min="20" pref="126" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" pref="274" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jumlahPenjualan" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="totalPenjualan" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="resetBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="jumlahPenjualan" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="totalPenjualan" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="insertToDB" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="updateToDB" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="removeInDB" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="resetSelection" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -365,7 +366,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="94" green="6c" red="14" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Total Penjualan: 0"/>
+            <Property name="text" type="java.lang.String" value="Penjualan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="totalPenjualan">
@@ -376,7 +377,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="94" green="6c" red="14" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Total Harga Penjualan: 0"/>
+            <Property name="text" type="java.lang.String" value="Total"/>
           </Properties>
         </Component>
         <Component class="customization.cButton" name="insertToDB">
@@ -500,21 +501,19 @@
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator6">
         </Component>
-        <Component class="javax.swing.JLabel" name="resetBtn">
+        <Component class="customization.cButton" name="resetSelection">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="10" style="1"/>
+            <Property name="text" type="java.lang.String" value="Clear"/>
+            <Property name="customCurrentFill" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="66" red="ff" type="rgb"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="99" type="rgb"/>
+            <Property name="customHovering" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="33" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Reset Selection"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
-            </Property>
+            <Property name="customStrokeWidth" type="int" value="1"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="resetBtnMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetSelectionActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

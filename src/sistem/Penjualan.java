@@ -6,8 +6,8 @@ package sistem;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import customization.cResetter;
+import java.awt.Color;
 import java.sql.*;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Map;
 import javax.swing.BorderFactory;
@@ -242,7 +242,10 @@ public class Penjualan extends javax.swing.JPanel {
         }
         return dataExists;
     }
-
+    
+    private Color color = UIManager.getColor("Penjualan.foreground");
+    private String colorValue = "#" + Integer.toHexString(color.getRGB()).substring(2).toUpperCase();
+    
     /**
      * Creates new form Penjualan
      */
@@ -260,9 +263,13 @@ public class Penjualan extends javax.swing.JPanel {
         columnModel.getColumn(4).setMaxWidth(60);
 
         db.loadSalesTable((DefaultTableModel) loadSales.getModel());
-
-        jumlahPenjualan.setText("Total Penjualan: " + String.valueOf(db.countRows()));
-        totalPenjualan.setText("Total Harga Penjualan: " + String.valueOf(db.calculateTotalAmount()));
+        
+        jumlahPenjualan.setText("<html><span style='color:" 
+                + colorValue + ";'>Total Penjualan:</span> <p>" 
+                + String.valueOf(db.countRows()) + "</p></html>");
+        totalPenjualan.setText("<html><span style='color:" 
+                + colorValue + ";'>Total Harga Penjualan:</span> <p>" 
+                + String.valueOf(db.calculateTotalAmount()) + "</p></html>");
 
         // Set the permission settings
         new customization.cResetter().setBlockedButton(new JButton[]{insertToDB, updateToDB, removeInDB});
@@ -281,12 +288,8 @@ public class Penjualan extends javax.swing.JPanel {
                     + "foreground:$SalesTracking;"
                     + "font: $h4.font;");
         }
-        
-        productQuantity.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "1");
-        resetBtn.putClientProperty(FlatClientProperties.STYLE, ""
-                + "font: $h4.font;"
-                + "foreground:$Main.form.session;");
 
+        productQuantity.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "1");
         header.setBorder(BorderFactory.createLineBorder(UIManager.getColor("Title.borderColor")));
     }
 
@@ -329,7 +332,7 @@ public class Penjualan extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         hargaTotal = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        resetBtn = new javax.swing.JLabel();
+        resetSelection = new customization.cButton();
 
         header.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -510,11 +513,11 @@ public class Penjualan extends javax.swing.JPanel {
 
         jumlahPenjualan.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         jumlahPenjualan.setForeground(new java.awt.Color(20, 108, 148));
-        jumlahPenjualan.setText("Total Penjualan: 0");
+        jumlahPenjualan.setText("Penjualan");
 
         totalPenjualan.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         totalPenjualan.setForeground(new java.awt.Color(20, 108, 148));
-        totalPenjualan.setText("Total Harga Penjualan: 0");
+        totalPenjualan.setText("Total");
 
         insertToDB.setText("Insert");
         insertToDB.setCustomStrokeWidth(1);
@@ -589,13 +592,13 @@ public class Penjualan extends javax.swing.JPanel {
         hargaTotal.setForeground(new java.awt.Color(0, 75, 173));
         hargaTotal.setText("0");
 
-        resetBtn.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        resetBtn.setForeground(new java.awt.Color(153, 0, 153));
-        resetBtn.setText("Reset Selection");
-        resetBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        resetBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                resetBtnMouseClicked(evt);
+        resetSelection.setText("Clear");
+        resetSelection.setCustomCurrentFill(new java.awt.Color(255, 102, 0));
+        resetSelection.setCustomHovering(new java.awt.Color(204, 51, 0));
+        resetSelection.setCustomStrokeWidth(1);
+        resetSelection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetSelectionActionPerformed(evt);
             }
         });
 
@@ -627,22 +630,25 @@ public class Penjualan extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(statusPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jumlahPenjualan)
                                 .addGap(18, 18, 18)
                                 .addComponent(totalPenjualan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(resetBtn))
+                                .addComponent(insertToDB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateToDB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(removeInDB, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(resetSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(insertToDB, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                            .addComponent(updateToDB, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                            .addComponent(removeInDB, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                             .addComponent(jLabel10)
-                            .addComponent(searchVal)
+                            .addComponent(searchVal, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                             .addComponent(jSeparator2)
                             .addComponent(jSeparator3)
                             .addComponent(jLabel11)
@@ -692,18 +698,16 @@ public class Penjualan extends javax.swing.JPanel {
                         .addComponent(searchVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(insertToDB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(updateToDB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeInDB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(20, 126, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jumlahPenjualan)
                     .addComponent(totalPenjualan)
-                    .addComponent(resetBtn))
+                    .addComponent(insertToDB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateToDB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeInDB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resetSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -793,8 +797,12 @@ public class Penjualan extends javax.swing.JPanel {
         // mengurangi jumlah stock pada database
         db.decreaseStock(product_id, quantity);
 
-        jumlahPenjualan.setText("Total Penjualan: " + String.valueOf(db.countRows()));
-        totalPenjualan.setText("Total Harga Penjualan: " + String.valueOf(db.calculateTotalAmount()));
+        jumlahPenjualan.setText("<html><span style='color:" 
+                + colorValue + ";'>Total Penjualan:</span> <p>" 
+                + String.valueOf(db.countRows()) + "</p></html>");
+        totalPenjualan.setText("<html><span style='color:" 
+                + colorValue + ";'>Total Harga Penjualan:</span> <p>" 
+                + String.valueOf(db.calculateTotalAmount()) + "</p></html>");
     }//GEN-LAST:event_insertToDBActionPerformed
 
     private void updateToDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateToDBActionPerformed
@@ -838,8 +846,12 @@ public class Penjualan extends javax.swing.JPanel {
         }
         selectedQuantity = 0;
 
-        jumlahPenjualan.setText("Total Penjualan: " + String.valueOf(db.countRows()));
-        totalPenjualan.setText("Total Harga Penjualan: " + String.valueOf(db.calculateTotalAmount()));
+        jumlahPenjualan.setText("<html><span style='color:" 
+                + colorValue + ";'>Total Penjualan:</span> <p>" 
+                + String.valueOf(db.countRows()) + "</p></html>");
+        totalPenjualan.setText("<html><span style='color:" 
+                + colorValue + ";'>Total Harga Penjualan:</span> <p>" 
+                + String.valueOf(db.calculateTotalAmount()) + "</p></html>");
     }//GEN-LAST:event_updateToDBActionPerformed
 
     private void loadSalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadSalesMouseClicked
@@ -867,7 +879,7 @@ public class Penjualan extends javax.swing.JPanel {
             productQuantity.setText(quantity);
 
             currentQTY = Integer.parseInt(quantity);
-            
+
             hargaSatuan.setText(String.format("%,.2f", 1 * Double.parseDouble(price)));
             hargaTotal.setText(String.format("%,.2f", 1 * Double.parseDouble(amount)));
         }
@@ -893,8 +905,12 @@ public class Penjualan extends javax.swing.JPanel {
         db.addStock(product_id, selectedQuantity);
         selectedQuantity = 0;
 
-        jumlahPenjualan.setText("Total Penjualan: " + String.valueOf(db.countRows()));
-        totalPenjualan.setText("Total Harga Penjualan: " + String.valueOf(db.calculateTotalAmount()));
+        jumlahPenjualan.setText("<html><span style='color:" 
+                + colorValue + ";'>Total Penjualan:</span> <p>" 
+                + String.valueOf(db.countRows()) + "</p></html>");
+        totalPenjualan.setText("<html><span style='color:" 
+                + colorValue + ";'>Total Harga Penjualan:</span> <p>" 
+                + String.valueOf(db.calculateTotalAmount()) + "</p></html>");
     }//GEN-LAST:event_removeInDBActionPerformed
 
     private void searchValKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchValKeyReleased
@@ -902,19 +918,22 @@ public class Penjualan extends javax.swing.JPanel {
         db.searchSalesTable(srch, (DefaultTableModel) loadSales.getModel());
     }//GEN-LAST:event_searchValKeyReleased
 
-    private void resetBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetBtnMouseClicked
+    private void productQuantityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productQuantityFocusGained
+        new numberField().intNumber(new JTextField[]{productQuantity});
+    }//GEN-LAST:event_productQuantityFocusGained
+
+    private void resetSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetSelectionActionPerformed
         selectedID = 0;
         selectedQuantity = 0;
         searchVal.setText(null);
         DefaultTableModel model = (DefaultTableModel) loadSales.getModel();
         model.setRowCount(0);
         db.loadSalesTable(model);
+        
         productQuantity.setText("1");
-    }//GEN-LAST:event_resetBtnMouseClicked
-
-    private void productQuantityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productQuantityFocusGained
-        new numberField().intNumber(new JTextField[]{productQuantity});
-    }//GEN-LAST:event_productQuantityFocusGained
+        hargaSatuan.setText("0");
+        hargaTotal.setText("0");
+    }//GEN-LAST:event_resetSelectionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -943,7 +962,7 @@ public class Penjualan extends javax.swing.JPanel {
     private javax.swing.JTextField productQuantity;
     private javax.swing.JTextField productname;
     private customization.cButton removeInDB;
-    private javax.swing.JLabel resetBtn;
+    private customization.cButton resetSelection;
     private javax.swing.JTextField searchVal;
     private javax.swing.JComboBox<String> statusPembayaran;
     private javax.swing.JLabel title;
