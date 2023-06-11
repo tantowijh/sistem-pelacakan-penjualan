@@ -301,7 +301,7 @@
 					<textElement>
 						<font size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new DecimalFormat("#,##0").format($F{amount})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new DecimalFormat("#,##0.00").format($F{amount})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="115" y="1" width="45" height="24" uuid="fa046b71-a760-4060-9a58-35dd5ed20ead">
@@ -311,7 +311,7 @@
 					<textElement>
 						<font size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new DecimalFormat("#,##0").format($F{price})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[new DecimalFormat("#,##0.00").format($F{price})]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="325" y="1" width="27" height="24" uuid="3a511883-2620-4d64-a3ac-e41415f52857">

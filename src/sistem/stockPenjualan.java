@@ -16,6 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import koneksi.koneksiStock;
 import customization.cResetter;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.UIManager;
 
@@ -98,7 +101,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
     /**
      * Creates new form dataPenjualan
      */
-    public stockPenjualan() {
+    public stockPenjualan() throws ParseException {
         initComponents();
         cResetter.makeTableNonEditable(loadStock);
         existingValuesLoader();
@@ -481,7 +484,11 @@ public final class stockPenjualan extends javax.swing.JPanel {
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         String kode = generateProductKode();
         JTextField[] fields = new JTextField[]{nBarang, jBarang, hBarang};
-        stock.tableInsert(loadStock, kode, fields);
+        try {
+            stock.tableInsert(loadStock, kode, fields);
+        } catch (ParseException ex) {
+            Logger.getLogger(stockPenjualan.class.getName()).log(Level.SEVERE, null, ex);
+        }
         existingValuesLoader();
     }//GEN-LAST:event_btnInsertActionPerformed
 
@@ -505,20 +512,32 @@ public final class stockPenjualan extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         JTextField[] fields = new JTextField[]{nBarang, kBarang, jBarang, hBarang};
-        stock.tableUpdate(loadStock, fields);
+        try {
+            stock.tableUpdate(loadStock, fields);
+        } catch (ParseException ex) {
+            Logger.getLogger(stockPenjualan.class.getName()).log(Level.SEVERE, null, ex);
+        }
         existingValuesLoader();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         String kode = generateProductKode();
         JTextField[] fields = new JTextField[]{nBarang, kBarang};
-        stock.tableDelete(loadStock, kode, fields);
+        try {
+            stock.tableDelete(loadStock, kode, fields);
+        } catch (ParseException ex) {
+            Logger.getLogger(stockPenjualan.class.getName()).log(Level.SEVERE, null, ex);
+        }
         existingValuesLoader();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void queryProductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_queryProductKeyReleased
         JTextField[] fields = new JTextField[]{queryProduct};
-        stock.tableSearch(loadStock, fields);
+        try {
+            stock.tableSearch(loadStock, fields);
+        } catch (ParseException ex) {
+            Logger.getLogger(stockPenjualan.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_queryProductKeyReleased
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed

@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 import koneksi.loginSession;
 import customization.cSVG;
 import java.awt.Color;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
@@ -37,7 +40,7 @@ public final class Home extends javax.swing.JFrame {
         loading.startClock(infoTime, "time");
     }
 
-    public void setMainContainer(String panelName) {
+    public void setMainContainer(String panelName) throws ParseException {
         panelLoader loader = new panelLoader();
         JPanel panel;
 
@@ -479,27 +482,51 @@ public final class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuHomeMouseClicked
-        setMainContainer("home");
+        try {
+            setMainContainer("home");
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuHomeMouseClicked
 
     private void menuCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuCustomerMouseClicked
-        setMainContainer("customer");
+        try {
+            setMainContainer("customer");
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuCustomerMouseClicked
 
     private void menuStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuStockMouseClicked
-        setMainContainer("stock");
+        try {
+            setMainContainer("stock");
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuStockMouseClicked
 
     private void menuPenjualanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuPenjualanMouseClicked
-        setMainContainer("penjualan");
+        try {
+            setMainContainer("penjualan");
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuPenjualanMouseClicked
 
     private void menuLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuLaporanMouseClicked
-        setMainContainer("laporan");
+        try {
+            setMainContainer("laporan");
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuLaporanMouseClicked
 
     private void menuUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuUserMouseClicked
-        setMainContainer("users");
+        try {
+            setMainContainer("users");
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuUserMouseClicked
 
     private void logOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logOutMouseClicked

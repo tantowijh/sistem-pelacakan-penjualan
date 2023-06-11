@@ -83,9 +83,9 @@ public final class salesReport extends javax.swing.JPanel {
                 Object[] row = new Object[13];
                 row[0] = rs.getInt("id");
                 row[1] = rs.getString("date");
-                String amount = new DecimalFormat("#,##0").format(rs.getDouble("amount"));
+                String amount = new DecimalFormat("#,##0.00").format(rs.getDouble("amount"));
                 row[2] = amount;
-                String price = new DecimalFormat("#,##0").format(rs.getDouble("price"));
+                String price = new DecimalFormat("#,##0.00").format(rs.getDouble("price"));
                 row[3] = price;
                 row[4] = rs.getString("product");
                 row[5] = rs.getString("product_id");
@@ -168,9 +168,9 @@ public final class salesReport extends javax.swing.JPanel {
                 Object[] row = new Object[13];
                 row[0] = rs.getInt("id");
                 row[1] = rs.getString("date");
-                String amount = new DecimalFormat("#,##0").format(rs.getDouble("amount"));
+                String amount = new DecimalFormat("#,##0.00").format(rs.getDouble("amount"));
                 row[2] = amount;
-                String price = new DecimalFormat("#,##0").format(rs.getDouble("price"));
+                String price = new DecimalFormat("#,##0.00").format(rs.getDouble("price"));
                 row[3] = price;
                 row[4] = rs.getString("product");
                 row[5] = rs.getString("product_id");

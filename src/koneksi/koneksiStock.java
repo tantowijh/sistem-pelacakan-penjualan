@@ -4,8 +4,10 @@
  */
 package koneksi;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -16,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author thowie
  */
 public class koneksiStock {
-    
+
     private boolean tabelTersedia;
     public String selectedKode;
     public boolean haveAData;
@@ -47,7 +49,7 @@ public class koneksiStock {
         Tabel.getColumnModel().getColumn(2).setPreferredWidth(350);
     }
 
-    public boolean loadStockPenjualan(JTable loadingTable) {
+    public boolean loadStockPenjualan(JTable loadingTable) throws ParseException {
 
         haveAData = false;
 
@@ -63,8 +65,11 @@ public class koneksiStock {
             int no = 1;
             while (res.next()) {
                 haveAData = true;
-                double priceValue = res.getDouble(4);
-                String formattedPrice = new DecimalFormat("#,##0").format(priceValue);
+
+                BigDecimal priceValue = new BigDecimal(res.getDouble(4));
+                DecimalFormat df = new DecimalFormat("#,##0.00");
+                String formattedPrice = df.format(priceValue);
+
                 model.addRow(new Object[]{no++, res.getString(1), res.getString(2),
                     res.getString(3), formattedPrice});
             }
@@ -96,7 +101,7 @@ public class koneksiStock {
     }
 
     // method untuk menambah data stock penjualan
-    public void tableInsert(JTable loadingTable, String kode, JTextField[] fields) {
+    public void tableInsert(JTable loadingTable, String kode, JTextField[] fields) throws ParseException {
         if (loadStockPenjualan(loadingTable)) {
             JTextField[] checkFields = new JTextField[]{fields[0], fields[1], fields[2]};
             if (!loadToEmpty(checkFields, loadingTable)) {
@@ -167,7 +172,7 @@ public class koneksiStock {
     }
 
     // method untuk memperbarui data stock penjualan
-    public void tableUpdate(JTable loadingTable, JTextField[] fields) {
+    public void tableUpdate(JTable loadingTable, JTextField[] fields) throws ParseException {
         if (loadStockPenjualan(loadingTable)) {
             JTextField[] checkFields = new JTextField[]{fields[0], fields[1], fields[2]};
             if (!loadToEmpty(checkFields, loadingTable)) {
@@ -178,7 +183,7 @@ public class koneksiStock {
                     String productName = fields[0].getText().trim();
                     String productCode = fields[1].getText().trim();
                     int stockQuantity = fields[2].getText().trim().isEmpty() ? 0 : Integer.parseInt(fields[2].getText().trim());
-                    double productPrice = fields[3].getText().trim().isEmpty() ? 0 : Double.parseDouble(fields[3].getText().trim());
+                    String productPrice = fields[3].getText().trim();
 
                     if (!productCode.equals(selectedKode)) {
                         JOptionPane.showMessageDialog(loadingTable,
@@ -209,7 +214,7 @@ public class koneksiStock {
                             stmts.setString(1, productName);
                             stmts.setString(2, productCode);
                             stmts.setInt(3, stockQuantity);
-                            stmts.setDouble(4, productPrice);
+                            stmts.setString(4, productPrice);
                             stmts.setString(5, productCode);
                             stmts.executeUpdate();
                             JOptionPane.showMessageDialog(loadingTable, "Penyimpanan Data Berhasil");
@@ -249,7 +254,7 @@ public class koneksiStock {
     }
 
     // method untuk menghapus data stock penjualan
-    public void tableDelete(JTable loadingTable, String kode, JTextField[] fields) {
+    public void tableDelete(JTable loadingTable, String kode, JTextField[] fields) throws ParseException {
         if (loadStockPenjualan(loadingTable)) {
             String selectQuery = "SELECT COUNT(*) FROM stock_penjualan WHERE kode = ?";
             try (Connection cons = koneksi.database.dbConfig(); PreparedStatement selectStmt = cons.prepareStatement(selectQuery);) {
@@ -319,7 +324,7 @@ public class koneksiStock {
     }
 
     // method untuk query data stock penjualan
-    public void tableSearch(JTable loadingTable, JTextField[] fields) {
+    public void tableSearch(JTable loadingTable, JTextField[] fields) throws ParseException {
         Connection conn = null;
         PreparedStatement selectStmt = null;
         PreparedStatement stmt = null;
@@ -384,8 +389,11 @@ public class koneksiStock {
             int no = 1;
             while (res.next()) {
                 haveAData = true;
-                double priceValue = res.getDouble(4);
-                String formattedPrice = new DecimalFormat("#,##0").format(priceValue);
+
+                BigDecimal priceValue = new BigDecimal(res.getDouble(4));
+                DecimalFormat df = new DecimalFormat("#,##0.00");
+                String formattedPrice = df.format(priceValue);
+
                 model.addRow(new Object[]{no++, res.getString(1), res.getString(2),
                     res.getString(3), formattedPrice});
             }
