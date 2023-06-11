@@ -104,10 +104,10 @@ public class koneksiStock {
                 try (Connection cons = koneksi.database.dbConfig(); PreparedStatement selectStmt = cons.prepareStatement(selectQuery);) {
                     loadStockPenjualan(loadingTable);
                     setColumnWidth(loadingTable);
-                    String productName = fields[0].getText();
+                    String productName = fields[0].getText().trim();
                     String productCode = kode;
-                    int stockQuantity = fields[1].getText().isEmpty() ? 0 : Integer.parseInt(fields[1].getText());
-                    double productPrice = fields[2].getText().isEmpty() ? 0 : Double.parseDouble(fields[2].getText());
+                    int stockQuantity = fields[1].getText().trim().isEmpty() ? 0 : Integer.parseInt(fields[1].getText().trim());
+                    double productPrice = fields[2].getText().trim().isEmpty() ? 0 : Double.parseDouble(fields[2].getText().trim());
 
                     // Check if the kode value already exists
                     selectStmt.setString(1, productCode);
@@ -175,10 +175,10 @@ public class koneksiStock {
                 try (Connection cons = koneksi.database.dbConfig(); PreparedStatement selectStmt = cons.prepareStatement(selectQuery);) {
                     loadStockPenjualan(loadingTable);
                     setColumnWidth(loadingTable);
-                    String productName = fields[0].getText();
-                    String productCode = fields[1].getText();
-                    int stockQuantity = fields[2].getText().isEmpty() ? 0 : Integer.parseInt(fields[2].getText());
-                    double productPrice = fields[3].getText().isEmpty() ? 0 : Double.parseDouble(fields[3].getText());
+                    String productName = fields[0].getText().trim();
+                    String productCode = fields[1].getText().trim();
+                    int stockQuantity = fields[2].getText().trim().isEmpty() ? 0 : Integer.parseInt(fields[2].getText().trim());
+                    double productPrice = fields[3].getText().trim().isEmpty() ? 0 : Double.parseDouble(fields[3].getText().trim());
 
                     if (!productCode.equals(selectedKode)) {
                         JOptionPane.showMessageDialog(loadingTable,
