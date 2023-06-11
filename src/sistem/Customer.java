@@ -731,21 +731,21 @@ public final class Customer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void csAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csAddActionPerformed
-        if (existingPhones.contains(csPhone.getText()) && existingEmails.contains(csEmail.getText()) && existingFirstNames.contains(csfName.getText())
-                && existingLastNames.contains(cslName.getText()) && existingAddresses.contains(csAddress.getText())) {
+        if (existingPhones.contains(csPhone.getText().trim()) && existingEmails.contains(csEmail.getText().trim()) && existingFirstNames.contains(csfName.getText().trim())
+                && existingLastNames.contains(cslName.getText().trim()) && existingAddresses.contains(csAddress.getText().trim())) {
             JOptionPane.showMessageDialog(null, "Customer dengan data yang sama persis sudah ada!");
-        } else if (existingPhones.contains(csPhone.getText())) {
-            JOptionPane.showMessageDialog(null, "Customer dengan telephone " + csPhone.getText() + " sudah ada!");
-        } else if (existingEmails.contains(csEmail.getText())) {
-            JOptionPane.showMessageDialog(null, "Customer dengan email " + csEmail.getText() + " sudah ada!");
+        } else if (existingPhones.contains(csPhone.getText().trim())) {
+            JOptionPane.showMessageDialog(null, "Customer dengan telephone " + csPhone.getText().trim() + " sudah ada!");
+        } else if (existingEmails.contains(csEmail.getText().trim())) {
+            JOptionPane.showMessageDialog(null, "Customer dengan email " + csEmail.getText().trim() + " sudah ada!");
         } else {
             // Add the new customer to the database
-            if (csfName.getText().trim().isEmpty() || csPhone.getText().isEmpty() || csEmail.getText().isEmpty() || csAddress.getText().isEmpty()) {
+            if (csfName.getText().trim().isEmpty() || csPhone.getText().isEmpty() || csEmail.getText().trim().isEmpty() || csAddress.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Isi semua data informasi terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                String phoneNumber = cResetter.formatPhoneNumber(csPhone.getText());
+                String phoneNumber = cResetter.formatPhoneNumber(csPhone.getText().trim());
                 String lastName = cslName.getText().trim();
-                insertCustomerData(generateCustomerID(), csfName.getText().trim(), lastName, csEmail.getText().toLowerCase(), phoneNumber, csAddress.getText(), customerTable);
+                insertCustomerData(generateCustomerID(), csfName.getText().trim(), lastName, csEmail.getText().trim().toLowerCase(), phoneNumber, csAddress.getText().trim(), customerTable);
             }
         }
         startCounting(customerTable);
@@ -754,12 +754,12 @@ public final class Customer extends javax.swing.JPanel {
 
     private void csUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csUpActionPerformed
         if (selectedID != null) {
-            if (csfName.getText().trim().isEmpty() || csPhone.getText().isEmpty() || csEmail.getText().isEmpty() || csAddress.getText().isEmpty()) {
+            if (csfName.getText().trim().isEmpty() || csPhone.getText().trim().isEmpty() || csEmail.getText().trim().isEmpty() || csAddress.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Isi semua data informasi terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                String phoneNumber = cResetter.formatPhoneNumber(csPhone.getText());
+                String phoneNumber = cResetter.formatPhoneNumber(csPhone.getText().trim());
                 String lastName = cslName.getText().trim();
-                updateCustomerData(selectedID, csfName.getText().trim(), lastName, phoneNumber, csEmail.getText().toLowerCase(), csAddress.getText(), customerTable);
+                updateCustomerData(selectedID, csfName.getText().trim(), lastName, phoneNumber, csEmail.getText().trim().toLowerCase(), csAddress.getText().trim(), customerTable);
             }
             selectedID = null;
         } else {
