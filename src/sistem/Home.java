@@ -90,7 +90,7 @@ public final class Home extends javax.swing.JFrame {
         initComponents();
         init();
         exitButton();
-        setTitle("Sistem Pelacakan Penjualan by Group Six");
+        setTitle("Sales Tracking System by Group Six");
         loadDateAndTime();
         loadUserInfo();
         cSVG setSVG = new cSVG();
