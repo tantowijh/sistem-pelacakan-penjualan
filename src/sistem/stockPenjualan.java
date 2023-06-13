@@ -545,6 +545,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
         jBarang.setText("0");
         hBarang.setText("0.0");
         kBarang.setText("Otomatis");
+        existingValuesLoader();
     }//GEN-LAST:event_btnClearActionPerformed
 
 
