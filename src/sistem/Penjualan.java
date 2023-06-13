@@ -735,6 +735,7 @@ public class Penjualan extends javax.swing.JPanel {
 
     private void kodeAndProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeAndProductActionPerformed
         productname.setText(getProductName(kodeAndProduct));
+        productQuantity.setText("1");
         productQuantity.setToolTipText("Maksimal stock adalah " + loadStocks());
         hargaSatuan.setText(String.format("%,.2f", loadHarga()));
         hargaTotal.setText(String.format("%,.2f", loadHarga() * Integer.parseInt(productQuantity.getText())));
