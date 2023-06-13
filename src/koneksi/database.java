@@ -33,7 +33,7 @@ public class database {
             while (true) {
                 url = JOptionPane.showInputDialog(null, "Masukkan URL database "
                         + "(contoh: localhost/sistem_pelacakan):", "Database Configuration!",
-                        JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.INFORMATION_MESSAGE).trim();
                 if (url == null){
                     System.exit(0);
                 }
@@ -44,14 +44,14 @@ public class database {
             }
             while (username.isBlank()) {
                 username = JOptionPane.showInputDialog(null, "Masukkan username:",
-                        "Database Configuration!", JOptionPane.INFORMATION_MESSAGE);
+                        "Database Configuration!", JOptionPane.INFORMATION_MESSAGE).trim();
                 if (username == null){
                     System.exit(0);
                 }
             }
             while (password.isBlank()){
                 password = JOptionPane.showInputDialog(null, "Masukkan password:",
-                    "Database Configuration!", JOptionPane.INFORMATION_MESSAGE);
+                    "Database Configuration!", JOptionPane.INFORMATION_MESSAGE).trim();
                 if (password == null){
                     System.exit(0);
                 }

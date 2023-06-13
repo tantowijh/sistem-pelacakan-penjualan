@@ -541,8 +541,9 @@ public final class stockPenjualan extends javax.swing.JPanel {
     }//GEN-LAST:event_queryProductKeyReleased
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        JTextField[] fields = new JTextField[]{nBarang, jBarang, hBarang};
-        stock.resetFields(fields);
+        stock.resetFields(new JTextField[]{nBarang});
+        jBarang.setText("0");
+        hBarang.setText("0.0");
         kBarang.setText("Otomatis");
     }//GEN-LAST:event_btnClearActionPerformed
 

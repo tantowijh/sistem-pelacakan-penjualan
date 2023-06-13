@@ -112,7 +112,7 @@ public class koneksiStock {
                     String productName = fields[0].getText().trim();
                     String productCode = kode;
                     int stockQuantity = fields[1].getText().trim().isEmpty() ? 0 : Integer.parseInt(fields[1].getText().trim());
-                    double productPrice = fields[2].getText().trim().isEmpty() ? 0 : Double.parseDouble(fields[2].getText().trim());
+                    String productPrice = fields[2].getText().trim();
 
                     // Check if the kode value already exists
                     selectStmt.setString(1, productCode);
@@ -134,7 +134,7 @@ public class koneksiStock {
                             stmts.setString(1, productName);
                             stmts.setString(2, productCode);
                             stmts.setInt(3, stockQuantity);
-                            stmts.setDouble(4, productPrice);
+                            stmts.setString(4, productPrice);
                             stmts.executeUpdate();
                             JOptionPane.showMessageDialog(loadingTable, "Penyimpanan Data Berhasil");
                             resetFields(fields);

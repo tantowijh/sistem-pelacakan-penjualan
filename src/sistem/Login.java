@@ -89,7 +89,7 @@ public final class Login extends javax.swing.JFrame {
 
     public void createFirstUser() {
         JOptionPane.showMessageDialog(null, """
-                    Sepertinya ini pertama kalinya Anda menggunakan aplikasi Sistem Pelacakan Penjualan ini. 
+                    Sepertinya ini pertama kalinya Anda menggunakan aplikasi 'Sales Tracking System' ini. 
                     Mari buat akun master (owner) terlebih dahulu!""", "Selamat datang!", JOptionPane.INFORMATION_MESSAGE);
 
         String username = "";
@@ -98,7 +98,7 @@ public final class Login extends javax.swing.JFrame {
         boolean validPassword = false;
 
         while (!validUsername) {
-            username = JOptionPane.showInputDialog(null, "Masukkan username:");
+            username = JOptionPane.showInputDialog(null, "Masukkan username:").trim();
 
             if (username == null || username.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Username tidak boleh kosong. "
@@ -112,7 +112,7 @@ public final class Login extends javax.swing.JFrame {
         }
 
         while (!validPassword) {
-            password = JOptionPane.showInputDialog(null, "Masukkan password:");
+            password = JOptionPane.showInputDialog(null, "Masukkan password:").trim();
 
             if (password == null || password.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Password tidak boleh kosong. "
