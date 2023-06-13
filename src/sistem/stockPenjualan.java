@@ -100,6 +100,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
 
     /**
      * Creates new form dataPenjualan
+     * @throws java.text.ParseException
      */
     public stockPenjualan() throws ParseException {
         initComponents();
@@ -543,7 +544,11 @@ public final class stockPenjualan extends javax.swing.JPanel {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         stock.resetFields(new JTextField[]{nBarang, jBarang, hBarang});
         kBarang.setText("Otomatis");
-        existingValuesLoader();
+        try {
+            stock.loadStockPenjualan(loadStock);
+        } catch (ParseException ex) {
+            Logger.getLogger(stockPenjualan.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnClearActionPerformed
 
 
