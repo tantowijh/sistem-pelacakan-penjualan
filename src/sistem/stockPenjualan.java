@@ -30,7 +30,7 @@ public final class stockPenjualan extends javax.swing.JPanel {
 
     private static HashSet<String> existingKodes;
 
-    // retrieve customer id on the database to prevent adding the same id
+    // mengambil kode produk dari database untuk mencegah kode yang sama
     private void existingValuesLoader() {
         // Clearing the exixtingValues
         if (existingKodes != null) {

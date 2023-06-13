@@ -71,7 +71,9 @@ public class database {
             configProps.setProperty("database.password", password);
             saveConfigProperties();
         }
-
+        
+        
+        // Menghubungkan ke database menggunakan konfigurasi yang disiapkan
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             connection = DriverManager.getConnection(url, username, password);
