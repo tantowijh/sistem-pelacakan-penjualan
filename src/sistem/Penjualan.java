@@ -934,6 +934,7 @@ public class Penjualan extends javax.swing.JPanel {
         db.loadSalesTable(model);
         customerAndID.setSelectedIndex(0);
         kodeAndProduct.setSelectedIndex(0);
+        statusPembayaran.setSelectedIndex(0);
         productQuantity.setText("1");
         hargaSatuan.setText(String.format("%,.2f", loadHarga()));
         hargaTotal.setText(String.format("%,.2f", loadHarga() * Integer.parseInt(productQuantity.getText())));
